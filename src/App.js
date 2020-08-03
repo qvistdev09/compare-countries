@@ -130,6 +130,7 @@ class App extends React.Component {
           <SuggestedCountries
             classes="flex-column"
             suggestions={this.state.suggestions}
+            input={this.state.input}
             add={this.fetchCountry}
           />
         </div>
