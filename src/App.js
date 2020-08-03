@@ -17,9 +17,27 @@ class App extends React.Component {
     this.fetchCountry = this.fetchCountry.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
+    this.deleteCountry = this.deleteCountry.bind(this);
+  }
+
+  deleteCountry(code) {
+    this.setState((state, props) => ({
+      selectedCountries: state.selectedCountries.filter(
+        (country) => country.alpha2Code !== code
+      ),
+    }));
   }
 
   fetchCountry(string) {
+    if (
+      this.state.selectedCountries.some(
+        (country) => country.alpha2Code === string
+      )
+    ) {
+      alert('Country already selected');
+      return;
+    }
+
     fetch('https://restcountries.eu/rest/v2/alpha/' + string)
       .then((response) => response.json())
       .then((data) => {
@@ -28,9 +46,7 @@ class App extends React.Component {
             selectedCountries: [
               ...state.selectedCountries,
               {
-                name: data.name,
-                population: data.population,
-                capital: data.capital,
+                ...data,
               },
             ],
           }),
@@ -76,7 +92,11 @@ class App extends React.Component {
           </p>
         ))}
         {this.state.selectedCountries.map((country) => (
-          <Country {...country} key={country.name} />
+          <Country
+            {...country}
+            key={country.name}
+            delete={this.deleteCountry}
+          />
         ))}
       </div>
     );
