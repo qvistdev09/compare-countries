@@ -22,6 +22,7 @@ class App extends React.Component {
   }
 
   deleteCountry(code) {
+    // check if country should be cached
     if (!this.state.cached.some((country) => country.alpha2Code === code)) {
       this.setState(
         (state, props) => ({
@@ -37,7 +38,9 @@ class App extends React.Component {
         }),
         () => console.log(this.state.cached)
       );
-    } else {
+    }
+    // if already cached, just delete
+    else {
       this.setState(
         (state, props) => ({
           selectedCountries: state.selectedCountries.filter(
@@ -50,6 +53,7 @@ class App extends React.Component {
   }
 
   fetchCountry(string) {
+    // check if country is already selected
     if (
       this.state.selectedCountries.some(
         (country) => country.alpha2Code === string
@@ -59,6 +63,7 @@ class App extends React.Component {
       return;
     }
 
+    // check if country can be retrieved from cache of already viewed countries
     if (this.state.cached.some((country) => country.alpha2Code === string)) {
       this.setState(
         (state, props) => ({
@@ -69,7 +74,9 @@ class App extends React.Component {
         }),
         () => console.log('Country collected from cache, no API call needed')
       );
-    } else {
+    }
+    // fetch previously unviewed country from API
+    else {
       fetch('https://restcountries.eu/rest/v2/alpha/' + string)
         .then((response) => response.json())
         .then((data) => {
