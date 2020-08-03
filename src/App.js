@@ -2,21 +2,24 @@ import React from 'react';
 import './css/utilities.css';
 import './css/style.css';
 import { shortened, fullName } from './CountryCodes';
+
+import Header from './components/Header';
 import Country from './components/Country';
+import InputField from './components/InputField';
+import SuggestedCountries from './components/SuggestedCountries';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       message: 'No message loaded',
-      input: 'Type here',
+      input: '',
       suggestions: [],
       cached: [],
       selectedCountries: [],
     };
 
     this.fetchCountry = this.fetchCountry.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.deleteCountry = this.deleteCountry.bind(this);
   }
@@ -53,10 +56,11 @@ class App extends React.Component {
   }
 
   fetchCountry(string) {
+    const code = shortened[fullName.indexOf(string)];
     // check if country is already selected
     if (
       this.state.selectedCountries.some(
-        (country) => country.alpha2Code === string
+        (country) => country.alpha2Code === code
       )
     ) {
       console.log('Country already selected');
@@ -64,20 +68,22 @@ class App extends React.Component {
     }
 
     // check if country can be retrieved from cache of already viewed countries
-    if (this.state.cached.some((country) => country.alpha2Code === string)) {
+    if (this.state.cached.some((country) => country.alpha2Code === code)) {
       this.setState(
         (state, props) => ({
           selectedCountries: [
             ...state.selectedCountries,
-            ...state.cached.filter((country) => country.alpha2Code === string),
+            ...state.cached.filter((country) => country.alpha2Code === code),
           ],
+          suggestions: [],
+          input: '',
         }),
         () => console.log('Country collected from cache, no API call needed')
       );
     }
     // fetch previously unviewed country from API
     else {
-      fetch('https://restcountries.eu/rest/v2/alpha/' + string)
+      fetch('https://restcountries.eu/rest/v2/alpha/' + code)
         .then((response) => response.json())
         .then((data) => {
           this.setState(
@@ -88,18 +94,14 @@ class App extends React.Component {
                   ...data,
                 },
               ],
+              suggestions: [],
+              input: '',
             }),
             () => console.log('An API call was made')
           );
         })
         .catch((error) => console.log('Could not get data'));
     }
-  }
-
-  handleChange(event) {
-    this.setState({
-      input: event.target.value,
-    });
   }
 
   getSuggestions(event) {
@@ -117,20 +119,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
-          type="text"
-          onChange={this.getSuggestions}
-          value={this.state.input}
+      <div id="site-container" className="p">
+        <Header
+          classes="m-bottom"
+          title="Compare Countries"
+          description="by qvistdev09, using REST countries API"
         />
-        {this.state.suggestions.slice(0, 4).map((item) => (
-          <p
-            key={item}
-            onClick={() => this.fetchCountry(shortened[fullName.indexOf(item)])}
-          >
-            {item}
-          </p>
-        ))}
+        <div id="input-area" className="m-bottom">
+          <InputField onChange={this.getSuggestions} input={this.state.input} />
+          <SuggestedCountries
+            classes="flex-column"
+            suggestions={this.state.suggestions}
+            add={this.fetchCountry}
+          />
+        </div>
         {this.state.selectedCountries.map((country) => (
           <Country
             {...country}
