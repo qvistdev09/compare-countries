@@ -11,6 +11,7 @@ class App extends React.Component {
       message: 'No message loaded',
       input: 'Type here',
       suggestions: [],
+      cached: [],
       selectedCountries: [],
     };
 
@@ -21,11 +22,31 @@ class App extends React.Component {
   }
 
   deleteCountry(code) {
-    this.setState((state, props) => ({
-      selectedCountries: state.selectedCountries.filter(
-        (country) => country.alpha2Code !== code
-      ),
-    }));
+    if (!this.state.cached.some((country) => country.alpha2Code === code)) {
+      this.setState(
+        (state, props) => ({
+          cached: [
+            ...state.cached,
+            ...state.selectedCountries.filter(
+              (country) => country.alpha2Code === code
+            ),
+          ],
+          selectedCountries: state.selectedCountries.filter(
+            (country) => country.alpha2Code !== code
+          ),
+        }),
+        () => console.log(this.state.cached)
+      );
+    } else {
+      this.setState(
+        (state, props) => ({
+          selectedCountries: state.selectedCountries.filter(
+            (country) => country.alpha2Code !== code
+          ),
+        }),
+        () => console.log(this.state.cached)
+      );
+    }
   }
 
   fetchCountry(string) {
