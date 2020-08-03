@@ -124,10 +124,18 @@ class App extends React.Component {
         this.setState({ suggestions: [] });
         return;
       }
-      const regex = RegExp('^' + this.state.input, 'i');
-      this.setState({
-        suggestions: fullName.filter((item) => regex.test(item)),
-      });
+      let regex = RegExp('^' + this.state.input, 'i');
+      let matchedCountries = fullName.filter((item) => regex.test(item));
+      if (matchedCountries.length > 0) {
+        this.setState({
+          suggestions: fullName.filter((item) => regex.test(item)),
+        });
+      } else {
+        regex = RegExp(this.state.input, 'i');
+        this.setState({
+          suggestions: fullName.filter((item) => regex.test(item)),
+        });
+      }
     });
   }
 
