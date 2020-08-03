@@ -19,6 +19,8 @@ class App extends React.Component {
       selectedCountries: [],
     };
 
+    this.fetchBlock = false;
+
     this.fetchCountry = this.fetchCountry.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.deleteCountry = this.deleteCountry.bind(this);
@@ -56,6 +58,10 @@ class App extends React.Component {
   }
 
   fetchCountry(string) {
+    if (this.fetchBlock) {
+      return;
+    }
+
     const code = shortened[fullName.indexOf(string)];
     // check if country is already selected
     if (
@@ -66,6 +72,8 @@ class App extends React.Component {
       console.log('Country already selected');
       return;
     }
+
+    this.fetchBlock = true;
 
     // check if country can be retrieved from cache of already viewed countries
     if (this.state.cached.some((country) => country.alpha2Code === code)) {
@@ -78,7 +86,10 @@ class App extends React.Component {
           suggestions: [],
           input: '',
         }),
-        () => console.log('Country collected from cache, no API call needed')
+        () => {
+          console.log('Country collected from cache, no API call needed');
+          this.fetchBlock = false;
+        }
       );
     }
     // fetch previously unviewed country from API
@@ -97,7 +108,10 @@ class App extends React.Component {
               suggestions: [],
               input: '',
             }),
-            () => console.log('An API call was made')
+            () => {
+              console.log('An API call was made');
+              this.fetchBlock = false;
+            }
           );
         })
         .catch((error) => console.log('Could not get data'));
