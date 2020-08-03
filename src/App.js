@@ -55,26 +55,38 @@ class App extends React.Component {
         (country) => country.alpha2Code === string
       )
     ) {
-      alert('Country already selected');
+      console.log('Country already selected');
       return;
     }
 
-    fetch('https://restcountries.eu/rest/v2/alpha/' + string)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState(
-          (state, props) => ({
-            selectedCountries: [
-              ...state.selectedCountries,
-              {
-                ...data,
-              },
-            ],
-          }),
-          () => console.log('An API call was made')
-        );
-      })
-      .catch((error) => console.log('Could not get data'));
+    if (this.state.cached.some((country) => country.alpha2Code === string)) {
+      this.setState(
+        (state, props) => ({
+          selectedCountries: [
+            ...state.selectedCountries,
+            ...state.cached.filter((country) => country.alpha2Code === string),
+          ],
+        }),
+        () => console.log('Country collected from cache, no API call needed')
+      );
+    } else {
+      fetch('https://restcountries.eu/rest/v2/alpha/' + string)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState(
+            (state, props) => ({
+              selectedCountries: [
+                ...state.selectedCountries,
+                {
+                  ...data,
+                },
+              ],
+            }),
+            () => console.log('An API call was made')
+          );
+        })
+        .catch((error) => console.log('Could not get data'));
+    }
   }
 
   handleChange(event) {
