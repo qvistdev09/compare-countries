@@ -19,14 +19,33 @@ class App extends React.Component {
       suggestions: [],
       cached: startingCountries,
       selectedCountries: startingCountries,
+      headerHeight: 200,
     };
 
     this.fetchBlock = false;
+    this.headerObj = null;
 
     this.fetchCountry = this.fetchCountry.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.deleteCountry = this.deleteCountry.bind(this);
     this.sortCountries = this.sortCountries.bind(this);
+    this.adaptToHeader = this.adaptToHeader.bind(this);
+  }
+
+  componentDidMount() {
+    this.headerObj = document.getElementById('site-header');
+    this.setState(
+      {
+        headerHeight: this.headerObj.offsetHeight,
+      },
+      () => window.addEventListener('resize', this.adaptToHeader)
+    );
+  }
+
+  adaptToHeader() {
+    this.setState({
+      headerHeight: this.headerObj.offsetHeight,
+    });
   }
 
   sortCountries(property, ascending) {
@@ -179,30 +198,39 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="site-container" className="p">
+      <div id="site-container">
         <Header
-          classes="m-bottom"
+          classes="p"
           title="Compare Countries"
           description="by qvistdev09, using REST countries API"
-        />
-        <div id="input-area" className="m-bottom">
-          <InputField onChange={this.getSuggestions} input={this.state.input} />
-          <SuggestedCountries
-            classes="flex-column"
-            suggestions={this.state.suggestions}
-            input={this.state.input}
-            add={this.fetchCountry}
-          />
-        </div>
-        <div id="countries-container">
-          <TableHeader action={this.sortCountries} />
-          {this.state.selectedCountries.map((country) => (
-            <Country
-              {...country}
-              key={country.name}
-              delete={this.deleteCountry}
+        >
+          <div id="input-area">
+            <InputField
+              onChange={this.getSuggestions}
+              input={this.state.input}
             />
-          ))}
+            <SuggestedCountries
+              classes="flex-column"
+              suggestions={this.state.suggestions}
+              input={this.state.input}
+              add={this.fetchCountry}
+            />
+          </div>
+        </Header>
+        <div
+          id="content-container"
+          style={{ paddingTop: this.state.headerHeight + 'px' }}
+        >
+          <div id="countries-container">
+            <TableHeader action={this.sortCountries} />
+            {this.state.selectedCountries.map((country) => (
+              <Country
+                {...country}
+                key={country.name}
+                delete={this.deleteCountry}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );

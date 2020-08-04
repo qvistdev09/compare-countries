@@ -2,6 +2,35 @@
   font-family: 'Sora', sans-serif;
 }
 
+:root {
+  --border-color: rgb(218, 218, 218);
+  --text-dark: rgb(99, 99, 99);
+}
+
+header {
+  background-color: white;
+  border-bottom: 0.2rem solid var(--border-color);
+  position: fixed;
+  width: 100vw;
+}
+
+i.h1-icon {
+  font-size: 3rem;
+  color: rgb(1, 120, 255);
+}
+h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  transform: translateY(0.25rem);
+}
+
+p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
 #countries-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
