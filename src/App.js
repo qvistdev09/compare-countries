@@ -128,14 +128,17 @@ class App extends React.Component {
         }
         let regex = RegExp('^' + this.state.input, 'i');
         let matchedCountries = fullName.filter((item) => regex.test(item));
-        if (matchedCountries.length > 0) {
+        if (matchedCountries.length >= 4) {
           this.setState({
             suggestions: fullName.filter((item) => regex.test(item)),
           });
         } else {
           regex = RegExp(this.state.input, 'i');
+          let tier2searches = fullName
+            .filter((item) => regex.test(item))
+            .filter((item) => (matchedCountries.includes(item) ? false : true));
           this.setState({
-            suggestions: fullName.filter((item) => regex.test(item)),
+            suggestions: matchedCountries.concat(tier2searches),
           });
         }
       }
