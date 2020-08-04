@@ -19,7 +19,7 @@ class App extends React.Component {
       suggestions: [],
       cached: startingCountries,
       selectedCountries: startingCountries,
-      headerHeight: 200,
+      headerHeight: 10,
     };
 
     this.fetchBlock = false;
@@ -33,18 +33,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const rem = parseInt(
+      getComputedStyle(document.documentElement).fontSize.slice(0, 2)
+    );
     this.headerObj = document.getElementById('site-header');
     this.setState(
       {
-        headerHeight: this.headerObj.offsetHeight,
+        headerHeight: this.headerObj.offsetHeight / rem,
       },
       () => window.addEventListener('resize', this.adaptToHeader)
     );
   }
 
   adaptToHeader() {
+    const rem = parseInt(
+      getComputedStyle(document.documentElement).fontSize.slice(0, 2)
+    );
     this.setState({
-      headerHeight: this.headerObj.offsetHeight,
+      headerHeight: this.headerObj.offsetHeight / rem,
     });
   }
 
@@ -219,7 +225,7 @@ class App extends React.Component {
         </Header>
         <div
           id="content-container"
-          style={{ paddingTop: this.state.headerHeight + 'px' }}
+          style={{ paddingTop: this.state.headerHeight + 'rem' }}
         >
           <div id="countries-container">
             <TableHeader action={this.sortCountries} />
