@@ -93,12 +93,17 @@ p.site-description {
 }
 
 .suggestion-icon {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.1s;
   color: var(--text-dark);
 }
 
 .suggestion-div:hover .suggestion-icon {
-  display: initial;
+  opacity: 1;
+}
+
+.suggestion-div p {
+  transition: margin 0.1s;
 }
 
 .suggestion-div:hover p {
