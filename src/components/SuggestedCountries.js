@@ -13,7 +13,11 @@ class SuggestedCountries extends React.Component {
     );
     return marked.split('@').map((element) => {
       if (element === userString) {
-        return <strong>{suggestion.match(new RegExp(userString, 'i'))}</strong>;
+        return (
+          <strong key={suggestion}>
+            {suggestion.match(new RegExp(userString, 'i'))}
+          </strong>
+        );
       } else {
         return element;
       }
