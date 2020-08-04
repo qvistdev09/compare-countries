@@ -2,6 +2,7 @@ import React from 'react';
 import './css/utilities.css';
 import './css/style.css';
 import { shortened, fullName } from './CountryCodes';
+import startingCountries from './StartingData';
 
 import Header from './components/Header';
 import Country from './components/Country';
@@ -16,8 +17,8 @@ class App extends React.Component {
       message: 'No message loaded',
       input: '',
       suggestions: [],
-      cached: [],
-      selectedCountries: [],
+      cached: startingCountries,
+      selectedCountries: startingCountries,
     };
 
     this.fetchBlock = false;
@@ -25,6 +26,21 @@ class App extends React.Component {
     this.fetchCountry = this.fetchCountry.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.deleteCountry = this.deleteCountry.bind(this);
+    this.sortCountries = this.sortCountries.bind(this);
+  }
+
+  sortCountries(property, ascending) {
+    console.log('attempting to sort');
+    const sortedCopy = JSON.parse(JSON.stringify(this.state.selectedCountries));
+
+    if (ascending) {
+      sortedCopy.sort((a, b) => (a[property] < b[property] ? 1 : -1));
+    } else {
+      sortedCopy.sort((a, b) => (a[property] > b[property] ? 1 : -1));
+    }
+    this.setState({
+      selectedCountries: sortedCopy,
+    });
   }
 
   deleteCountry(code) {
@@ -179,7 +195,7 @@ class App extends React.Component {
           />
         </div>
         <div id="countries-container">
-          <TableHeader />
+          <TableHeader action={this.sortCountries} />
           {this.state.selectedCountries.map((country) => (
             <Country
               {...country}
