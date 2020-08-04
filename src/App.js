@@ -207,7 +207,7 @@ class App extends React.Component {
       <div id="site-container">
         <Header
           classes="p"
-          title="Compare Countries"
+          title="COMPARE COUNTRIES"
           description="by qvistdev09, using REST countries API"
         >
           <div id="input-area">
