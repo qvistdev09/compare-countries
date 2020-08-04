@@ -6,7 +6,7 @@ function Header(props) {
       <div className="m-bottom">
         <i className="fas fa-globe h1-icon m-right-small"></i>
         <h1 className="m-right-small">{props.title}</h1>
-        <p class="site-description">{props.description}</p>
+        <p className="site-description">{props.description}</p>
       </div>
       {props.children}
     </header>

@@ -33,11 +33,13 @@ class SuggestedCountries extends React.Component {
         }
       >
         {this.props.suggestions.slice(0, 4).map((item) => (
-          <div className="flex-row justify-between" key={item}>
+          <div
+            className="suggestion-div flex-row justify-start align-center"
+            key={item}
+            onClick={() => this.props.add(item)}
+          >
+            <i className="fas fa-caret-right suggestion-icon m-left-small"></i>
             <p>{this.boldReplace(this.props.input, item)}</p>
-            <button onClick={() => this.props.add(item)}>
-              <i className="fas fa-plus"></i>
-            </button>
           </div>
         ))}
       </div>

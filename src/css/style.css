@@ -61,6 +61,11 @@ p.site-description {
   background-color: var(--input-bg-unfocusd);
 }
 
+.showing-suggestions {
+  border-bottom-left-radius: 0rem !important;
+  border-bottom-right-radius: 0rem !important;
+}
+
 #search-field:focus {
   outline: none;
   background-color: white;
@@ -68,15 +73,40 @@ p.site-description {
 
 #suggestions-container {
   width: 25rem;
-  border: 1px solid black;
   background-color: white;
   position: absolute;
   top: 2.5rem;
   left: 0;
+  border: 2px solid var(--border-color);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--border-color);
 }
 
 #suggestions-container.hidden {
   display: none;
+}
+
+.suggestion-div {
+  padding: 0.5rem;
+}
+
+.suggestion-icon {
+  display: none;
+  color: var(--text-dark);
+}
+
+.suggestion-div:hover .suggestion-icon {
+  display: initial;
+}
+
+.suggestion-div:hover p {
+  margin-left: 0.5rem;
+}
+
+.suggestion-div:nth-child(even) {
+  background-color: var(--input-bg-unfocusd);
 }
 
 .country-container {

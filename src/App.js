@@ -214,6 +214,9 @@ class App extends React.Component {
             <InputField
               onChange={this.getSuggestions}
               input={this.state.input}
+              classes={
+                this.state.suggestions.length > 0 ? 'showing-suggestions' : ''
+              }
             />
             <SuggestedCountries
               classes="flex-column"
