@@ -2,13 +2,20 @@
   font-family: 'Lato', sans-serif;
 }
 
+#countries-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 #input-area {
   position: relative;
 }
+
 #search-field {
   height: 2rem;
   width: 25rem;
 }
+
 #suggestions-container {
   width: 25rem;
   border: 1px solid black;
@@ -26,8 +33,20 @@
   border: 1px solid black;
 }
 
+.grid-cell {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-cell button {
+  flex: 1;
+  align-self: stretch;
+}
+
 img {
-  max-width: 100px;
+  max-width: 150px;
 }
 
 button {

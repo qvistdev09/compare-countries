@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Country from './components/Country';
 import InputField from './components/InputField';
 import SuggestedCountries from './components/SuggestedCountries';
+import TableHeader from './components/TableHeader';
 
 class App extends React.Component {
   constructor(props) {
@@ -163,13 +164,16 @@ class App extends React.Component {
             add={this.fetchCountry}
           />
         </div>
-        {this.state.selectedCountries.map((country) => (
-          <Country
-            {...country}
-            key={country.name}
-            delete={this.deleteCountry}
-          />
-        ))}
+        <div id="countries-container">
+          <TableHeader />
+          {this.state.selectedCountries.map((country) => (
+            <Country
+              {...country}
+              key={country.name}
+              delete={this.deleteCountry}
+            />
+          ))}
+        </div>
       </div>
     );
   }
