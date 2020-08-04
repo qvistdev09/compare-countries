@@ -5,6 +5,8 @@
 #countries-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #input-area {
@@ -34,7 +36,8 @@
 }
 
 .grid-cell {
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,6 +46,12 @@
 .grid-cell button {
   flex: 1;
   align-self: stretch;
+  border-radius: 0;
+  border: none;
+}
+
+.grid-cell button:hover {
+  background-color: rgb(214, 214, 214);
 }
 
 img {
