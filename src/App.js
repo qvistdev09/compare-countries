@@ -119,30 +119,31 @@ class App extends React.Component {
   }
 
   getSuggestions(event) {
-    this.setState(
-      { input: event.target.value.replace(/[^A-Za-z|\s]/g, '') },
-      () => {
-        if (this.state.input === '') {
-          this.setState({ suggestions: [] });
-          return;
-        }
-        let regex = RegExp('^' + this.state.input, 'i');
-        let matchedCountries = fullName.filter((item) => regex.test(item));
-        if (matchedCountries.length >= 4) {
-          this.setState({
-            suggestions: fullName.filter((item) => regex.test(item)),
-          });
-        } else {
-          regex = RegExp(this.state.input, 'i');
-          let tier2searches = fullName
-            .filter((item) => regex.test(item))
-            .filter((item) => !matchedCountries.includes(item));
-          this.setState({
-            suggestions: matchedCountries.concat(tier2searches),
-          });
-        }
-      }
-    );
+    if (/[A-Za-z]/g.test(event.target.value) === false) {
+      this.setState({
+        input: '',
+        suggestions: [],
+      });
+      return;
+    }
+    const cleanedInput = event.target.value.replace(/[^A-Za-z|\s]/g, '');
+    let regex = RegExp('^' + cleanedInput, 'i');
+    const matchedCountries = fullName.filter((item) => regex.test(item));
+    if (matchedCountries.length >= 4) {
+      this.setState({
+        input: cleanedInput,
+        suggestions: matchedCountries,
+      });
+    } else {
+      regex = RegExp(cleanedInput, 'i');
+      const tier2searches = fullName
+        .filter((item) => regex.test(item))
+        .filter((item) => !matchedCountries.includes(item));
+      this.setState({
+        input: cleanedInput,
+        suggestions: matchedCountries.concat(tier2searches),
+      });
+    }
   }
 
   render() {
