@@ -5,6 +5,7 @@ function InputField(props) {
     <input
       id="search-field"
       type="text"
+      autoComplete="off"
       className={props.classes}
       placeholder="Type to add country"
       onChange={props.onChange}
