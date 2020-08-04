@@ -136,7 +136,7 @@ class App extends React.Component {
           regex = RegExp(this.state.input, 'i');
           let tier2searches = fullName
             .filter((item) => regex.test(item))
-            .filter((item) => (matchedCountries.includes(item) ? false : true));
+            .filter((item) => !matchedCountries.includes(item));
           this.setState({
             suggestions: matchedCountries.concat(tier2searches),
           });
