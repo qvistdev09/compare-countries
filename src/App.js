@@ -119,24 +119,27 @@ class App extends React.Component {
   }
 
   getSuggestions(event) {
-    this.setState({ input: event.target.value }, () => {
-      if (this.state.input === '') {
-        this.setState({ suggestions: [] });
-        return;
+    this.setState(
+      { input: event.target.value.replace(/[^A-Za-z|\s]/g, '') },
+      () => {
+        if (this.state.input === '') {
+          this.setState({ suggestions: [] });
+          return;
+        }
+        let regex = RegExp('^' + this.state.input, 'i');
+        let matchedCountries = fullName.filter((item) => regex.test(item));
+        if (matchedCountries.length > 0) {
+          this.setState({
+            suggestions: fullName.filter((item) => regex.test(item)),
+          });
+        } else {
+          regex = RegExp(this.state.input, 'i');
+          this.setState({
+            suggestions: fullName.filter((item) => regex.test(item)),
+          });
+        }
       }
-      let regex = RegExp('^' + this.state.input, 'i');
-      let matchedCountries = fullName.filter((item) => regex.test(item));
-      if (matchedCountries.length > 0) {
-        this.setState({
-          suggestions: fullName.filter((item) => regex.test(item)),
-        });
-      } else {
-        regex = RegExp(this.state.input, 'i');
-        this.setState({
-          suggestions: fullName.filter((item) => regex.test(item)),
-        });
-      }
-    });
+    );
   }
 
   render() {
