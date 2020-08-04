@@ -131,19 +131,33 @@ class App extends React.Component {
     let regex = RegExp('^' + cleanedInput, 'i');
     const matchedCountries = fullName.filter((item) => regex.test(item));
     if (matchedCountries.length >= 4) {
-      this.setState({
+      this.setState((state) => ({
         input: cleanedInput,
-        suggestions: matchedCountries,
-      });
+        suggestions: matchedCountries.filter(
+          (item) =>
+            !state.selectedCountries.some(
+              (element) =>
+                element.alpha2Code === shortened[fullName.indexOf(item)]
+            )
+        ),
+      }));
     } else {
       regex = RegExp(cleanedInput, 'i');
       const tier2searches = fullName
         .filter((item) => regex.test(item))
         .filter((item) => !matchedCountries.includes(item));
-      this.setState({
+      this.setState((state) => ({
         input: cleanedInput,
-        suggestions: matchedCountries.concat(tier2searches),
-      });
+        suggestions: matchedCountries
+          .concat(tier2searches)
+          .filter(
+            (item) =>
+              !state.selectedCountries.some(
+                (element) =>
+                  element.alpha2Code === shortened[fullName.indexOf(item)]
+              )
+          ),
+      }));
     }
   }
 
