@@ -40,7 +40,7 @@ class SuggestedCountries extends React.Component {
             key={item}
             onClick={() => this.props.add(item)}
           >
-            <i className="fas fa-caret-right suggestion-icon"></i>
+            <i className="fas fa-chevron-right suggestion-icon"></i>
             <p>{this.boldReplace(this.props.input, item)}</p>
           </div>
         ))}
