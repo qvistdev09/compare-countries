@@ -1,68 +1,82 @@
 import React from 'react';
 
-function Country(props) {
-  return [
-    <div
-      key={'name-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-left-end'
-          : 'grid-cell left-end'
-      }
-    >
-      <p>{props.name}</p>
-    </div>,
-    <div
-      key={'flag-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-middle-cell'
-          : 'grid-cell middle-cell'
-      }
-    >
-      <img src={props.flag} alt={'The flag of ' + props.name} />
-    </div>,
-    <div
-      key={'capital-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-middle-cell'
-          : 'grid-cell middle-cell'
-      }
-    >
-      <p>{props.capital}</p>
-    </div>,
-    <div
-      key={'population-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-middle-cell'
-          : 'grid-cell middle-cell'
-      }
-    >
-      <p>{props.population}</p>
-    </div>,
-    <div
-      key={'area-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-middle-cell'
-          : 'grid-cell middle-cell'
-      }
-    >
-      <p>{props.area}</p>
-    </div>,
-    <div
-      key={'delete-cell-' + props.name}
-      className={
-        props.index === props.lastIndex
-          ? 'grid-cell last-right-end'
-          : 'grid-cell right-end'
-      }
-    >
-      <button onClick={() => props.delete(props.alpha2Code)}>Delete</button>
-    </div>,
-  ];
+class Country extends React.Component {
+  constructor(props) {
+    super(props);
+    this.columns = [
+      { type: 'text', value: 'name', header: 'Name' },
+      { type: 'image', value: 'flag', header: 'Flag' },
+      { type: 'text', value: 'capital', header: 'Capital' },
+      { type: 'text', value: 'population', header: 'Population' },
+      { type: 'text', value: 'area', header: 'Area' },
+      { type: 'delete', value: 'delete', header: 'Delete' },
+    ];
+
+    this.cellGenerator = this.cellGenerator.bind(this);
+  }
+
+  cellGenerator(object, index, lastIndex) {
+    let position;
+    let shadeStatus;
+    if (index === 0) {
+      position = 'left-end';
+    } else if (index === lastIndex) {
+      position = 'right-end';
+    } else {
+      position = 'middle';
+    }
+
+    if (this.props.thisRow === this.props.lastRow) {
+      position = 'last-row-' + position;
+    }
+
+    if (this.props.thisRow % 2 === 0) {
+      shadeStatus = 'shaded-cell';
+    } else {
+      shadeStatus = 'non-shaded-cell';
+    }
+
+    const key = object.value + '-cell-' + this.props.name;
+    const className = shadeStatus + ' ' + position + ' grid-cell';
+
+    switch (object.type) {
+      case 'text':
+        return (
+          <div key={key} className={className}>
+            <p>{this.props[object.value]}</p>
+          </div>
+        );
+      case 'image':
+        return (
+          <div key={key} className={className}>
+            <img
+              src={this.props[object.value]}
+              alt={'The flag of ' + this.props.name}
+            />
+          </div>
+        );
+      case 'delete':
+        return (
+          <div key={key} className={className}>
+            <button onClick={() => this.props.delete(this.props.alpha2Code)}>
+              Delete
+            </button>
+          </div>
+        );
+      default:
+        return (
+          <div key={'incorrect-' + this.props.name}>
+            <p>Incorrectly marked cell</p>
+          </div>
+        );
+    }
+  }
+
+  render() {
+    return this.columns.map((item, index, array) =>
+      this.cellGenerator(item, index, array.length - 1)
+    );
+  }
 }
 
 export default Country;

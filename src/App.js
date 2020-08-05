@@ -251,8 +251,8 @@ class App extends React.Component {
                   {...country}
                   key={country.name}
                   delete={this.deleteCountry}
-                  index={index}
-                  lastIndex={array.length - 1}
+                  thisRow={index}
+                  lastRow={array.length - 1}
                 />
               ))}
             </div>

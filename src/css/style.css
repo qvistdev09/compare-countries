@@ -136,6 +136,8 @@ p.site-description {
 
 img {
   max-width: 150px;
+  border-radius: 0.5rem;
+  border: 2px solid var(--border-color);
 }
 
 button {
@@ -155,17 +157,17 @@ i:hover {
   border-bottom: 1px solid var(--border-color);
 }
 
-.last-left-end {
+.last-row-left-end {
   border-left: 3px solid var(--border-color);
   border-bottom: 3px solid var(--border-color);
   border-bottom-left-radius: 0.5rem;
 }
 
-.middle-cell {
+.middle {
   border-bottom: 1px solid var(--border-color);
 }
 
-.last-middle-cell {
+.last-row-middle {
   border-bottom: 3px solid var(--border-color);
 }
 
@@ -174,7 +176,7 @@ i:hover {
   border-bottom: 1px solid var(--border-color);
 }
 
-.last-right-end {
+.last-row-right-end {
   border-right: 3px solid var(--border-color);
   border-bottom: 3px solid var(--border-color);
   border-bottom-right-radius: 0.5rem;
@@ -197,4 +199,8 @@ i:hover {
   border-top: 3px solid var(--border-color);
   border-top-right-radius: 0.5rem;
   border-bottom: 1px solid var(--border-color);
+}
+
+.shaded-cell {
+  background-color: var(--input-bg-unfocusd);
 }
