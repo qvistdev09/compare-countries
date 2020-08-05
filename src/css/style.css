@@ -244,3 +244,9 @@ img {
   letter-spacing: 0.05rem;
   font-weight: 400;
 }
+
+.raised {
+  font-size: 0.7rem;
+  display: inline-block;
+  transform: translateY(-50%);
+}

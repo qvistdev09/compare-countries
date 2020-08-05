@@ -32,6 +32,8 @@ class Country extends React.Component {
         } else {
           return input;
         }
+      case 'area':
+        return [input.toLocaleString() + ' km', <span class="raised">2</span>];
       default:
         return input;
     }
