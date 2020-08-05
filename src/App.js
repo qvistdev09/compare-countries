@@ -164,6 +164,7 @@ class App extends React.Component {
 
   getSuggestions(event) {
     if (/[A-Za-z]/g.test(event.target.value) === false) {
+      this.blurBlock = false;
       this.setState({
         input: '',
         suggestions: [],
