@@ -13,6 +13,28 @@ class Country extends React.Component {
     ];
 
     this.cellGenerator = this.cellGenerator.bind(this);
+    this.format = this.format.bind(this);
+  }
+
+  format(input, type) {
+    if (!input) {
+      return 'n/a';
+    }
+
+    switch (type) {
+      case 'population':
+        if (input > 1000000) {
+          let toMillion = input / 1000000;
+          return Math.round(toMillion * 10) / 10 + ' mil';
+        } else if (input > 10000) {
+          let toThousand = input / 1000;
+          return Math.round(toThousand * 10) / 10 + ' k';
+        } else {
+          return input;
+        }
+      default:
+        return input;
+    }
   }
 
   cellGenerator(object, index, lastIndex) {
@@ -43,7 +65,7 @@ class Country extends React.Component {
       case 'text':
         return (
           <div key={key} className={className}>
-            <p>{this.props[object.value]}</p>
+            <p>{this.format(this.props[object.value], object.value)}</p>
           </div>
         );
       case 'image':
@@ -58,7 +80,10 @@ class Country extends React.Component {
       case 'delete':
         return (
           <div key={key} className={className}>
-            <button className="delete-button" onClick={() => this.props.delete(this.props.alpha2Code)}>
+            <button
+              className="delete-button"
+              onClick={() => this.props.delete(this.props.alpha2Code)}
+            >
               <i className="fas fa-times delete-icon"></i>
             </button>
           </div>
