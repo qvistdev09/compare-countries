@@ -129,8 +129,8 @@ p.site-description {
   border-radius: 0;
   border: none;
   background-color: transparent;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +152,7 @@ p.site-description {
 
 .delete-icon {
   color: var(--darker);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .grid-cell button:hover {
@@ -163,10 +163,6 @@ img {
   max-width: 150px;
   border-radius: 0.5rem;
   border: 2px solid var(--border-color);
-}
-
-.grid-cell i {
-  margin: 0.5rem;
 }
 
 .left-end {
@@ -222,4 +218,19 @@ img {
 
 .shaded-cell {
   background-color: var(--input-bg-unfocusd);
+}
+
+.sort-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--darker);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.sort-icon:hover {
+  color: white;
+  background-color: var(--darker);
+  
 }
