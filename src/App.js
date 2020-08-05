@@ -246,11 +246,13 @@ class App extends React.Component {
           <div id="grid-wrapper" className="p">
             <div id="countries-container">
               <TableHeader action={this.sortCountries} />
-              {this.state.selectedCountries.map((country) => (
+              {this.state.selectedCountries.map((country, index, array) => (
                 <Country
                   {...country}
                   key={country.name}
                   delete={this.deleteCountry}
+                  index={index}
+                  lastIndex={array.length - 1}
                 />
               ))}
             </div>
