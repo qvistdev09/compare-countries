@@ -16,6 +16,7 @@ header {
   border-bottom: 0.2rem solid var(--border-color);
   position: fixed;
   width: 100vw;
+  z-index: 1;
 }
 
 i.h1-icon {
@@ -249,4 +250,18 @@ img {
   font-size: 0.7rem;
   display: inline-block;
   transform: translateY(-50%);
+  z-index: -1;
+}
+
+#content-container {
+  min-height: 100vh;
+}
+
+.footer-text {
+  font-size: 0.8rem;
+}
+
+.footer-icon {
+  color: var(--darker);
+  font-size: 0.3rem;
 }

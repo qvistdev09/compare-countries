@@ -9,6 +9,7 @@ import Country from './components/Country';
 import InputField from './components/InputField';
 import SuggestedCountries from './components/SuggestedCountries';
 import TableHeader from './components/TableHeader';
+import Footer from './components/Footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -245,9 +246,10 @@ class App extends React.Component {
         </Header>
         <div
           id="content-container"
+          className="flex-column"
           style={{ paddingTop: this.state.headerHeight + 'rem' }}
         >
-          <div id="grid-wrapper" className="p">
+          <div id="grid-wrapper" className="p-left p-top p-right flex-column align-stretch grow">
             <div id="countries-container">
               <TableHeader
                 action={this.sortCountries}
@@ -263,6 +265,8 @@ class App extends React.Component {
                 />
               ))}
             </div>
+            <div className="grow"></div>
+            <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top"/>
           </div>
         </div>
       </div>
