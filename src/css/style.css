@@ -41,7 +41,7 @@ p.site-description {
 
 #countries-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
 }
 
 #input-area {
@@ -117,9 +117,10 @@ p.site-description {
 }
 
 .grid-cell {
+  padding: var(--small);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .grid-cell button {
@@ -147,4 +148,37 @@ button {
 
 i:hover {
   color: red;
+}
+
+.left-end {
+  border-left: 3px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.middle-cell {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.right-end {
+  border-right: 3px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-end-left {
+  border-left: 3px solid var(--border-color);
+  border-top: 3px solid var(--border-color);
+  border-top-left-radius: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-middle {
+  border-top: 3px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-end-right {
+  border-right: 3px solid var(--border-color);
+  border-top: 3px solid var(--border-color);
+  border-top-right-radius: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }

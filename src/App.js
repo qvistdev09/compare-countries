@@ -243,15 +243,17 @@ class App extends React.Component {
           id="content-container"
           style={{ paddingTop: this.state.headerHeight + 'rem' }}
         >
-          <div id="countries-container">
-            <TableHeader action={this.sortCountries} />
-            {this.state.selectedCountries.map((country) => (
-              <Country
-                {...country}
-                key={country.name}
-                delete={this.deleteCountry}
-              />
-            ))}
+          <div id="grid-wrapper" className="p">
+            <div id="countries-container">
+              <TableHeader action={this.sortCountries} />
+              {this.state.selectedCountries.map((country) => (
+                <Country
+                  {...country}
+                  key={country.name}
+                  delete={this.deleteCountry}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
