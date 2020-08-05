@@ -212,11 +212,11 @@ class App extends React.Component {
     return (
       <div id="site-container">
         <Header
-          classes="p flex-row align-start"
+          classes="p flex-row justify-between align-center"
           title="COMPARE COUNTRIES"
-          description="by qvistdev09, using REST countries API"
+          description="using REST countries API"
         >
-          <div id="input-area">
+          <div id="input-area" className="m-right">
             <InputField
               onChange={this.getSuggestions}
               onBlur={() => {
