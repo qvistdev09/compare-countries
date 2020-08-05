@@ -4,6 +4,8 @@
 
 :root {
   --border-color: rgb(218, 218, 218);
+  --darker: rgb(175, 175, 175);
+  --pressed: rgb(141, 141, 141);
   --text-dark: rgb(99, 99, 99);
   --focus: rgba(177, 224, 255, 0.432);
   --input-bg-unfocusd: rgb(245, 245, 245);
@@ -123,11 +125,34 @@ p.site-description {
   justify-content: flex-start;
 }
 
-.grid-cell button {
-  flex: 1;
-  align-self: stretch;
+.delete-button {
   border-radius: 0;
   border: none;
+  background-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.delete-button:hover {
+  background-color: var(--darker);
+}
+
+.delete-button:active {
+  background-color: var(--pressed) !important;
+  outline: none;
+}
+
+.delete-button:hover .delete-icon {
+  color: white;
+}
+
+.delete-icon {
+  color: var(--darker);
+  font-size: 1.5rem;
 }
 
 .grid-cell button:hover {
@@ -140,16 +165,8 @@ img {
   border: 2px solid var(--border-color);
 }
 
-button {
-  display: block;
-}
-
 .grid-cell i {
   margin: 0.5rem;
-}
-
-i:hover {
-  color: red;
 }
 
 .left-end {
@@ -174,12 +191,14 @@ i:hover {
 .right-end {
   border-right: 3px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  justify-content: center;
 }
 
 .last-row-right-end {
   border-right: 3px solid var(--border-color);
   border-bottom: 3px solid var(--border-color);
   border-bottom-right-radius: 0.5rem;
+  justify-content: center;
 }
 
 .header-end-left {

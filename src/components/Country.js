@@ -58,8 +58,8 @@ class Country extends React.Component {
       case 'delete':
         return (
           <div key={key} className={className}>
-            <button onClick={() => this.props.delete(this.props.alpha2Code)}>
-              Delete
+            <button className="delete-button" onClick={() => this.props.delete(this.props.alpha2Code)}>
+              <i className="fas fa-times delete-icon"></i>
             </button>
           </div>
         );

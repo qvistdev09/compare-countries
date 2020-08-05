@@ -49,9 +49,7 @@ function TableHeader(props) {
         className="fas fa-caret-down"
       ></i>
     </div>,
-    <div key="header-cell-delete" className="grid-cell header-end-right">
-      <p>Remove country</p>
-    </div>,
+    <div key="header-cell-delete" className="grid-cell header-end-right"></div>,
   ];
 }
 
