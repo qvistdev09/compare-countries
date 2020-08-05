@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/utilities.css';
 import './css/style.css';
-import { shortened, fullName } from './CountryCodes';
+import { countries } from './Data';
 import startingCountries from './StartingData';
 
 import Header from './components/Header';
@@ -24,6 +24,7 @@ class App extends React.Component {
 
     this.fetchBlock = false;
     this.headerObj = null;
+    this.cKeys = Object.keys(countries);
 
     this.fetchCountry = this.fetchCountry.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
@@ -72,7 +73,7 @@ class App extends React.Component {
     // check if country should be cached
     if (!this.state.cached.some((country) => country.alpha2Code === code)) {
       this.setState(
-        (state, props) => ({
+        (state) => ({
           cached: [
             ...state.cached,
             ...state.selectedCountries.filter(
@@ -104,7 +105,7 @@ class App extends React.Component {
       return;
     }
 
-    const code = shortened[fullName.indexOf(string)];
+    const code = countries[string];
     // check if country is already selected
     if (
       this.state.selectedCountries.some(
@@ -170,21 +171,21 @@ class App extends React.Component {
     }
     const cleanedInput = event.target.value.replace(/[^A-Za-z|\s]/g, '');
     let regex = RegExp('^' + cleanedInput, 'i');
-    const matchedCountries = fullName.filter((item) => regex.test(item));
+    const matchedCountries = this.cKeys.filter((item) => regex.test(item));
+
     if (matchedCountries.length >= 4) {
       this.setState((state) => ({
         input: cleanedInput,
         suggestions: matchedCountries.filter(
           (item) =>
             !state.selectedCountries.some(
-              (element) =>
-                element.alpha2Code === shortened[fullName.indexOf(item)]
+              (element) => element.alpha2Code === countries[item]
             )
         ),
       }));
     } else {
       regex = RegExp(cleanedInput, 'i');
-      const tier2searches = fullName
+      const tier2searches = this.cKeys
         .filter((item) => regex.test(item))
         .filter((item) => !matchedCountries.includes(item));
       this.setState((state) => ({
@@ -194,8 +195,7 @@ class App extends React.Component {
           .filter(
             (item) =>
               !state.selectedCountries.some(
-                (element) =>
-                  element.alpha2Code === shortened[fullName.indexOf(item)]
+                (element) => element.alpha2Code === countries[item]
               )
           ),
       }));
