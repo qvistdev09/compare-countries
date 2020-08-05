@@ -3,7 +3,7 @@ import React from 'react';
 function TableHeader(props) {
   return [
     <div key="header-cell-name" className="grid-cell header-end-left">
-      <p className="m-right-small">Name</p>
+      <p className="m-right-small table-header">Name</p>
       <i
         onClick={() => props.action('name', false)}
         className={
@@ -18,10 +18,10 @@ function TableHeader(props) {
       ></i>
     </div>,
     <div key="header-cell-flag" className="grid-cell header-middle">
-      <p>Flag</p>
+      <p className="table-header">Flag</p>
     </div>,
     <div key="header-cell-capital" className="grid-cell header-middle">
-      <p className="m-right-small">Capital</p>
+      <p className="m-right-small table-header">Capital</p>
       <i
         onClick={() => props.action('capital', false)}
         className={"fas fa-chevron-up sort-icon" +
@@ -34,7 +34,7 @@ function TableHeader(props) {
       ></i>
     </div>,
     <div key="header-cell-population" className="grid-cell header-middle">
-      <p className="m-right-small">Population</p>
+      <p className="m-right-small table-header">Population</p>
       <i
         onClick={() => props.action('population', false)}
         className={"fas fa-chevron-up sort-icon" +
@@ -47,7 +47,7 @@ function TableHeader(props) {
       ></i>
     </div>,
     <div key="header-cell-area" className="grid-cell header-middle">
-      <p className="m-right-small">Area</p>
+      <p className="m-right-small table-header">Area</p>
       <i
         onClick={() => props.action('area', false)}
         className={"fas fa-chevron-up sort-icon" +
