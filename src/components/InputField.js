@@ -9,6 +9,8 @@ function InputField(props) {
       className={props.classes}
       placeholder="Type to add country"
       onChange={props.onChange}
+      onBlur={props.onBlur}
+      onClick={props.onChange}
       value={props.input}
     />
   );

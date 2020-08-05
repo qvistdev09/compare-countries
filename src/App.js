@@ -23,6 +23,7 @@ class App extends React.Component {
     };
 
     this.fetchBlock = false;
+    this.blurBlock = false;
     this.headerObj = null;
     this.cKeys = Object.keys(countries);
 
@@ -213,6 +214,11 @@ class App extends React.Component {
           <div id="input-area">
             <InputField
               onChange={this.getSuggestions}
+              onBlur={() => {
+                if (!this.blurBlock) {
+                  this.setState({ suggestions: [] });
+                }
+              }}
               input={this.state.input}
               classes={
                 this.state.suggestions.length > 0 ? 'showing-suggestions' : ''
@@ -223,6 +229,12 @@ class App extends React.Component {
               suggestions={this.state.suggestions}
               input={this.state.input}
               add={this.fetchCountry}
+              onMouseEnter={() => {
+                this.blurBlock = true;
+              }}
+              onMouseLeave={() => {
+                this.blurBlock = false;
+              }}
             />
           </div>
         </Header>

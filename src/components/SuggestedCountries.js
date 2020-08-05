@@ -28,6 +28,8 @@ class SuggestedCountries extends React.Component {
     return (
       <div
         id="suggestions-container"
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
         className={
           this.props.suggestions.length === 0 ? 'hidden' : this.props.classes
         }
