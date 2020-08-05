@@ -20,6 +20,7 @@ class App extends React.Component {
       cached: startingCountries,
       selectedCountries: startingCountries,
       headerHeight: 10,
+      sortStatus: 'unsorted',
     };
 
     this.fetchBlock = false;
@@ -67,6 +68,7 @@ class App extends React.Component {
     }
     this.setState({
       selectedCountries: sortedCopy,
+      sortStatus: property + '-' + ascending,
     });
   }
 
@@ -129,6 +131,7 @@ class App extends React.Component {
           ],
           suggestions: [],
           input: '',
+          sortStatus: 'unsorted',
         }),
         () => {
           console.log('Country collected from cache, no API call needed');
@@ -151,6 +154,7 @@ class App extends React.Component {
               ],
               suggestions: [],
               input: '',
+              sortStatus: 'unsorted',
             }),
             () => {
               console.log('An API call was made');
@@ -245,7 +249,10 @@ class App extends React.Component {
         >
           <div id="grid-wrapper" className="p">
             <div id="countries-container">
-              <TableHeader action={this.sortCountries} />
+              <TableHeader
+                action={this.sortCountries}
+                sortStatus={this.state.sortStatus}
+              />
               {this.state.selectedCountries.map((country, index, array) => (
                 <Country
                   {...country}

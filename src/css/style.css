@@ -232,5 +232,8 @@ img {
 .sort-icon:hover {
   color: white;
   background-color: var(--darker);
-  
+}
+
+.active-sort {
+  color: var(--text-dark) !important;
 }
