@@ -42,8 +42,6 @@ p.site-description {
 #countries-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 #input-area {
@@ -119,8 +117,6 @@ p.site-description {
 }
 
 .grid-cell {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;

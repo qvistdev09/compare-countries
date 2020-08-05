@@ -208,7 +208,7 @@ class App extends React.Component {
     return (
       <div id="site-container">
         <Header
-          classes="p"
+          classes="p flex-row align-start"
           title="COMPARE COUNTRIES"
           description="by qvistdev09, using REST countries API"
         >
