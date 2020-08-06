@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: 'No message loaded',
       input: '',
       suggestions: [],
       cached: startingCountries,
