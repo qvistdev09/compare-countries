@@ -42,6 +42,7 @@ class GridMaker extends React.Component {
 
   setColumns() {
     return this.props.gridSetup
+      .filter((item) => item.enabled)
       .map((object) => object.width)
       .reduce((previous, current) => previous + ' ' + current);
   }
@@ -178,22 +179,26 @@ class GridMaker extends React.Component {
     return (
       <div id="data-grid" style={{ gridTemplateColumns: this.setColumns() }}>
         {/* Create header */}
-        {this.props.gridSetup.map((object, index, array) =>
-          this.headerRowGenerator(object, index, array.length - 1)
-        )}
+        {this.props.gridSetup
+          .filter((item) => item.enabled === true)
+          .map((object, index, array) =>
+            this.headerRowGenerator(object, index, array.length - 1)
+          )}
 
         {/* Create data entries */}
         {this.props.selectedCountries.map((countryObject, row, rowArray) =>
-          this.props.gridSetup.map((columnObject, column, columnArray) =>
-            this.dataRowGenerator(
-              columnObject,
-              countryObject,
-              column,
-              columnArray.length - 1,
-              row,
-              rowArray.length - 1
+          this.props.gridSetup
+            .filter((item) => item.enabled === true)
+            .map((columnObject, column, columnArray) =>
+              this.dataRowGenerator(
+                columnObject,
+                countryObject,
+                column,
+                columnArray.length - 1,
+                row,
+                rowArray.length - 1
+              )
             )
-          )
         )}
       </div>
     );

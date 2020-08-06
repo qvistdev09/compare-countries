@@ -264,3 +264,13 @@ img {
   color: var(--darker);
   font-size: 0.3rem;
 }
+
+.checkbox-icon {
+  font-size: 1.4rem;
+  color: var(--darker);
+}
+
+.checkbox-label {
+  color: var(--text-dark);
+  font-size: 0.8rem;
+}

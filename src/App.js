@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import GridMaker from './components/GridMaker';
 import SiteTitle from './components/SiteTitle';
 import SearchField from './components/SearchField';
+import CheckboxMaker from './components/CheckboxMaker';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,19 +21,62 @@ class App extends React.Component {
       headerHeight: 10,
       sortStatus: 'unsorted',
       gridSetup: [
-        { type: 'text', value: 'name', header: 'Name', width: '1fr' },
-        { type: 'image', value: 'flag', header: 'Flag', width: '1fr' },
-        { type: 'text', value: 'capital', header: 'Capital', width: '1fr' },
         {
           type: 'text',
+          enabled: true,
+          value: 'name',
+          header: 'Name',
+          width: '1fr',
+        },
+        {
+          type: 'image',
+          enabled: true,
+          value: 'flag',
+          header: 'Flag',
+          width: '1fr',
+        },
+        {
+          type: 'text',
+          enabled: true,
+          value: 'capital',
+          header: 'Capital',
+          width: '1fr',
+        },
+        {
+          type: 'text',
+          enabled: true,
           value: 'population',
           header: 'Population',
           width: '1fr',
         },
-        { type: 'text', value: 'area', header: 'Area', width: '1fr' },
-        { type: 'text', value: 'demonym', header: 'Demonym', width: '1fr' },
-        { type: 'number', value: 'gini', header: 'Gini', width: '1fr' },
-        { type: 'delete', value: 'delete', header: 'Delete', width: '0.3fr' },
+        {
+          type: 'text',
+          enabled: true,
+          value: 'area',
+          header: 'Area',
+          width: '1fr',
+        },
+        {
+          type: 'text',
+          enabled: true,
+          value: 'demonym',
+          header: 'Demonym',
+          width: '1fr',
+        },
+        {
+          type: 'number',
+          enabled: true,
+          value: 'gini',
+          header: 'Gini',
+          width: '1fr',
+        },
+        {
+          type: 'delete',
+          enabled: true,
+          value: 'delete',
+          header: 'Delete',
+          width: '4rem',
+        },
       ],
     };
 
@@ -46,6 +90,7 @@ class App extends React.Component {
     this.deleteCountry = this.deleteCountry.bind(this);
     this.sortCountries = this.sortCountries.bind(this);
     this.adaptToHeader = this.adaptToHeader.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +104,21 @@ class App extends React.Component {
       },
       () => window.addEventListener('resize', this.adaptToHeader)
     );
+  }
+
+  toggle(value) {
+    const copiedGridSetup = this.state.gridSetup.map((item) => {
+      if (item.value === value) {
+        let copy = { ...item };
+        copy.enabled = !copy.enabled;
+        return copy;
+      } else {
+        return item;
+      }
+    });
+    this.setState({
+      gridSetup: copiedGridSetup,
+    });
   }
 
   adaptToHeader() {
@@ -224,28 +284,32 @@ class App extends React.Component {
   render() {
     return (
       <div id="site-container">
-        <header
-          id="site-header"
-          className="p flex-row justify-between align-center"
-        >
-          <SiteTitle classes="m-left flex-row align-center" />
-          <SearchField
-            classes="m-right"
-            suggestions={this.state.suggestions}
-            onChange={this.getSuggestions}
-            onBlur={() => {
-              if (!this.blurBlock) {
-                this.setState({ suggestions: [] });
-              }
-            }}
-            input={this.state.input}
-            onMouseEnter={() => {
-              this.blurBlock = true;
-            }}
-            onMouseLeave={() => {
-              this.blurBlock = false;
-            }}
-            add={this.fetchCountry}
+        <header id="site-header" className="p">
+          <div className="flex-row justify-between align-center m-bottom">
+            <SiteTitle classes="m-left flex-row align-center" />
+            <SearchField
+              classes="m-right"
+              suggestions={this.state.suggestions}
+              onChange={this.getSuggestions}
+              onBlur={() => {
+                if (!this.blurBlock) {
+                  this.setState({ suggestions: [] });
+                }
+              }}
+              input={this.state.input}
+              onMouseEnter={() => {
+                this.blurBlock = true;
+              }}
+              onMouseLeave={() => {
+                this.blurBlock = false;
+              }}
+              add={this.fetchCountry}
+            />
+          </div>
+          <CheckboxMaker
+            classes="m-left flex-row align-center"
+            gridSetup={this.state.gridSetup}
+            toggle={this.toggle}
           />
         </header>
         <div
