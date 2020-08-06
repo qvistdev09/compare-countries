@@ -27,7 +27,12 @@ class GridMaker extends React.Component {
           return input;
         }
       case 'area':
-        return [input.toLocaleString() + ' km', <span class="raised">2</span>];
+        return [
+          input.toLocaleString() + ' km',
+          <span key="raised-span" className="raised">
+            2
+          </span>,
+        ];
       default:
         return input;
     }
@@ -61,6 +66,7 @@ class GridMaker extends React.Component {
     const sortButtons = [
       <i
         onClick={() => this.props.sortAction(object.value, false)}
+        key="sort-ascending-false"
         className={
           'fas fa-chevron-up sort-icon' +
           (this.props.sortStatus === object.value + '-false'
@@ -70,6 +76,7 @@ class GridMaker extends React.Component {
       ></i>,
       <i
         onClick={() => this.props.sortAction(object.value, true)}
+        key="sort-ascending-true"
         className={
           'fas fa-chevron-down sort-icon' +
           (this.props.sortStatus === object.value + '-true'
@@ -145,6 +152,17 @@ class GridMaker extends React.Component {
             />
           </div>
         );
+      case 'delete':
+        return (
+          <div key={key} className={className}>
+            <button
+              className="delete-button"
+              onClick={() => this.props.deleteAction(countryObject.alpha2Code)}
+            >
+              <i className="fas fa-times delete-icon"></i>
+            </button>
+          </div>
+        );
       default:
         return (
           <div>
@@ -156,13 +174,24 @@ class GridMaker extends React.Component {
 
   render() {
     return (
-      <div
-        id="data-grid"
-        style={{ gridTemplateColumns: () => this.setColumns }}
-      >
+      <div id="data-grid" style={{ gridTemplateColumns: this.setColumns() }}>
         {/* Create header */}
         {this.props.gridSetup.map((object, index, array) =>
           this.headerRowGenerator(object, index, array.length - 1)
+        )}
+
+        {/* Create data entries */}
+        {this.props.selectedCountries.map((countryObject, row, rowArray) =>
+          this.props.gridSetup.map((columnObject, column, columnArray) =>
+            this.dataRowGenerator(
+              columnObject,
+              countryObject,
+              column,
+              columnArray.length - 1,
+              row,
+              rowArray.length - 1
+            )
+          )
         )}
       </div>
     );

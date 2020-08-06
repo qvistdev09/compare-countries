@@ -5,12 +5,10 @@ import { countries } from './Data';
 import startingCountries from './StartingData';
 
 import Header from './components/Header';
-import Country from './components/Country';
 import InputField from './components/InputField';
 import SuggestedCountries from './components/SuggestedCountries';
-import TableHeader from './components/TableHeader';
 import Footer from './components/Footer';
-import GridMaker from './components/GridMaker'
+import GridMaker from './components/GridMaker';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +21,21 @@ class App extends React.Component {
       selectedCountries: startingCountries,
       headerHeight: 10,
       sortStatus: 'unsorted',
+      gridSetup: [
+        { type: 'text', value: 'name', header: 'Name', width: '1fr' },
+        { type: 'image', value: 'flag', header: 'Flag', width: '1fr' },
+        { type: 'text', value: 'capital', header: 'Capital', width: '1fr' },
+        {
+          type: 'text',
+          value: 'population',
+          header: 'Population',
+          width: '1fr',
+        },
+        { type: 'text', value: 'area', header: 'Area', width: '1fr' },
+        { type: 'text', value: 'demonym', header: 'Demonym', width: '1fr' },
+        { type: 'number', value: 'gini', header: 'Gini', width: '1fr' },
+        { type: 'delete', value: 'delete', header: 'Delete', width: '0.3fr' },
+      ],
     };
 
     this.fetchBlock = false;
@@ -250,25 +263,19 @@ class App extends React.Component {
           className="flex-column"
           style={{ paddingTop: this.state.headerHeight + 'rem' }}
         >
-          <div id="grid-wrapper" className="p-left p-top p-right flex-column align-stretch grow">
-            <div id="countries-container">
-              <TableHeader
-                action={this.sortCountries}
-                sortStatus={this.state.sortStatus}
-              />
-              {this.state.selectedCountries.map((country, index, array) => (
-                <Country
-                  {...country}
-                  key={country.name}
-                  delete={this.deleteCountry}
-                  thisRow={index}
-                  lastRow={array.length - 1}
-                />
-              ))}
-            </div>
-            <GridMaker />
+          <div
+            id="grid-wrapper"
+            className="p-left p-top p-right flex-column align-stretch grow"
+          >
+            <GridMaker
+              sortAction={this.sortCountries}
+              deleteAction={this.deleteCountry}
+              sortStatus={this.state.sortStatus}
+              gridSetup={this.state.gridSetup}
+              selectedCountries={this.state.selectedCountries}
+            />
             <div className="grow"></div>
-            <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top"/>
+            <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top" />
           </div>
         </div>
       </div>
