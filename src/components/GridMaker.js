@@ -105,7 +105,18 @@ class GridMaker extends React.Component {
           </div>
         );
       case 'delete':
-        return <div key={key} className={className}></div>;
+        return (
+          <div
+            key={key}
+            className={
+              this.props.gridSetup.filter((item) =>
+                item.type !== 'delete' && item.enabled === true ? true : false
+              ).length === 0
+                ? 'hide '
+                : className
+            }
+          ></div>
+        );
       default:
         return (
           <div>
@@ -157,7 +168,16 @@ class GridMaker extends React.Component {
         );
       case 'delete':
         return (
-          <div key={key} className={className}>
+          <div
+            key={key}
+            className={
+              this.props.gridSetup.filter((item) =>
+                item.type !== 'delete' && item.enabled === true ? true : false
+              ).length === 0
+                ? 'hide '
+                : className
+            }
+          >
             <button
               className="delete-button"
               onClick={() => this.props.deleteAction(countryObject.alpha2Code)}
