@@ -10,6 +10,7 @@ import InputField from './components/InputField';
 import SuggestedCountries from './components/SuggestedCountries';
 import TableHeader from './components/TableHeader';
 import Footer from './components/Footer';
+import GridMaker from './components/GridMaker'
 
 class App extends React.Component {
   constructor(props) {
@@ -265,6 +266,7 @@ class App extends React.Component {
                 />
               ))}
             </div>
+            <GridMaker />
             <div className="grow"></div>
             <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top"/>
           </div>
