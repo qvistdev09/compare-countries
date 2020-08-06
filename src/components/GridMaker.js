@@ -3,18 +3,54 @@ import React from 'react';
 class GridMaker extends React.Component {
   constructor(props) {
     super(props);
+    this.format = this.format.bind(this);
+    this.setColumns = this.setColumns.bind(this);
+    this.setPosition = this.setPosition.bind(this);
     this.headerRowGenerator = this.headerRowGenerator.bind(this);
+    this.dataRowGenerator = this.dataRowGenerator.bind(this);
+  }
+
+  format(input, type) {
+    if (!input) {
+      return 'n/a';
+    }
+
+    switch (type) {
+      case 'population':
+        if (input > 1000000) {
+          let toMillion = input / 1000000;
+          return Math.round(toMillion * 10) / 10 + ' mil';
+        } else if (input > 10000) {
+          let toThousand = input / 1000;
+          return Math.round(toThousand * 10) / 10 + ' k';
+        } else {
+          return input;
+        }
+      case 'area':
+        return [input.toLocaleString() + ' km', <span class="raised">2</span>];
+      default:
+        return input;
+    }
+  }
+
+  setColumns() {
+    return this.props.gridSetup
+      .map((object) => object.width)
+      .reduce((previous, current) => previous + ' ' + current);
+  }
+
+  setPosition(index, lastIndex) {
+    if (index === 0) {
+      return 'left-end';
+    } else if (index === lastIndex) {
+      return 'right-end';
+    } else {
+      return 'middle';
+    }
   }
 
   headerRowGenerator(object, index, lastIndex) {
-    let position;
-    if (index === 0) {
-      position = 'left-end';
-    } else if (index === lastIndex) {
-      position = 'right-end';
-    } else {
-      position = 'middle';
-    }
+    const position = this.setPosition(index, lastIndex);
     const className = 'grid-cell header-' + position;
     const key = 'header-cell-' + object.value;
 
@@ -69,8 +105,67 @@ class GridMaker extends React.Component {
     }
   }
 
+  dataRowGenerator(
+    cellObject,
+    countryObject,
+    thisColumn,
+    lastColumn,
+    thisRow,
+    lastRow
+  ) {
+    let position = this.setPosition(thisColumn, lastColumn);
+    if (thisRow === lastRow) {
+      position = 'last-row-' + position;
+    }
+    let shadeStatus;
+    if (thisRow % 2 === 0) {
+      shadeStatus = 'shaded-cell';
+    } else {
+      shadeStatus = 'non-shaded-cell';
+    }
+    const key = cellObject.value + '-cell-' + countryObject.name;
+    const className = shadeStatus + ' ' + position + ' grid-cell';
+
+    switch (cellObject.type) {
+      case 'text':
+      case 'number':
+        return (
+          <div key={key} className={className}>
+            <p>
+              {this.format(countryObject[cellObject.value], cellObject.value)}
+            </p>
+          </div>
+        );
+      case 'image':
+        return (
+          <div key={key} className={className}>
+            <img
+              src={countryObject[cellObject.value]}
+              alt={'The flag of ' + countryObject.name}
+            />
+          </div>
+        );
+      default:
+        return (
+          <div>
+            <p>Incorrect cell</p>
+          </div>
+        );
+    }
+  }
+
   render() {
-    return <div id="data-grid"></div>;
+    return (
+      <div
+        id="data-grid"
+        style={{ gridTemplateColumns: () => this.setColumns }}
+      >
+        {/* Create header */}
+        {this.props.gridSetup.map((object, index, array) =>
+          this.headerRowGenerator(object, index, array.length - 1)
+        )}
+      </div>
+    );
   }
 }
 
