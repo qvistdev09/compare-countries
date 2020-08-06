@@ -33,6 +33,8 @@ class GridMaker extends React.Component {
             2
           </span>,
         ];
+      case 'gini':
+        return input + '%';
       default:
         return input;
     }
