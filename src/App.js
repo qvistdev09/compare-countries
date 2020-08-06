@@ -4,11 +4,10 @@ import './css/style.css';
 import { countries } from './Data';
 import startingCountries from './StartingData';
 
-import Header from './components/Header';
-import InputField from './components/InputField';
-import SuggestedCountries from './components/SuggestedCountries';
 import Footer from './components/Footer';
 import GridMaker from './components/GridMaker';
+import SiteTitle from './components/SiteTitle';
+import SearchField from './components/SearchField';
 
 class App extends React.Component {
   constructor(props) {
@@ -226,38 +225,30 @@ class App extends React.Component {
   render() {
     return (
       <div id="site-container">
-        <Header
-          classes="p flex-row justify-between align-center"
-          title="COMPARE COUNTRIES"
-          description="using REST countries API"
+        <header
+          id="site-header"
+          className="p flex-row justify-between align-center"
         >
-          <div id="input-area" className="m-right">
-            <InputField
-              onChange={this.getSuggestions}
-              onBlur={() => {
-                if (!this.blurBlock) {
-                  this.setState({ suggestions: [] });
-                }
-              }}
-              input={this.state.input}
-              classes={
-                this.state.suggestions.length > 0 ? 'showing-suggestions' : ''
+          <SiteTitle classes="m-left flex-row align-center" />
+          <SearchField
+            classes="m-right"
+            suggestions={this.state.suggestions}
+            onChange={this.getSuggestions}
+            onBlur={() => {
+              if (!this.blurBlock) {
+                this.setState({ suggestions: [] });
               }
-            />
-            <SuggestedCountries
-              classes="flex-column"
-              suggestions={this.state.suggestions}
-              input={this.state.input}
-              add={this.fetchCountry}
-              onMouseEnter={() => {
-                this.blurBlock = true;
-              }}
-              onMouseLeave={() => {
-                this.blurBlock = false;
-              }}
-            />
-          </div>
-        </Header>
+            }}
+            input={this.state.input}
+            onMouseEnter={() => {
+              this.blurBlock = true;
+            }}
+            onMouseLeave={() => {
+              this.blurBlock = false;
+            }}
+            add={this.fetchCountry}
+          />
+        </header>
         <div
           id="content-container"
           className="flex-column"
