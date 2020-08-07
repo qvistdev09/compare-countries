@@ -69,7 +69,8 @@ class App extends React.Component {
           value: 'gini',
           header: 'Gini',
           width: '1fr',
-          tooltip: 'Explanation of gini here',
+          tooltip:
+            'A measure of inequality of income or wealth, where 100% represents complete inequality and 0% complete equality.',
         },
         {
           type: 'delete',

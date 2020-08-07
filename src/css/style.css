@@ -286,12 +286,12 @@ img {
   position: absolute;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  width: max-content;
+  width: 15rem;
   left: 50%;
   top: 150%;
   transform: translateY(-50%);
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.548);
+  background-color: rgba(0, 0, 0, 0.596);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
@@ -304,6 +304,7 @@ img {
 .tooltip-text {
   font-size: 0.8rem;
   color: white;
+  text-align: center;
 }
 
 .tooltip-icon {
@@ -314,9 +315,9 @@ img {
 .tooltip-pointer {
   clip-path: polygon(50% 50%, 50% 50%, 100% 110%, 0% 110%);
   position: absolute;
-  top: -50%;
+  top: -1rem;
   left: 50%;
-  background-color: rgba(0, 0, 0, 0.548);
+  background-color: rgba(0, 0, 0, 0.596);
   width: 1rem;
   height: 1rem;
   transform: translateX(-50%);
