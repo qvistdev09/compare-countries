@@ -5,6 +5,24 @@ class GraphMaker extends React.Component {
     super(props);
     this.makeGraphHeader = this.makeGraphHeader.bind(this);
     this.makeCountryRow = this.makeCountryRow.bind(this);
+    this.makeBar = this.makeBar.bind(this);
+  }
+
+  makeBar(object, type, array) {
+    const highest = array
+      .map((object) => parseFloat(object[type]))
+      .reduce((prev, curr) => (curr > prev ? curr : prev));
+
+    console.log(highest);
+    console.log(object[type]);
+    const width = Math.round((parseFloat(object[type]) / highest) * 100);
+    console.log(width);
+
+    return (
+      <div className="example-bar" style={{ width: width + '%' }}>
+        <p className="bar-chart-label">{object[type]}</p>
+      </div>
+    );
   }
 
   makeGraphHeader() {
@@ -54,8 +72,7 @@ class GraphMaker extends React.Component {
         key={'chart-cell-' + object.name}
         className={rowStatus + 'middle bar-chart-cell' + shadeStatus}
       >
-        <div className="example-bar"><p className="bar-chart-label">Population</p></div>
-        <div className="example-bar"></div>
+        {this.makeBar(object, 'population', array)}
       </div>,
       <div
         key={'delete-cell-' + object.name}

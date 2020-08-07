@@ -142,6 +142,7 @@ p.site-description {
   min-height: 1.7rem;
   flex: 1;
   border: 2px solid rgba(0, 0, 0, 0.123);
+  border-left: none;
   background-color: rgb(199, 255, 236);
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
@@ -156,7 +157,7 @@ p.site-description {
 }
 
 .bar-chart-label {
-  margin-left: var(--small);
+  margin-right: var(--small);
   color: var(--text-dark);
   font-size: 0.8rem;
 }
