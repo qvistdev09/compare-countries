@@ -352,3 +352,8 @@ img {
 .switch-icon-active {
   color: var(--darker);
 }
+
+#graph-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 4rem;
+}

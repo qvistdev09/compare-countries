@@ -10,6 +10,7 @@ import SiteTitle from './components/SiteTitle';
 import SearchField from './components/SearchField';
 import CheckboxMaker from './components/CheckboxMaker';
 import ViewSwitch from './components/ViewSwitch';
+import GraphMaker from './components/GraphMaker';
 
 class App extends React.Component {
   constructor(props) {
@@ -99,7 +100,7 @@ class App extends React.Component {
   }
 
   toggleViewMode() {
-    console.log("hey");
+    console.log('hey');
     this.setState((state) => ({
       listView: !state.listView,
     }));
@@ -340,13 +341,17 @@ class App extends React.Component {
             id="grid-wrapper"
             className="p-left p-top p-right flex-column align-stretch grow"
           >
-            <GridMaker
-              sortAction={this.sortCountries}
-              deleteAction={this.deleteCountry}
-              sortStatus={this.state.sortStatus}
-              gridSetup={this.state.gridSetup}
-              selectedCountries={this.state.selectedCountries}
-            />
+            {this.state.listView ? (
+              <GridMaker
+                sortAction={this.sortCountries}
+                deleteAction={this.deleteCountry}
+                sortStatus={this.state.sortStatus}
+                gridSetup={this.state.gridSetup}
+                selectedCountries={this.state.selectedCountries}
+              />
+            ) : (
+              <GraphMaker />
+            )}
             <div className="grow"></div>
             <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top" />
           </div>
