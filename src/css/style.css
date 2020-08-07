@@ -287,7 +287,7 @@ img {
 .tooltip-hover {
   position: absolute;
   padding: 0.5rem;
-  border: 0.15rem solid var(--darker);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   width: max-content;
   max-width: 12rem;
@@ -295,7 +295,7 @@ img {
   top: 150%;
   transform: translateY(-50%);
   transform: translateX(-50%);
-  background-color: white;
+  background-color: var(--input-bg-unfocusd);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
@@ -322,7 +322,7 @@ img {
   position: absolute;
   top: -1rem;
   left: 50%;
-  background-color: var(--darker);
+  background-color: var(--border-color);
   width: 1rem;
   height: 1rem;
   transform: translateX(-50%);
