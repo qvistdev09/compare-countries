@@ -69,6 +69,7 @@ class App extends React.Component {
           value: 'gini',
           header: 'Gini',
           width: '1fr',
+          tooltip: 'Explanation of gini here',
         },
         {
           type: 'delete',

@@ -275,3 +275,49 @@ img {
   color: var(--text-dark);
   font-size: 0.8rem;
 }
+
+.tooltip {
+  display: inline-block;
+  position: relative;
+  margin-left: 0.3rem;
+}
+
+.tooltip-hover {
+  position: absolute;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: max-content;
+  left: 50%;
+  top: 150%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.548);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.tooltip:hover .tooltip-hover {
+  opacity: 1;
+}
+
+.tooltip-text {
+  font-size: 0.8rem;
+  color: white;
+}
+
+.tooltip-icon {
+  color: var(--border-color);
+  font-size: 1rem;
+}
+
+.tooltip-pointer {
+  clip-path: polygon(50% 50%, 50% 50%, 100% 110%, 0% 110%);
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.548);
+  width: 1rem;
+  height: 1rem;
+  transform: translateX(-50%);
+}

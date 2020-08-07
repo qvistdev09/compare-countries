@@ -1,4 +1,5 @@
 import React from 'react';
+import Tooltip from './Tooltip';
 
 class CheckboxMaker extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class CheckboxMaker extends React.Component {
                 onClick={() => this.props.toggle(item.value)}
               ></i>
               <p className="checkbox-label m-left-small">{item.header}</p>
+              {item.tooltip && <Tooltip tooltipText={item.tooltip} />}
             </div>
           ))}
       </div>
