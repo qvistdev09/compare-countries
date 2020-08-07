@@ -160,6 +160,7 @@ p.site-description {
 }
 
 img {
+  width: 100%;
   max-width: 100px;
   border-radius: 0.5rem;
   border: 2px solid var(--border-color);
