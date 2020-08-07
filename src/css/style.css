@@ -334,6 +334,7 @@ img {
   border-radius: 0.5rem;
   border: 2px solid var(--border-color);
   background-color: var(--input-bg-unfocusd);
+  cursor: pointer;
 }
 
 .switch-icon {
