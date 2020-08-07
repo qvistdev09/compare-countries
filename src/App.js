@@ -9,6 +9,7 @@ import GridMaker from './components/GridMaker';
 import SiteTitle from './components/SiteTitle';
 import SearchField from './components/SearchField';
 import CheckboxMaker from './components/CheckboxMaker';
+import ViewSwitch from './components/ViewSwitch';
 
 class App extends React.Component {
   constructor(props) {
@@ -289,24 +290,27 @@ class App extends React.Component {
         <header id="site-header" className="p">
           <div className="flex-row justify-between align-center m-bottom">
             <SiteTitle classes="m-left flex-row align-center" />
-            <SearchField
-              classes="m-right"
-              suggestions={this.state.suggestions}
-              onChange={this.getSuggestions}
-              onBlur={() => {
-                if (!this.blurBlock) {
-                  this.setState({ suggestions: [] });
-                }
-              }}
-              input={this.state.input}
-              onMouseEnter={() => {
-                this.blurBlock = true;
-              }}
-              onMouseLeave={() => {
-                this.blurBlock = false;
-              }}
-              add={this.fetchCountry}
-            />
+            <div className="flex-row align-center">
+              <ViewSwitch classes="m-right" />
+              <SearchField
+                classes="m-right"
+                suggestions={this.state.suggestions}
+                onChange={this.getSuggestions}
+                onBlur={() => {
+                  if (!this.blurBlock) {
+                    this.setState({ suggestions: [] });
+                  }
+                }}
+                input={this.state.input}
+                onMouseEnter={() => {
+                  this.blurBlock = true;
+                }}
+                onMouseLeave={() => {
+                  this.blurBlock = false;
+                }}
+                add={this.fetchCountry}
+              />
+            </div>
           </div>
           <CheckboxMaker
             classes="m-left flex-row align-center"

@@ -327,3 +327,26 @@ img {
   height: 1rem;
   transform: translateX(-50%);
 }
+
+.view-switch {
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--border-color);
+  background-color: var(--input-bg-unfocusd);
+}
+
+.switch-icon {
+  color: var(--border-color);
+  font-size: 1.3rem;
+}
+
+.switch-icon-wrapper {
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-icon-active {
+  color: var(--darker);
+}
