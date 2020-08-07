@@ -308,6 +308,7 @@ img {
 
 .tooltip-text {
   font-size: 0.8rem;
+  line-height: 1.4rem;
   color: var(--text-dark);
   text-align: center;
 }
