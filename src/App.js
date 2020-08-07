@@ -21,6 +21,7 @@ class App extends React.Component {
       selectedCountries: startingCountries,
       headerHeight: 10,
       sortStatus: 'unsorted',
+      listView: true,
       gridSetup: [
         {
           type: 'text',
@@ -94,6 +95,14 @@ class App extends React.Component {
     this.sortCountries = this.sortCountries.bind(this);
     this.adaptToHeader = this.adaptToHeader.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.toggleViewMode = this.toggleViewMode.bind(this);
+  }
+
+  toggleViewMode() {
+    console.log("hey");
+    this.setState((state) => ({
+      listView: !state.listView,
+    }));
   }
 
   componentDidMount() {
@@ -291,7 +300,11 @@ class App extends React.Component {
           <div className="flex-row justify-between align-center m-bottom">
             <SiteTitle classes="m-left flex-row align-center" />
             <div className="flex-row align-center">
-              <ViewSwitch classes="m-right" />
+              <ViewSwitch
+                classes="m-right"
+                listView={this.state.listView}
+                toggleView={this.toggleViewMode}
+              />
               <SearchField
                 classes="m-right"
                 suggestions={this.state.suggestions}

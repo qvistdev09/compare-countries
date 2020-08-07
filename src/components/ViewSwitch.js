@@ -6,12 +6,23 @@ function ViewSwitch(props) {
       className={
         props.classes + ' view-switch flex-row justify-between align-stretch'
       }
+      onClick={props.toggleView}
     >
       <div className="switch-icon-wrapper switch-icon-wrapper-active">
-        <i className="far fa-list-alt switch-icon switch-icon-active"></i>
+        <i
+          className={
+            'far fa-list-alt switch-icon' +
+            (props.listView === true ? ' switch-icon-active' : '')
+          }
+        ></i>
       </div>
       <div className="switch-icon-wrapper">
-        <i className="fas fa-chart-bar switch-icon"></i>
+        <i
+          className={
+            'fas fa-chart-bar switch-icon' +
+            (props.listView === false ? ' switch-icon-active' : '')
+          }
+        ></i>
       </div>
     </div>
   );
