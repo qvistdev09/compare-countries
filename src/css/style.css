@@ -127,6 +127,40 @@ p.site-description {
   justify-content: flex-start;
 }
 
+.bar-chart-cell {
+  border-left: 1px solid var(--border-color);
+  padding-top: var(--small);
+  padding-bottom: var(--small);
+  padding-right: var(--small);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.example-bar {
+  min-height: 1.7rem;
+  flex: 1;
+  border: 2px solid rgba(0, 0, 0, 0.123);
+  background-color: rgb(199, 255, 236);
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.example-bar + .example-bar {
+  margin-top: 0.2rem;
+}
+
+.bar-chart-label {
+  margin-left: var(--small);
+  color: var(--text-dark);
+  font-size: 0.8rem;
+}
+
 .delete-button {
   border-radius: 0;
   border: none;
@@ -356,4 +390,8 @@ img {
 #graph-grid {
   display: grid;
   grid-template-columns: auto 1fr 4rem;
+}
+
+button:focus {
+  outline: none;
 }

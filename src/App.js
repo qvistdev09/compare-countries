@@ -350,7 +350,12 @@ class App extends React.Component {
                 selectedCountries={this.state.selectedCountries}
               />
             ) : (
-              <GraphMaker />
+              <GraphMaker
+                selectedCountries={this.state.selectedCountries}
+                sortAction={this.sortCountries}
+                sortStatus={this.state.sortStatus}
+                deleteAction={this.deleteCountry}
+              />
             )}
             <div className="grow"></div>
             <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top" />
