@@ -287,17 +287,19 @@ img {
 .tooltip-hover {
   position: absolute;
   padding: 0.5rem;
+  border: 0.15rem solid var(--darker);
   border-radius: 0.5rem;
   width: max-content;
-  max-width: 15rem;
+  max-width: 12rem;
   left: 50%;
   top: 150%;
   transform: translateY(-50%);
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.596);
+  background-color: white;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.082);
 }
 
 .tooltip:hover .tooltip-hover {
@@ -306,7 +308,7 @@ img {
 
 .tooltip-text {
   font-size: 0.8rem;
-  color: white;
+  color: var(--text-dark);
   text-align: center;
 }
 
@@ -320,7 +322,7 @@ img {
   position: absolute;
   top: -1rem;
   left: 50%;
-  background-color: rgba(0, 0, 0, 0.596);
+  background-color: var(--darker);
   width: 1rem;
   height: 1rem;
   transform: translateX(-50%);
