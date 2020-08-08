@@ -96,12 +96,11 @@ class GraphMaker extends React.Component {
           )
           .map((graphHeader) => (
             <div className="grid-cell">
-              <p
-                className="table-header-graph"
+              <div
+                className="table-header-graph m-right-small"
                 style={{ backgroundColor: graphHeader.color }}
-              >
-                {graphHeader.header}
-              </p>
+              />
+              <p className="table-header">{graphHeader.header}</p>
             </div>
           ))}
       </div>,
