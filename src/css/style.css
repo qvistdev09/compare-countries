@@ -85,6 +85,7 @@ p.site-description {
   border-bottom-right-radius: 0.5rem;
   overflow: hidden;
   background-color: var(--border-color);
+  z-index: 10;
 }
 
 #suggestions-container.hidden {
@@ -369,6 +370,7 @@ img {
 .tooltip-icon {
   color: var(--border-color);
   font-size: 1rem;
+  z-index: -1;
 }
 
 .tooltip-pointer {
@@ -417,4 +419,5 @@ button:focus {
 
 .low-opacity {
   opacity: 0.4;
+  z-index: -1;
 }
