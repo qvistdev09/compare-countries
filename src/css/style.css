@@ -139,8 +139,7 @@ p.site-description {
 }
 
 .example-bar {
-  min-height: 1.7rem;
-  flex: 1;
+  height: 2rem;
   border: 2px solid rgba(0, 0, 0, 0.123);
   border-left: none;
   background-color: rgb(199, 255, 236);
@@ -160,10 +159,11 @@ p.site-description {
   margin-left: 0.1rem;
   color: var(--text-dark);
   font-size: 0.7rem;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.76);
   padding: 0.1rem;
   border: 1px solid var(--border-color);
   border-radius: 0.3rem;
+  white-space: nowrap;
 }
 
 .delete-button {
@@ -290,7 +290,7 @@ img {
 .raised {
   font-size: 0.7rem;
   display: inline-block;
-  transform: translateY(-50%);
+  transform: translateY(-30%);
   z-index: -1;
 }
 

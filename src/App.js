@@ -46,18 +46,22 @@ class App extends React.Component {
           width: '1fr',
         },
         {
-          type: 'text',
+          type: 'number',
           enabled: true,
           value: 'population',
           header: 'Population',
           width: '1fr',
+          graph: 'relative',
+          color: '#6db1bf',
         },
         {
-          type: 'text',
+          type: 'number',
           enabled: true,
           value: 'area',
           header: 'Area',
           width: '1fr',
+          graph: 'relative',
+          color: '#ffeaec',
         },
         {
           type: 'text',
@@ -72,6 +76,8 @@ class App extends React.Component {
           value: 'gini',
           header: 'Gini',
           width: '1fr',
+          graph: 'absolute',
+          color: '#f39a9d',
           tooltip:
             'A measure of inequality of income or wealth, where 100% represents complete inequality and 0% complete equality.',
         },
@@ -355,6 +361,7 @@ class App extends React.Component {
                 sortAction={this.sortCountries}
                 sortStatus={this.state.sortStatus}
                 deleteAction={this.deleteCountry}
+                gridSetup={this.state.gridSetup}
               />
             )}
             <div className="grow"></div>

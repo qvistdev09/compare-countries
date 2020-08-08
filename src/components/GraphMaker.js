@@ -1,4 +1,5 @@
 import React from 'react';
+import { format } from '../UtilityFunctions';
 
 class GraphMaker extends React.Component {
   constructor(props) {
@@ -6,6 +7,52 @@ class GraphMaker extends React.Component {
     this.makeGraphHeader = this.makeGraphHeader.bind(this);
     this.makeCountryRow = this.makeCountryRow.bind(this);
     this.makeBar = this.makeBar.bind(this);
+    this.makeGraphBars = this.makeGraphBars.bind(this);
+  }
+
+  makeGraphBars(country, selectedCountries, gridSetup) {
+    const barSpecs = gridSetup.filter(
+      (object) => object.type === 'number' && object.enabled === true
+    );
+    let bars = [];
+
+    for (let i = 0; i < barSpecs.length; i++) {
+      if (barSpecs[i].graph === 'relative') {
+        const highest = selectedCountries
+          .map((object) => parseFloat(object[barSpecs[i].value]))
+          .reduce((prev, curr) => (curr > prev ? curr : prev));
+        const width = Math.round(
+          (parseFloat(country[barSpecs[i].value]) / highest) * 100
+        );
+
+        bars.push(
+          <div
+            key={barSpecs[i].value + '-bar-' + country.name}
+            className="example-bar"
+            style={{ width: width + '%' }}
+          >
+            <p className="bar-chart-label">
+              {format(country[barSpecs[i].value], barSpecs[i].value)}
+            </p>
+          </div>
+        );
+      } else {
+        const width = Math.round(parseFloat(country[barSpecs[i].value]));
+        bars.push(
+          <div
+            key={barSpecs[i].value + '-bar-' + country.name}
+            className="example-bar"
+            style={{ width: width + '%' }}
+          >
+            <p className="bar-chart-label">
+              {format(country[barSpecs[i].value], barSpecs[i].value)}
+            </p>
+          </div>
+        );
+      }
+    }
+
+    return bars;
   }
 
   makeBar(object, type, array) {
@@ -13,14 +60,11 @@ class GraphMaker extends React.Component {
       .map((object) => parseFloat(object[type]))
       .reduce((prev, curr) => (curr > prev ? curr : prev));
 
-    console.log(highest);
-    console.log(object[type]);
     const width = Math.round((parseFloat(object[type]) / highest) * 100);
-    console.log(width);
 
     return (
       <div className="example-bar" style={{ width: width + '%' }}>
-        <p className="bar-chart-label">{object[type]}</p>
+        <p className="bar-chart-label">{format(object[type], type)}</p>
       </div>
     );
   }
@@ -72,7 +116,7 @@ class GraphMaker extends React.Component {
         key={'chart-cell-' + object.name}
         className={rowStatus + 'middle bar-chart-cell' + shadeStatus}
       >
-        {this.makeBar(object, 'population', array)}
+        {this.makeGraphBars(object, array, this.props.gridSetup)}
       </div>,
       <div
         key={'delete-cell-' + object.name}
