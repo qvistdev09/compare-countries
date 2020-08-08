@@ -29,7 +29,7 @@ class GraphMaker extends React.Component {
           <div
             key={barSpecs[i].value + '-bar-' + country.name}
             className="example-bar"
-            style={{ width: width + '%' }}
+            style={{ width: width + '%', backgroundColor: barSpecs[i].color }}
           >
             <p className="bar-chart-label">
               {format(country[barSpecs[i].value], barSpecs[i].value)}
@@ -42,7 +42,7 @@ class GraphMaker extends React.Component {
           <div
             key={barSpecs[i].value + '-bar-' + country.name}
             className="example-bar"
-            style={{ width: width + '%' }}
+            style={{ width: width + '%', backgroundColor: barSpecs[i].color }}
           >
             <p className="bar-chart-label">
               {format(country[barSpecs[i].value], barSpecs[i].value)}

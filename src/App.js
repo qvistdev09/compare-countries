@@ -52,7 +52,7 @@ class App extends React.Component {
           header: 'Population',
           width: '1fr',
           graph: 'relative',
-          color: '#6db1bf',
+          color: '#9beeff',
         },
         {
           type: 'number',
@@ -61,7 +61,7 @@ class App extends React.Component {
           header: 'Area',
           width: '1fr',
           graph: 'relative',
-          color: '#ffeaec',
+          color: '#ffd98d',
         },
         {
           type: 'text',
@@ -77,7 +77,7 @@ class App extends React.Component {
           header: 'Gini',
           width: '1fr',
           graph: 'absolute',
-          color: '#f39a9d',
+          color: '#9cf89b',
           tooltip:
             'A measure of inequality of income or wealth, where 100% represents complete inequality and 0% complete equality.',
         },
