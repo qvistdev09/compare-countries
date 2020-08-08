@@ -7,6 +7,14 @@ class GraphMaker extends React.Component {
     this.makeGraphHeader = this.makeGraphHeader.bind(this);
     this.makeCountryRow = this.makeCountryRow.bind(this);
     this.makeGraphBars = this.makeGraphBars.bind(this);
+    this.setColumns = this.setColumns.bind(this);
+  }
+
+  setColumns() {
+    return this.props.gridSetup
+      .filter((object) => object.type === 'number' && object.enabled === true)
+      .map(() => '1fr')
+      .reduce((previous, current) => previous + ' ' + current);
   }
 
   makeGraphBars(country, selectedCountries, gridSetup) {
@@ -77,14 +85,22 @@ class GraphMaker extends React.Component {
       </div>,
       <div
         key="graph-header-cell-gap"
-        className="flex-row justify-around align-center p-small header-middle"
+        className="header-middle"
+        style={{ display: 'grid', gridTemplateColumns: this.setColumns() }}
       >
         {this.props.gridSetup
           .filter(
             (object) => object.type === 'number' && object.enabled === true
           )
           .map((graphHeader) => (
-            <p className="table-header-graph" style={{backgroundColor: graphHeader.color}}>{graphHeader.header}</p>
+            <div className="grid-cell">
+              <p
+                className="table-header-graph"
+                style={{ backgroundColor: graphHeader.color }}
+              >
+                {graphHeader.header}
+              </p>
+            </div>
           ))}
       </div>,
       <div
