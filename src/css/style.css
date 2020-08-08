@@ -151,7 +151,7 @@ p.site-description {
 }
 
 .example-bar + .example-bar {
-  margin-top: 0.2rem;
+  margin-top: var(--small);
 }
 
 .bar-chart-label {
