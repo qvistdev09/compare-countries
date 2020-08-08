@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from '../UtilityFunctions';
+import { makeSortButtons } from '../UtilityFunctions';
 
 class GridMaker extends React.Component {
   constructor(props) {
@@ -36,29 +37,14 @@ class GridMaker extends React.Component {
       <p className="m-right-small table-header">{object.header}</p>
     );
     const headerTextImage = <p className="table-header">{object.header}</p>;
-    const sortButtons = [
-      <i
-        onClick={() => this.props.sortAction(object.value, false)}
-        key="sort-ascending-false"
-        className={
-          'fas fa-chevron-up sort-icon' +
-          (this.props.sortStatus === object.value + '-false'
-            ? ' active-sort'
-            : '')
-        }
-      ></i>,
-      <i
-        onClick={() => this.props.sortAction(object.value, true)}
-        key="sort-ascending-true"
-        className={
-          'fas fa-chevron-down sort-icon' +
-          (this.props.sortStatus === object.value + '-true'
-            ? ' active-sort'
-            : '')
-        }
-      ></i>,
-    ];
 
+    const sortButtons = makeSortButtons(
+      object.value,
+      this.props.sortStatus,
+      () => this.props.sortAction(object.value, true),
+      () => this.props.sortAction(object.value, false)
+    );
+    
     switch (object.type) {
       case 'text':
       case 'number':
@@ -122,9 +108,7 @@ class GridMaker extends React.Component {
       case 'number':
         return (
           <div key={key} className={className}>
-            <p>
-              {format(countryObject[cellObject.value], cellObject.value)}
-            </p>
+            <p>{format(countryObject[cellObject.value], cellObject.value)}</p>
           </div>
         );
       case 'image':
