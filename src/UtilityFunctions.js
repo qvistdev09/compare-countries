@@ -1,4 +1,5 @@
 import React from 'react';
+
 export function format(input, type) {
   if (!input) {
     return 'n/a';
@@ -27,4 +28,30 @@ export function format(input, type) {
     default:
       return input;
   }
+}
+
+export function makeSortButtons(
+  value,
+  sortStatus,
+  ascendingTrue,
+  ascendingFalse
+) {
+  return [
+    <i
+      onClick={ascendingFalse}
+      key="sort-ascending-false"
+      className={
+        'fas fa-chevron-up sort-icon' +
+        (sortStatus === value + '-false' ? ' active-sort' : '')
+      }
+    ></i>,
+    <i
+      onClick={ascendingTrue}
+      key="sort-ascending-true"
+      className={
+        'fas fa-chevron-down sort-icon' +
+        (sortStatus === value + '-true' ? ' active-sort' : '')
+      }
+    ></i>,
+  ];
 }

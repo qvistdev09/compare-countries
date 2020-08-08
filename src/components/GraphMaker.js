@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from '../UtilityFunctions';
+import { makeSortButtons } from '../UtilityFunctions';
 
 class GraphMaker extends React.Component {
   constructor(props) {
@@ -95,12 +96,21 @@ class GraphMaker extends React.Component {
             (object) => object.type === 'number' && object.enabled === true
           )
           .map((graphHeader) => (
-            <div className="grid-cell">
+            <div
+              key={'graph-header-cell-' + graphHeader.header}
+              className="grid-cell"
+            >
               <div
                 className="table-header-graph m-right-small"
                 style={{ backgroundColor: graphHeader.color }}
               />
               <p className="table-header">{graphHeader.header}</p>
+              {makeSortButtons(
+                graphHeader.value,
+                this.props.sortStatus,
+                () => this.props.sortAction(graphHeader.value, true),
+                () => this.props.sortAction(graphHeader.value, false)
+              )}
             </div>
           ))}
       </div>,
