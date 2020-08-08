@@ -1,5 +1,6 @@
 * {
   font-family: 'Sora', sans-serif;
+  transition: opacity 0.2s, color 0.2s, background-color 0.2s;
 }
 
 :root {
@@ -412,4 +413,8 @@ img {
 
 button:focus {
   outline: none;
+}
+
+.low-opacity {
+  opacity: 0.4;
 }

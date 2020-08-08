@@ -336,6 +336,7 @@ class App extends React.Component {
             classes="m-left flex-row align-center"
             gridSetup={this.state.gridSetup}
             toggle={this.toggle}
+            listView={this.state.listView}
           />
         </header>
         <div
