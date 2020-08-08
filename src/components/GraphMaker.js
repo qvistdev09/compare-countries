@@ -11,10 +11,12 @@ class GraphMaker extends React.Component {
   }
 
   setColumns() {
-    return this.props.gridSetup
+    let columns = this.props.gridSetup
       .filter((object) => object.type === 'number' && object.enabled === true)
-      .map(() => '1fr')
-      .reduce((previous, current) => previous + ' ' + current);
+      .map(() => '1fr');
+    return columns.length < 1
+      ? '1fr'
+      : columns.reduce((previous, current) => previous + ' ' + current);
   }
 
   makeGraphBars(country, selectedCountries, gridSetup) {
