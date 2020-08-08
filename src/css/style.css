@@ -286,6 +286,17 @@ img {
   font-weight: 400;
 }
 
+.table-header-graph {
+  font-family: 'Varela Round';
+  color: rgba(0, 0, 0, 0.534);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  border: 2px solid rgba(0, 0, 0, 0.123);
+  padding: 0.2rem;
+  border-radius: 0.3rem;
+}
+
 .raised {
   font-size: 0.7rem;
   display: inline-block;

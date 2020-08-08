@@ -6,7 +6,6 @@ class GraphMaker extends React.Component {
     super(props);
     this.makeGraphHeader = this.makeGraphHeader.bind(this);
     this.makeCountryRow = this.makeCountryRow.bind(this);
-    this.makeBar = this.makeBar.bind(this);
     this.makeGraphBars = this.makeGraphBars.bind(this);
   }
 
@@ -55,20 +54,6 @@ class GraphMaker extends React.Component {
     return bars;
   }
 
-  makeBar(object, type, array) {
-    const highest = array
-      .map((object) => parseFloat(object[type]))
-      .reduce((prev, curr) => (curr > prev ? curr : prev));
-
-    const width = Math.round((parseFloat(object[type]) / highest) * 100);
-
-    return (
-      <div className="example-bar" style={{ width: width + '%' }}>
-        <p className="bar-chart-label">{format(object[type], type)}</p>
-      </div>
-    );
-  }
-
   makeGraphHeader() {
     return [
       <div key="graph-header-cell-name" className="grid-cell header-left-end">
@@ -92,8 +77,16 @@ class GraphMaker extends React.Component {
       </div>,
       <div
         key="graph-header-cell-gap"
-        className="grid-cell header-middle"
-      ></div>,
+        className="flex-row justify-around align-center p-small header-middle"
+      >
+        {this.props.gridSetup
+          .filter(
+            (object) => object.type === 'number' && object.enabled === true
+          )
+          .map((graphHeader) => (
+            <p className="table-header-graph" style={{backgroundColor: graphHeader.color}}>{graphHeader.header}</p>
+          ))}
+      </div>,
       <div
         key="graph-header-cell-delete"
         className="grid-cell header-right-end"
