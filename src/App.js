@@ -21,7 +21,7 @@ class App extends React.Component {
       cached: startingCountries,
       selectedCountries: startingCountries,
       headerHeight: 10,
-      sortStatus: 'unsorted',
+      sortStatus: 'name-false',
       listView: true,
       gridSetup: [
         {
@@ -123,6 +123,8 @@ class App extends React.Component {
       },
       () => window.addEventListener('resize', this.adaptToHeader)
     );
+
+    this.sortCountries();
   }
 
   toggle(value) {
@@ -150,6 +152,11 @@ class App extends React.Component {
   }
 
   sortCountries(property, ascending) {
+    if (arguments.length === 0) {
+      property = this.state.sortStatus.split('-')[0];
+      ascending = this.state.sortStatus.split('-')[1] === 'true' ? true : false;
+    }
+
     console.log('attempting to sort');
     const sortedCopy = JSON.parse(JSON.stringify(this.state.selectedCountries));
 
@@ -223,10 +230,10 @@ class App extends React.Component {
           ],
           suggestions: [],
           input: '',
-          sortStatus: 'unsorted',
         }),
         () => {
           console.log('Country collected from cache, no API call needed');
+          this.sortCountries();
           this.fetchBlock = false;
         }
       );
@@ -246,10 +253,10 @@ class App extends React.Component {
               ],
               suggestions: [],
               input: '',
-              sortStatus: 'unsorted',
             }),
             () => {
               console.log('An API call was made');
+              this.sortCountries();
               this.fetchBlock = false;
             }
           );
