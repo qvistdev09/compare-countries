@@ -26,6 +26,7 @@ class App extends React.Component {
       gridSetup: [
         {
           type: 'text',
+          canToggle: false,
           enabled: true,
           value: 'name',
           header: 'Name',
@@ -83,6 +84,7 @@ class App extends React.Component {
         },
         {
           type: 'delete',
+          canToggle: false,
           enabled: true,
           value: 'delete',
           header: 'Delete',

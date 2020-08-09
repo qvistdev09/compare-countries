@@ -6,7 +6,7 @@ class CheckboxMaker extends React.Component {
     return (
       <div className={this.props.classes}>
         {this.props.gridSetup
-          .filter((item) => item.type !== 'delete')
+          .filter((item) => item.canToggle !== false)
           .map((item) => {
             const canShow = item.graph
               ? true
