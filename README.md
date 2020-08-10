@@ -14,3 +14,7 @@ In this app you can:
 
 The project is hosted on Github Pages:
 https://qvistdev09.github.io/compare-countries/
+
+## Screenshots
+
+![Screenshot of Compare Countries web app](https://raw.githubusercontent.com/qvistdev09/compare-countries/master/public/screenshot1.PNG)
