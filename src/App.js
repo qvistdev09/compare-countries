@@ -108,7 +108,6 @@ class App extends React.Component {
   }
 
   toggleViewMode() {
-    console.log('hey');
     this.setState((state) => ({
       listView: !state.listView,
     }));
@@ -176,31 +175,25 @@ class App extends React.Component {
   deleteCountry(code) {
     // check if country should be cached
     if (!this.state.cached.some((country) => country.alpha2Code === code)) {
-      this.setState(
-        (state) => ({
-          cached: [
-            ...state.cached,
-            ...state.selectedCountries.filter(
-              (country) => country.alpha2Code === code
-            ),
-          ],
-          selectedCountries: state.selectedCountries.filter(
-            (country) => country.alpha2Code !== code
+      this.setState((state) => ({
+        cached: [
+          ...state.cached,
+          ...state.selectedCountries.filter(
+            (country) => country.alpha2Code === code
           ),
-        }),
-        () => console.log(this.state.cached)
-      );
+        ],
+        selectedCountries: state.selectedCountries.filter(
+          (country) => country.alpha2Code !== code
+        ),
+      }));
     }
     // if already cached, just delete
     else {
-      this.setState(
-        (state, props) => ({
-          selectedCountries: state.selectedCountries.filter(
-            (country) => country.alpha2Code !== code
-          ),
-        }),
-        () => console.log(this.state.cached)
-      );
+      this.setState((state, props) => ({
+        selectedCountries: state.selectedCountries.filter(
+          (country) => country.alpha2Code !== code
+        ),
+      }));
     }
   }
 
