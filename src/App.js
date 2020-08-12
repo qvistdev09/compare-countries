@@ -333,17 +333,17 @@ class App extends React.Component {
         <header id="site-header" className="p-small screen-small-p">
           <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
             <SiteTitle
-              classes="flex-row align-center m-bottom-small screen-small-no-m-bottom screen-small-m-left"
+              classes="flex-row align-center justify-between m-bottom-small screen-small-no-m-bottom screen-small-m-left"
               mobile={this.state.mobile}
             />
-            <div className="flex-column-reverse screen-small-flex-row screen-small-align-center">
+            <div className="flex-row-reverse screen-small-flex-row screen-small-align-center">
               <ViewSwitch
                 classes="screen-small-m-right"
                 listView={this.state.listView}
                 toggleView={this.toggleViewMode}
               />
               <SearchField
-                classes="m-bottom-small screen-small-no-m-bottom screen-small-m-right"
+                classes="grow m-right-small screen-small-m-right"
                 suggestions={this.state.suggestions}
                 onChange={this.getSuggestions}
                 onBlur={() => {
