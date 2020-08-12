@@ -19,6 +19,12 @@ function MobileCountry(props) {
       className="MobileCountry-cell MobileCountry-header-right"
     >
       <p>{props.country.name}</p>
+      <button
+        className="delete-button"
+        onClick={() => props.deleteAction(props.country.alpha2Code)}
+      >
+        <i className="fas fa-times delete-icon"></i>
+      </button>
     </div>,
   ];
 

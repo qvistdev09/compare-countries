@@ -183,6 +183,7 @@ class GridMaker extends React.Component {
                 key={'mobile-country-' + country.name}
                 country={country}
                 gridSetup={this.props.gridSetup}
+                deleteAction={this.props.deleteAction}
               />
             ))
           : this.props.selectedCountries.map((countryObject, row, rowArray) =>
