@@ -398,6 +398,7 @@ class App extends React.Component {
                 deleteAction={this.deleteCountry}
                 gridSetup={this.state.gridSetup}
                 mobile={this.state.mobile}
+                toggle={this.toggle}
               />
             )}
             <div className="grow"></div>

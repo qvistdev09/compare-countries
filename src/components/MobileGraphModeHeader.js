@@ -18,7 +18,10 @@ function MobileGraphModeHeader(props) {
             <div
               className="MobileGraphModeHeader-square m-right-small"
               style={{ backgroundColor: object.color }}
-            ></div>
+              onClick={() => props.toggle(object.value)}
+            >
+              {object.enabled && <i className="fas fa-check"></i>}
+            </div>
             <p className="MobileGraphModeHeader-sort-label">{object.header}</p>
             <div className="flex-row align-center">
               {makeSortButtons(
