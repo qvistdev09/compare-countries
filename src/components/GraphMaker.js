@@ -173,7 +173,7 @@ class GraphMaker extends React.Component {
             sortAction={this.props.sortAction}
             toggle={this.props.toggle}
           />
-          <MobileGraphModeCountry />
+          <MobileGraphModeCountry country={this.props.selectedCountries[0]} />
         </div>
       );
     }

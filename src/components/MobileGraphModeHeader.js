@@ -11,7 +11,7 @@ function MobileGraphModeHeader(props) {
           <div
             key={'graph-header-' + object.value}
             className={
-              'flex-row justify-start align-center' +
+              'MobileGraphModeHeader-grid-row align-center' +
               (index === array.length - 1 ? '' : ' m-bottom-small')
             }
           >
