@@ -37,12 +37,14 @@
 }
 
 .MobileDataHeader-sort-container {
+  z-index: 10;
   border-bottom: 1px solid var(--darker);
   width: 100%;
   position: relative;
 }
 
 .MobileDataHeader-sort-choices-container {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.13);
   position: absolute;
   top: 100%;
   left: 0%;
