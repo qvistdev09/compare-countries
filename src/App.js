@@ -330,20 +330,20 @@ class App extends React.Component {
   render() {
     return (
       <div id="site-container">
-        <header id="site-header" className="p">
-          <div className="flex-row justify-between align-center m-bottom">
+        <header id="site-header" className="p-small screen-small-p">
+          <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
             <SiteTitle
-              classes="m-left flex-row align-center"
+              classes="flex-row align-center m-bottom-small screen-small-no-m-bottom screen-small-m-left"
               mobile={this.state.mobile}
             />
-            <div className="flex-row align-center">
+            <div className="flex-column-reverse screen-small-flex-row screen-small-align-center">
               <ViewSwitch
-                classes="m-right"
+                classes="screen-small-m-right"
                 listView={this.state.listView}
                 toggleView={this.toggleViewMode}
               />
               <SearchField
-                classes="m-right"
+                classes="m-bottom-small screen-small-no-m-bottom screen-small-m-right"
                 suggestions={this.state.suggestions}
                 onChange={this.getSuggestions}
                 onBlur={() => {

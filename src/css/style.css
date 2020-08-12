@@ -16,8 +16,8 @@ header {
   background-color: white;
   border-bottom: 0.2rem solid var(--border-color);
   position: fixed;
-  width: 100vw;
-  z-index: 1;
+  width: calc(100vw - (100vw - 100%));
+  z-index: 15;
 }
 
 i.h1-icon {
@@ -62,6 +62,12 @@ p.site-description {
   border: 2px solid var(--border-color);
   transition: box-shadow 0.1s;
   background-color: var(--input-bg-unfocusd);
+}
+
+@media screen and (max-width: 599px) {
+  #search-field {
+    width: 100%;
+  }
 }
 
 .showing-suggestions {
@@ -386,6 +392,7 @@ img {
 
 .view-switch {
   height: 2.5rem;
+  width: fit-content;
   border-radius: 0.5rem;
   border: 2px solid var(--border-color);
   background-color: var(--input-bg-unfocusd);
