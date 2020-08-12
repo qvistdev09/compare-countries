@@ -5,6 +5,13 @@
   justify-content: flex-start;
 }
 
+.MobileGraphModeCountry-name-cell {
+    padding: var(--small);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
 .MobileGraphModeCountry-upper-left {
   border-top: 3px solid var(--border-color);
   border-left: 3px solid var(--border-color);
