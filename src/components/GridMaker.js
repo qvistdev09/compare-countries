@@ -1,4 +1,6 @@
 import React from 'react';
+import MobileDataHeader from './MobileDataHeader';
+import MobileCountry from './MobileCountry';
 import { format } from '../UtilityFunctions';
 import { makeSortButtons } from '../UtilityFunctions';
 
@@ -12,10 +14,14 @@ class GridMaker extends React.Component {
   }
 
   setColumns() {
-    return this.props.gridSetup
-      .filter((item) => item.enabled)
-      .map((object) => object.width)
-      .reduce((previous, current) => previous + ' ' + current);
+    if (!this.props.mobile) {
+      return this.props.gridSetup
+        .filter((item) => item.enabled)
+        .map((object) => object.width)
+        .reduce((previous, current) => previous + ' ' + current);
+    } else {
+      return 'auto 1fr';
+    }
   }
 
   setPosition(index, lastIndex) {
@@ -44,7 +50,7 @@ class GridMaker extends React.Component {
       () => this.props.sortAction(object.value, true),
       () => this.props.sortAction(object.value, false)
     );
-    
+
     switch (object.type) {
       case 'text':
       case 'number':
@@ -153,26 +159,39 @@ class GridMaker extends React.Component {
     return (
       <div id="data-grid" style={{ gridTemplateColumns: this.setColumns() }}>
         {/* Create header */}
-        {this.props.gridSetup
-          .filter((item) => item.enabled === true)
-          .map((object, index, array) =>
-            this.headerRowGenerator(object, index, array.length - 1)
-          )}
-
-        {/* Create data entries */}
-        {this.props.selectedCountries.map((countryObject, row, rowArray) =>
+        {this.props.mobile ? (
+          <MobileDataHeader
+            sortStatus={this.props.sortStatus}
+            sortAction={this.props.sortAction}
+            showMobileSortOptions={this.props.showMobileSortOptions}
+            gridSetup={this.props.gridSetup}
+          />
+        ) : (
           this.props.gridSetup
             .filter((item) => item.enabled === true)
-            .map((columnObject, column, columnArray) =>
-              this.dataRowGenerator(
-                columnObject,
-                countryObject,
-                column,
-                columnArray.length - 1,
-                row,
-                rowArray.length - 1
-              )
+            .map((object, index, array) =>
+              this.headerRowGenerator(object, index, array.length - 1)
             )
+        )}
+
+        {/* Create data entries */}
+        {this.props.mobile ? (
+          <MobileCountry />
+        ) : (
+          this.props.selectedCountries.map((countryObject, row, rowArray) =>
+            this.props.gridSetup
+              .filter((item) => item.enabled === true)
+              .map((columnObject, column, columnArray) =>
+                this.dataRowGenerator(
+                  columnObject,
+                  countryObject,
+                  column,
+                  columnArray.length - 1,
+                  row,
+                  rowArray.length - 1
+                )
+              )
+          )
         )}
       </div>
     );

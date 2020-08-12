@@ -254,7 +254,7 @@
 
 /* Small screen options */
 
-@media screen and (min-width: 525px) {
+@media screen and (min-width: 600px) {
   .screen-small-hide {
     display: none;
   }

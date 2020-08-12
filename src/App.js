@@ -17,6 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       mobile: false,
+      showMobileSortOptions: true,
       input: '',
       suggestions: [],
       cached: startingCountries,
@@ -342,7 +343,7 @@ class App extends React.Component {
             </div>
           </div>
           <CheckboxMaker
-            classes="m-left flex-row align-center"
+            classes="hide screen-small-flex-row screen-small-align-center screen-small-m-left"
             gridSetup={this.state.gridSetup}
             toggle={this.toggle}
             listView={this.state.listView}
@@ -355,7 +356,7 @@ class App extends React.Component {
         >
           <div
             id="grid-wrapper"
-            className="p-left p-top p-right flex-column align-stretch grow"
+            className="p-left-small p-top-small p-right-small screen-small-p-left screen-small-p-top screen-small-p-right flex-column align-stretch grow"
           >
             {this.state.listView ? (
               <GridMaker
@@ -364,6 +365,8 @@ class App extends React.Component {
                 sortStatus={this.state.sortStatus}
                 gridSetup={this.state.gridSetup}
                 selectedCountries={this.state.selectedCountries}
+                mobile={this.state.mobile}
+                showMobileSortOptions={this.state.showMobileSortOptions}
               />
             ) : (
               <GraphMaker
