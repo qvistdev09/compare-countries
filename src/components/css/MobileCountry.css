@@ -1,0 +1,27 @@
+.MobileCountry-cell {
+  padding: var(--small);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.MobileCountry-header-left {
+  border-top: 3px solid var(--border-color);
+  border-left: 3px solid var(--border-color);
+  margin-top: var(--small);
+  border-top-left-radius: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.MobileCountry-header-right {
+  margin-top: var(--small);
+  border-top: 3px solid var(--border-color);
+  border-right: 3px solid var(--border-color);
+  border-top-right-radius: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.MobileCountry-flag {
+    max-width: 3rem;
+}

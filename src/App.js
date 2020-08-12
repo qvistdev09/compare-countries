@@ -17,7 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       mobile: false,
-      showMobileSortOptions: true,
+      showMobileSortOptions: false,
       input: '',
       suggestions: [],
       cached: startingCountries,

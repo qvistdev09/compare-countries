@@ -178,7 +178,7 @@ class GridMaker extends React.Component {
 
         {/* Create data entries */}
         {this.props.mobile ? (
-          <MobileCountry />
+          <MobileCountry country={this.props.selectedCountries[0]}/>
         ) : (
           this.props.selectedCountries.map((countryObject, row, rowArray) =>
             this.props.gridSetup
