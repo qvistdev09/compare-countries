@@ -400,7 +400,7 @@ class App extends React.Component {
               />
             )}
             <div className="grow"></div>
-            <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top" />
+            <Footer classes="flex-column screen-medium-flex-row justify-center align-center m-bottom-small m-top-small" />
           </div>
         </div>
       </div>
