@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      mobile: false,
       input: '',
       suggestions: [],
       cached: startingCountries,
@@ -97,12 +98,13 @@ class App extends React.Component {
     this.blurBlock = false;
     this.headerObj = null;
     this.cKeys = Object.keys(countries);
+    this.mobileBreakPoint = 600;
 
     this.fetchCountry = this.fetchCountry.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.deleteCountry = this.deleteCountry.bind(this);
     this.sortCountries = this.sortCountries.bind(this);
-    this.adaptToHeader = this.adaptToHeader.bind(this);
+    this.resizeAction = this.resizeAction.bind(this);
     this.toggle = this.toggle.bind(this);
     this.toggleViewMode = this.toggleViewMode.bind(this);
   }
@@ -121,8 +123,9 @@ class App extends React.Component {
     this.setState(
       {
         headerHeight: this.headerObj.offsetHeight / rem,
+        mobile: window.innerWidth < this.mobileBreakPoint ? true : false,
       },
-      () => window.addEventListener('resize', this.adaptToHeader)
+      () => window.addEventListener('resize', this.resizeAction)
     );
 
     this.sortCountries();
@@ -143,12 +146,13 @@ class App extends React.Component {
     });
   }
 
-  adaptToHeader() {
+  resizeAction() {
     const rem = parseInt(
       getComputedStyle(document.documentElement).fontSize.slice(0, 2)
     );
     this.setState({
       headerHeight: this.headerObj.offsetHeight / rem,
+      mobile: window.innerWidth < this.mobileBreakPoint ? true : false,
     });
   }
 
@@ -307,7 +311,10 @@ class App extends React.Component {
       <div id="site-container">
         <header id="site-header" className="p">
           <div className="flex-row justify-between align-center m-bottom">
-            <SiteTitle classes="m-left flex-row align-center" />
+            <SiteTitle
+              classes="m-left flex-row align-center"
+              mobile={this.state.mobile}
+            />
             <div className="flex-row align-center">
               <ViewSwitch
                 classes="m-right"
