@@ -165,6 +165,8 @@ class GridMaker extends React.Component {
             sortAction={this.props.sortAction}
             showMobileSortOptions={this.props.showMobileSortOptions}
             gridSetup={this.props.gridSetup}
+            toggleShowMobileSortOptions={this.props.toggleShowMobileSortOptions}
+            selectMobileSortOption={this.props.selectMobileSortOption}
           />
         ) : (
           this.props.gridSetup

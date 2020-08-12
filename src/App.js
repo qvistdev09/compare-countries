@@ -108,11 +108,31 @@ class App extends React.Component {
     this.resizeAction = this.resizeAction.bind(this);
     this.toggle = this.toggle.bind(this);
     this.toggleViewMode = this.toggleViewMode.bind(this);
+    this.toggleShowMobileSortOptions = this.toggleShowMobileSortOptions.bind(
+      this
+    );
+    this.selectMobileSortOption = this.selectMobileSortOption.bind(this);
+  }
+
+  selectMobileSortOption(value) {
+    this.setState(
+      (state) => ({
+        showMobileSortOptions: false,
+        sortStatus: value + '-' + state.sortStatus.split('-')[1],
+      }),
+      this.sortCountries()
+    );
   }
 
   toggleViewMode() {
     this.setState((state) => ({
       listView: !state.listView,
+    }));
+  }
+
+  toggleShowMobileSortOptions() {
+    this.setState((state) => ({
+      showMobileSortOptions: !state.showMobileSortOptions,
     }));
   }
 
@@ -367,6 +387,8 @@ class App extends React.Component {
                 selectedCountries={this.state.selectedCountries}
                 mobile={this.state.mobile}
                 showMobileSortOptions={this.state.showMobileSortOptions}
+                toggleShowMobileSortOptions={this.toggleShowMobileSortOptions}
+                selectMobileSortOption={this.selectMobileSortOption}
               />
             ) : (
               <GraphMaker

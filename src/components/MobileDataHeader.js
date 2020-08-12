@@ -4,12 +4,21 @@ import { makeSortButtons } from '../UtilityFunctions';
 
 function MobileDataHeader(props) {
   return [
-    <div className="MobileDataHeader-cell MobileDataHeader-left">
+    <div
+      key="mobile-header-left"
+      className="MobileDataHeader-cell MobileDataHeader-left"
+    >
       <p className="MobileDataHeader-label">Sort mode:</p>
     </div>,
-    <div className="MobileDataHeader-cell MobileDataHeader-right">
+    <div
+      key="mobile-header-right"
+      className="MobileDataHeader-cell MobileDataHeader-right"
+    >
       <div className="MobileDataHeader-sort-container flex-row align-center justify-between">
-        <p className="MobileDataHeader-sort-mode">
+        <p
+          className="MobileDataHeader-sort-mode grow"
+          onClick={props.toggleShowMobileSortOptions}
+        >
           {props.sortStatus.split('-')[0]}
         </p>
         <div className="flex-row align-center">
@@ -29,7 +38,11 @@ function MobileDataHeader(props) {
           {props.gridSetup
             .filter((item) => item.type !== 'image' && item.type !== 'delete')
             .map((object) => (
-              <p className="MobileDataHeader-sort-mode-choice">
+              <p
+                key={'sort-option-' + object.header}
+                className="MobileDataHeader-sort-mode-choice"
+                onClick={() => props.selectMobileSortOption(object.value)}
+              >
                 {object.header}
               </p>
             ))}
