@@ -55,3 +55,48 @@ export function makeSortButtons(
     ></i>,
   ];
 }
+
+export function makeGraphBars(country, selectedCountries, gridSetup) {
+  const barSpecs = gridSetup.filter(
+    (object) => object.type === 'number' && object.enabled === true
+  );
+  let bars = [];
+
+  for (let i = 0; i < barSpecs.length; i++) {
+    if (barSpecs[i].graph === 'relative') {
+      const highest = selectedCountries
+        .map((object) => parseFloat(object[barSpecs[i].value]))
+        .reduce((prev, curr) => (curr > prev ? curr : prev));
+      const width = Math.round(
+        (parseFloat(country[barSpecs[i].value]) / highest) * 100
+      );
+
+      bars.push(
+        <div
+          key={barSpecs[i].value + '-bar-' + country.name}
+          className="example-bar"
+          style={{ width: width + '%', backgroundColor: barSpecs[i].color }}
+        >
+          <p className="bar-chart-label">
+            {format(country[barSpecs[i].value], barSpecs[i].value)}
+          </p>
+        </div>
+      );
+    } else {
+      const width = Math.round(parseFloat(country[barSpecs[i].value]));
+      bars.push(
+        <div
+          key={barSpecs[i].value + '-bar-' + country.name}
+          className="example-bar"
+          style={{ width: width + '%', backgroundColor: barSpecs[i].color }}
+        >
+          <p className="bar-chart-label">
+            {format(country[barSpecs[i].value], barSpecs[i].value)}
+          </p>
+        </div>
+      );
+    }
+  }
+
+  return bars;
+}

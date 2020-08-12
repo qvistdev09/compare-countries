@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/MobileGraphModeCountry.css';
+import { makeGraphBars } from '../UtilityFunctions';
 
 function MobileGraphModeCountry(props) {
   return [
@@ -12,6 +13,9 @@ function MobileGraphModeCountry(props) {
     </div>,
     <div className="MobileGraphModeCountry-cell MobileGraphModeCountry-upper-right">
       <p>{props.country.name}</p>
+    </div>,
+    <div className="MobileGraphModeCountry-bar-container">
+      {makeGraphBars(props.country, props.selectedCountries, props.gridSetup)}
     </div>,
   ];
 }
