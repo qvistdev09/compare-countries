@@ -144,7 +144,7 @@ class App extends React.Component {
     this.setState(
       {
         headerHeight: this.headerObj.offsetHeight / rem,
-        mobile: window.innerWidth < this.mobileBreakPoint ? true : false,
+        mobile: window.visualViewport.width < this.mobileBreakPoint ? true : false,
       },
       () => window.addEventListener('resize', this.resizeAction)
     );
@@ -173,7 +173,7 @@ class App extends React.Component {
     );
     this.setState({
       headerHeight: this.headerObj.offsetHeight / rem,
-      mobile: window.innerWidth < this.mobileBreakPoint ? true : false,
+      mobile: window.visualViewport.width < this.mobileBreakPoint ? true : false,
     });
   }
 
