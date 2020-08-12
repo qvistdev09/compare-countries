@@ -1,6 +1,8 @@
 import React from 'react';
 import { format } from '../UtilityFunctions';
 import { makeSortButtons } from '../UtilityFunctions';
+import MobileGraphModeHeader from './MobileGraphModeHeader';
+import MobileGraphModeCountry from './MobileGraphModeCountry';
 
 class GraphMaker extends React.Component {
   constructor(props) {
@@ -153,14 +155,27 @@ class GraphMaker extends React.Component {
   }
 
   render() {
-    return (
-      <div id="graph-grid">
-        {this.makeGraphHeader()}
-        {this.props.selectedCountries.map((item, index, array) =>
-          this.makeCountryRow(item, index, array)
-        )}
-      </div>
-    );
+    if (!this.props.mobile) {
+      return (
+        <div id="graph-grid">
+          {this.makeGraphHeader()}
+          {this.props.selectedCountries.map((item, index, array) =>
+            this.makeCountryRow(item, index, array)
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <div id="graph-grid-mobile">
+          <MobileGraphModeHeader
+            gridSetup={this.props.gridSetup}
+            sortStatus={this.props.sortStatus}
+            sortAction={this.props.sortAction}
+          />
+          <MobileGraphModeCountry />
+        </div>
+      );
+    }
   }
 }
 

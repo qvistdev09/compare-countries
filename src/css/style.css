@@ -434,3 +434,8 @@ button:focus {
   opacity: 0.4;
   z-index: -1;
 }
+
+#graph-grid-mobile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}

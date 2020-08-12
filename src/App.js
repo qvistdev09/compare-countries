@@ -397,6 +397,7 @@ class App extends React.Component {
                 sortStatus={this.state.sortStatus}
                 deleteAction={this.deleteCountry}
                 gridSetup={this.state.gridSetup}
+                mobile={this.state.mobile}
               />
             )}
             <div className="grow"></div>
