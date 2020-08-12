@@ -177,24 +177,28 @@ class GridMaker extends React.Component {
         )}
 
         {/* Create data entries */}
-        {this.props.mobile ? (
-          <MobileCountry country={this.props.selectedCountries[0]}/>
-        ) : (
-          this.props.selectedCountries.map((countryObject, row, rowArray) =>
-            this.props.gridSetup
-              .filter((item) => item.enabled === true)
-              .map((columnObject, column, columnArray) =>
-                this.dataRowGenerator(
-                  columnObject,
-                  countryObject,
-                  column,
-                  columnArray.length - 1,
-                  row,
-                  rowArray.length - 1
+        {this.props.mobile
+          ? this.props.selectedCountries.map((country) => (
+              <MobileCountry
+                key={'mobile-country-' + country.name}
+                country={country}
+                gridSetup={this.props.gridSetup}
+              />
+            ))
+          : this.props.selectedCountries.map((countryObject, row, rowArray) =>
+              this.props.gridSetup
+                .filter((item) => item.enabled === true)
+                .map((columnObject, column, columnArray) =>
+                  this.dataRowGenerator(
+                    columnObject,
+                    countryObject,
+                    column,
+                    columnArray.length - 1,
+                    row,
+                    rowArray.length - 1
+                  )
                 )
-              )
-          )
-        )}
+            )}
       </div>
     );
   }

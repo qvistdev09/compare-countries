@@ -12,6 +12,7 @@
   border-right: 1px solid var(--border-color);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  margin-bottom: var(--small);
 }
 
 .MobileDataHeader-right {
@@ -20,6 +21,7 @@
   border-bottom: 3px solid var(--border-color);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+  margin-bottom: var(--small);
 }
 
 .MobileDataHeader-sort-mode {
@@ -64,5 +66,5 @@
 }
 
 .MobileDataHeader-sort-mode-choice:last-child {
-    border-bottom: none;
-  }
+  border-bottom: none;
+}
