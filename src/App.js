@@ -88,7 +88,7 @@ class App extends React.Component {
           enabled: true,
           value: 'delete',
           header: 'Delete',
-          width: '4rem',
+          width: 'auto',
         },
       ],
     };
