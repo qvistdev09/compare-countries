@@ -32,9 +32,11 @@ class SearchField extends React.Component {
           type="text"
           autoComplete="off"
           className={
-            this.props.suggestions.length > 0 ? 'showing-suggestions' : ''
+            'country-search-field' +
+            (this.props.suggestions.length > 0 ? ' showing-suggestions' : '') +
+            (this.props.connectionFail ? ' connection-fail' : '')
           }
-          placeholder="Type to add country"
+          placeholder={this.props.placeholderMessage(this.props.connectionFail)}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
           onClick={this.props.onChange}

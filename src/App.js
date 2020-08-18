@@ -16,6 +16,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      connectionFail: false,
+      placeholderMessage: (fail) =>
+        fail
+          ? 'API could not be reached - please try again later!'
+          : 'Type to add country',
       mobile: false,
       showMobileSortOptions: false,
       input: '',
@@ -144,7 +149,11 @@ class App extends React.Component {
     this.setState(
       {
         headerHeight: this.headerObj.offsetHeight / rem,
-        mobile: window.screen.width < this.mobileBreakPoint || window.innerWidth < this.mobileBreakPoint ? true : false,
+        mobile:
+          window.screen.width < this.mobileBreakPoint ||
+          window.innerWidth < this.mobileBreakPoint
+            ? true
+            : false,
       },
       () => window.addEventListener('resize', this.resizeAction)
     );
@@ -265,6 +274,7 @@ class App extends React.Component {
         .then((data) => {
           this.setState(
             (state, props) => ({
+              connectionFail: false,
               selectedCountries: [
                 ...state.selectedCountries,
                 {
@@ -281,7 +291,15 @@ class App extends React.Component {
             }
           );
         })
-        .catch((error) => console.log('Could not get data'));
+        .catch((error) => {
+          this.setState({
+            input: '',
+            connectionFail: true,
+            suggestions: [],
+          });
+          this.fetchBlock = false;
+          console.log('Could not get data');
+        });
     }
   }
 
@@ -343,6 +361,8 @@ class App extends React.Component {
                 toggleView={this.toggleViewMode}
               />
               <SearchField
+                connectionFail={this.state.connectionFail}
+                placeholderMessage={this.state.placeholderMessage}
                 classes="grow m-right-small screen-small-m-right"
                 suggestions={this.state.suggestions}
                 onChange={this.getSuggestions}

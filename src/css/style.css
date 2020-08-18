@@ -439,3 +439,15 @@ button:focus {
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+.connection-fail::-webkit-input-placeholder { /* Edge */
+  color: red;
+}
+
+.connection-fail:-ms-input-placeholder { /* Internet Explorer */
+  color: red;
+}
+
+.connection-fail::placeholder {
+  color: red;
+}
