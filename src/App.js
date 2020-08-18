@@ -292,13 +292,17 @@ class App extends React.Component {
           );
         })
         .catch((error) => {
-          this.setState({
-            input: '',
-            connectionFail: true,
-            suggestions: [],
-          });
-          this.fetchBlock = false;
-          console.log('Could not get data');
+          this.setState(
+            {
+              input: '',
+              connectionFail: true,
+              suggestions: [],
+            },
+            () => {
+              this.fetchBlock = false;
+              console.log('Could not get data');
+            }
+          );
         });
     }
   }
