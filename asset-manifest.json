@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/compare-countries/static/css/main.0fa023aa.chunk.css",
+    "main.css": "/compare-countries/static/css/main.31ca14b3.chunk.css",
     "main.js": "/compare-countries/static/js/main.b585c3f3.chunk.js",
     "main.js.map": "/compare-countries/static/js/main.b585c3f3.chunk.js.map",
     "runtime-main.js": "/compare-countries/static/js/runtime-main.e0d6f125.js",
@@ -8,15 +8,15 @@
     "static/js/2.3f37a058.chunk.js": "/compare-countries/static/js/2.3f37a058.chunk.js",
     "static/js/2.3f37a058.chunk.js.map": "/compare-countries/static/js/2.3f37a058.chunk.js.map",
     "index.html": "/compare-countries/index.html",
-    "precache-manifest.cb361976ea6420bf522b15f35e7dd522.js": "/compare-countries/precache-manifest.cb361976ea6420bf522b15f35e7dd522.js",
+    "precache-manifest.c9472a3aafd6e5418261833e3e10beb3.js": "/compare-countries/precache-manifest.c9472a3aafd6e5418261833e3e10beb3.js",
     "service-worker.js": "/compare-countries/service-worker.js",
-    "static/css/main.0fa023aa.chunk.css.map": "/compare-countries/static/css/main.0fa023aa.chunk.css.map",
+    "static/css/main.31ca14b3.chunk.css.map": "/compare-countries/static/css/main.31ca14b3.chunk.css.map",
     "static/js/2.3f37a058.chunk.js.LICENSE.txt": "/compare-countries/static/js/2.3f37a058.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e0d6f125.js",
     "static/js/2.3f37a058.chunk.js",
-    "static/css/main.0fa023aa.chunk.css",
+    "static/css/main.31ca14b3.chunk.css",
     "static/js/main.b585c3f3.chunk.js"
   ]
 }
