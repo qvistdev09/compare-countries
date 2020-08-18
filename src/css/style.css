@@ -440,11 +440,13 @@ button:focus {
   grid-template-columns: auto 1fr;
 }
 
-.connection-fail::-webkit-input-placeholder { /* Edge */
+.connection-fail::-webkit-input-placeholder {
+  /* Edge */
   color: red;
 }
 
-.connection-fail:-ms-input-placeholder { /* Internet Explorer */
+.connection-fail:-ms-input-placeholder {
+  /* Internet Explorer */
   color: red;
 }
 
@@ -453,11 +455,11 @@ button:focus {
 }
 
 #error-modal-wrapper {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.438);
   z-index: 100;
   display: flex;
