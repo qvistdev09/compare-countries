@@ -451,3 +451,52 @@ button:focus {
 .connection-fail::placeholder {
   color: red;
 }
+
+#error-modal-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.438);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#error-modal {
+  margin: 1rem;
+  max-width: 20rem;
+  background-color: white;
+  border: 3px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.096);
+}
+
+.modal-header-div {
+  background-color: var(--input-bg-unfocusd);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+.error-icon {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.error-description {
+  line-height: 1.5rem;
+}
+
+.error-btn {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border: 3px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+
+.error-btn:hover {
+  background-color: var(--border-color);
+}

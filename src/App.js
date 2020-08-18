@@ -19,7 +19,7 @@ class App extends React.Component {
       connectionFail: false,
       placeholderMessage: (fail) =>
         fail
-          ? 'API could not be reached - please try again later!'
+          ? 'API could not be reached'
           : 'Type to add country',
       mobile: false,
       showMobileSortOptions: false,
@@ -352,6 +352,29 @@ class App extends React.Component {
   render() {
     return (
       <div id="site-container">
+        {this.state.connectionFail && <div id="error-modal-wrapper">
+          <div id="error-modal">
+            <div className="modal-header-div flex-row align-center p-small">
+              <i className="fas fa-exclamation-circle error-icon m-right-small"></i>
+              <p>Oh no!</p>
+            </div>
+            <div className="p">
+              <p className="error-description m-bottom">
+                It appears the REST Countries API is offline right now - you can
+                still compare the cached countries, but new ones can't be added.
+                Please try again later!
+              </p>
+              <button
+                className="maxed error-btn"
+                onClick={() => {
+                  this.setState({ connectionFail: false });
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>}
         <header id="site-header" className="p-small screen-small-p">
           <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
             <SiteTitle
