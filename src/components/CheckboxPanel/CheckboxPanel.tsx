@@ -1,3 +1,5 @@
+import Tooltip from "../Tooltip";
+
 export default function CheckboxPanel({ checkboxes }: Props) {
   return (
     <div className="hide screen-small-flex-row screen-small-align-center screen-small-m-left">
@@ -13,6 +15,7 @@ export default function CheckboxPanel({ checkboxes }: Props) {
             onClick={checkbox.enabled ? checkbox.onClick : undefined}
           />
           <p className="checkbox-label m-left-small">{checkbox.label}</p>
+          {checkbox.tooltip && <Tooltip text={checkbox.tooltip} />}
         </div>
       ))}
     </div>
@@ -25,5 +28,6 @@ interface Props {
     checked: boolean;
     label: string;
     onClick: () => void;
+    tooltip?: string;
   }>;
 }
