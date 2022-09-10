@@ -1,22 +1,14 @@
 import "./styles/utilities.css";
 import "./styles/style.css";
-import CheckboxPanel from "./components/CheckboxPanel";
+import SearchField from "./components/SearchField";
 
 function App() {
   return (
     <div>
-      compare countries
-      <CheckboxPanel
-        checkboxes={[
-          {
-            enabled: true,
-            label: "Test",
-            onClick: () => {},
-            checked: false,
-            tooltip: "Något intressant",
-          },
-        ]}
-      />
+      <SearchField onCountryAdd={() => {}} selectedCountriesCodes={[]} />
+      <div style={{marginTop: '10rem'}}>
+        <p>test</p>
+      </div>
     </div>
   );
 }
