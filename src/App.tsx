@@ -1,11 +1,37 @@
 import "./styles/utilities.css";
 import "./styles/style.css";
 import AppTitle from "./components/AppTitle";
+import ViewModeSwitch from "./components/ViewModeSwitch";
+import { useState } from "react";
+import SearchField from "./components/SearchField";
+import CheckboxPanel from "./components/CheckboxPanel";
+import useColumns from "./hooks/useColumns";
 
 function App() {
+  const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
+  const { columnCheckboxes } = useColumns(viewMode);
+
+  function toggleViewMode() {
+    setViewMode(viewMode === "GRAPH" ? "LIST" : "GRAPH");
+  }
+
+  function addCountry(name: string) {
+    // to implement
+  }
+
   return (
-    <div>
-      <AppTitle />
+    <div id="site-container">
+      {/* TO DO: Error modal*/}
+      <header id="site-header" className="p-small screen-small-p">
+        <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
+          <AppTitle />
+          <div className="flex-row-reverse screen-small-flex-row screen-small-align-center">
+            <ViewModeSwitch currentMode={viewMode} onClick={toggleViewMode} />
+            <SearchField selectedCountriesCodes={[]} onCountryAdd={addCountry} />
+          </div>
+        </div>
+        <CheckboxPanel checkboxes={columnCheckboxes} />
+      </header>
     </div>
   );
 }

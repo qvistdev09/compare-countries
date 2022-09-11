@@ -57,6 +57,7 @@ export default function SearchField({
     >
       <input
         id="search-field"
+        placeholder="Type to add country"
         type="text"
         autoComplete="off"
         value={value}
