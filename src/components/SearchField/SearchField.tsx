@@ -25,6 +25,11 @@ export default function SearchField({
     return () => document.body.removeEventListener("click", clickListener);
   }, []);
 
+  function handleInput(value: string) {
+    setValue(value);
+    generateSuggestions(value);
+  }
+
   function generateSuggestions(input: string) {
     if (!input) {
       return setSuggestions([]);
@@ -49,13 +54,9 @@ export default function SearchField({
   }
 
   return (
-    <div
-      onClick={() => generateSuggestions(value)}
-      ref={containerRef}
-      id="input-area"
-      className="grow m-right-small screen-small-m-right"
-    >
+    <div ref={containerRef} id="input-area" className="grow m-right-small screen-small-m-right">
       <input
+        onClick={() => generateSuggestions(value)}
         id="search-field"
         placeholder="Type to add country"
         type="text"
@@ -64,25 +65,26 @@ export default function SearchField({
         className={`country-search-field${suggestions.length > 0 ? " showing-suggestions" : ""}${
           connectionFailure ? " connection-fail" : ""
         }`}
-        onChange={(e) => {
-          setValue(e.target.value);
-          generateSuggestions(e.target.value);
-        }}
+        onChange={(e) => handleInput(e.target.value)}
       />
       <div
         id="suggestions-container"
         className={suggestions.length === 0 ? "hidden" : "flex-column"}
       >
-        {suggestions.slice(0, 4).map((suggestion) => (
-          <div
-            className="suggestion-div flex-row justify-start align-center"
-            key={suggestion}
-            onClick={() => onCountryAdd((countriesMap as Record<string, string>)[suggestion])}
-          >
-            <i className="fas fa-chevron-right suggestion-icon"></i>
-            <p>{boldReplace(value, suggestion)}</p>
-          </div>
-        ))}
+        {suggestions.length > 0 &&
+          suggestions.slice(0, 4).map((suggestion) => (
+            <div
+              className="suggestion-div flex-row justify-start align-center"
+              key={suggestion}
+              onClick={() => {
+                handleInput("");
+                onCountryAdd((countriesMap as Record<string, string>)[suggestion]);
+              }}
+            >
+              <i className="fas fa-chevron-right suggestion-icon"></i>
+              <p>{boldReplace(value, suggestion)}</p>
+            </div>
+          ))}
       </div>
     </div>
   );
