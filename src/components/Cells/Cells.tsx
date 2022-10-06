@@ -9,6 +9,51 @@ export function Flag({ country, columnPosition, isLastRow, isShaded }: CellProps
   );
 }
 
+export function Capital({ country, columnPosition, isLastRow, isShaded }: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <p>{country.capital}</p>
+    </div>
+  );
+}
+
+export function Population({ country, columnPosition, isLastRow, isShaded }: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <p>{formatNumber(country.population, "population")}</p>
+    </div>
+  );
+}
+
+export function Area({ country, columnPosition, isLastRow, isShaded }: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <p>{formatNumber(country.area, "area")}</p>
+    </div>
+  );
+}
+
+export function Demonym({ country, columnPosition, isLastRow, isShaded }: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <p>{country.demonym}</p>
+    </div>
+  );
+}
+
+export function Gini({ country, columnPosition, isLastRow, isShaded }: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <p>{formatNumber(country.area, "gini")}</p>
+    </div>
+  );
+}
+
 function getClassName(isLastRow: boolean, isShaded: boolean, columnPosition: string) {
   let position = columnPosition;
   if (isLastRow) {
