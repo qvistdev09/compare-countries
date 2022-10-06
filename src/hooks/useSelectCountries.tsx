@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getCountryByCode } from "../api";
+import { Country } from "../types";
 
 const cache = new Map<string, Country>();
 
@@ -28,14 +29,4 @@ export default function useSelectCountries() {
     removeCountryByCode,
     selectCountryByCode,
   };
-}
-
-export interface Country {
-  alpha2Code: string;
-  flag: string;
-  capital: string;
-  population: number;
-  area: number;
-  demonym: string;
-  gini: number;
 }

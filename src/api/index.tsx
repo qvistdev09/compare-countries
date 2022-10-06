@@ -1,4 +1,4 @@
-import { Country } from "../hooks/useSelectCountries";
+import { Country } from "../types";
 
 export function getCountryByCode(code: string): Promise<Country> {
   return fetch(`https://restcountries.com/v2/alpha/${code}`)
