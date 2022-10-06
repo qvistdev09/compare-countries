@@ -6,4 +6,5 @@ export interface Country {
   area: number;
   demonym: string;
   gini: number;
+  name: string;
 }

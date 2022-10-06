@@ -16,5 +16,6 @@ export function getCountryByCode(code: string): Promise<Country> {
       area: data.area as number,
       demonym: data.demonym as string,
       gini: data.gini as number,
+      name: data.name as string,
     }));
 }
