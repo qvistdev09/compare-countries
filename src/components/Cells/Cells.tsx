@@ -92,7 +92,7 @@ function formatNumber(value: number | undefined, type: "population" | "area" | "
   }
 }
 
-interface CellProps {
+export interface CellProps {
   country: Country;
   columnPosition: "left-end" | "middle" | "right-end";
   isLastRow: boolean;
