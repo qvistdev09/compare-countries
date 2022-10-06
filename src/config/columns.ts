@@ -1,4 +1,4 @@
-import * as Cells from "../components/Cells/Cells";
+import Cells from "../components/Cells";
 
 const columns: ColumnConfig[] = [
   {
