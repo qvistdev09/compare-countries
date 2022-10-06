@@ -27,7 +27,7 @@ const columns: ColumnConfig[] = [
   },
 ];
 
-interface ColumnConfig {
+export interface ColumnConfig {
   label: string;
   modes: Array<"LIST" | "GRAPH">;
   tooltip?: string;
