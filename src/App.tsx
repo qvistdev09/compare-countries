@@ -7,11 +7,14 @@ import SearchField from "./components/SearchField";
 import CheckboxPanel from "./components/CheckboxPanel";
 import useColumns from "./hooks/useColumns";
 import useSelectCountries from "./hooks/useSelectCountries";
+import useWatchSizeInRem from "./hooks/useWatchSize";
+import CountriesDesktopTable from "./components/CountriesDesktopTable";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
-  const { selectCountryByCode } = useSelectCountries();
+  const { selectCountryByCode, selectedCountries } = useSelectCountries();
   const { columnCheckboxes } = useColumns(viewMode);
+  const headerSize = useWatchSizeInRem("site-header", 10);
 
   function toggleViewMode() {
     setViewMode(viewMode === "GRAPH" ? "LIST" : "GRAPH");
@@ -30,6 +33,25 @@ function App() {
         </div>
         <CheckboxPanel checkboxes={columnCheckboxes} />
       </header>
+      <div
+        id="content-container"
+        className="flex-column"
+        style={{ paddingTop: headerSize + "rem" }}
+      >
+        <div
+          id="grid-wrapper"
+          className="p-left-small p-top-small p-right-small screen-small-p-left screen-small-p-top screen-small-p-right flex-column align-stretch grow"
+        >
+          <CountriesDesktopTable
+            activeColumns={columnCheckboxes
+              .filter((column) => column.checked)
+              .map((column) => column.label)}
+            selectedCountries={selectedCountries}
+            sortFunction={() => {}}
+            currentSort={{ column: "Name", direction: "ASC" }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
