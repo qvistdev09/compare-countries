@@ -1,3 +1,14 @@
+export function Name({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Name"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
 export function Flag({ position }: HeaderProps) {
   return <NonSortable label="Flag" position={position} />;
 }
