@@ -58,7 +58,7 @@ export function Gini({ country, columnPosition, isLastRow, isShaded }: CellProps
   const className = getClassName(isLastRow, isShaded, columnPosition);
   return (
     <div className={className}>
-      <p>{formatNumber(country.area, "gini")}</p>
+      <p>{formatNumber(country.gini, "gini")}</p>
     </div>
   );
 }
