@@ -1,8 +1,84 @@
-export function SortableHeader({ position, label, sortFunction, currentSort }: HeaderProps) {
+export function Flag({ position }: HeaderProps) {
+  return <NonSortable label="Flag" position={position} />;
+}
+
+export function Capital({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Capital"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
+export function Population({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Population"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
+export function Area({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Area"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
+export function Demonym({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Demonym"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
+export function Gini({ position, sortFunction, currentSort }: HeaderProps) {
+  return (
+    <Sortable
+      label="Gini"
+      position={position}
+      sortFunction={sortFunction}
+      currentSort={currentSort}
+    />
+  );
+}
+
+function NonSortable({ label, position }: Pick<GenericHeaderProps, "label" | "position">) {
+  const className = `grid-cell header-${position}`;
+  return (
+    <div className={className}>
+      <p className="table-header">{label}</p>
+    </div>
+  );
+}
+
+function Sortable({ label, position, sortFunction, currentSort }: GenericHeaderProps) {
   const className = `grid-cell header-${position}`;
   return (
     <div className={className}>
       <p className="m-right-small table-header">{label}</p>
+      <SortButtons label={label} sortFunction={sortFunction} currentSort={currentSort} />
+    </div>
+  );
+}
+
+function SortButtons({ sortFunction, currentSort, label }: SortProps) {
+  return (
+    <>
       <i
         onClick={() => sortFunction(label, "DESC")}
         className={
@@ -15,25 +91,21 @@ export function SortableHeader({ position, label, sortFunction, currentSort }: H
           "fas fa-chevron-down sort-icon" + (currentSort.column === label ? " active-sort" : "")
         }
       />
-    </div>
+    </>
   );
 }
 
-export function NonSortableHeader({
-  position,
-  label,
-}: Omit<HeaderProps, "sortFunction" | "currentSort">) {
-  const className = `grid-cell header-${position}`;
-  return (
-    <div className={className}>
-      <p className="table-header">{label}</p>
-    </div>
-  );
+interface SortProps {
+  label: string;
+  sortFunction: (column: string, direction: "ASC" | "DESC") => void;
+  currentSort: { column: string; direction: "ASC" | "DESC" };
 }
 
-interface HeaderProps {
+interface GenericHeaderProps {
   label: string;
   sortFunction: (column: string, direction: "ASC" | "DESC") => void;
   currentSort: { column: string; direction: "ASC" | "DESC" };
   position: "left-end" | "middle" | "right-end";
 }
+
+export type HeaderProps = Omit<GenericHeaderProps, "label">;
