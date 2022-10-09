@@ -53,6 +53,13 @@ const columns: ColumnConfig[] = [
     header: Headers.Gini,
     width: "1fr",
   },
+  {
+    label: "DeleteButton",
+    modes: ["LIST", "GRAPH"],
+    component: Cells.DeleteButton,
+    header: Headers.DeleteButton,
+    width: "auto",
+  },
 ];
 
 export interface ColumnConfig {

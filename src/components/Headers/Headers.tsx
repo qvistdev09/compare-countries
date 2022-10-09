@@ -68,6 +68,11 @@ export function Gini({ position, sortFunction, currentSort }: HeaderProps) {
   );
 }
 
+export function DeleteButton({ position }: HeaderProps) {
+  const className = `grid-cell header-${position}`;
+  return <div className={className}></div>;
+}
+
 function NonSortable({ label, position }: Pick<GenericHeaderProps, "label" | "position">) {
   const className = `grid-cell header-${position}`;
   return (

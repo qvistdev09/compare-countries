@@ -63,6 +63,23 @@ export function Gini({ country, columnPosition, isLastRow, isShaded }: CellProps
   );
 }
 
+export function DeleteButton({
+  country,
+  columnPosition,
+  isLastRow,
+  isShaded,
+  deleteCountryFunction,
+}: CellProps) {
+  const className = getClassName(isLastRow, isShaded, columnPosition);
+  return (
+    <div className={className}>
+      <button className="delete-button" onClick={() => deleteCountryFunction(country.alpha2Code)}>
+        <i className="fas fa-times delete-icon"></i>
+      </button>
+    </div>
+  );
+}
+
 function getClassName(isLastRow: boolean, isShaded: boolean, columnPosition: string) {
   let position = columnPosition;
   if (isLastRow) {
@@ -104,6 +121,7 @@ function formatNumber(value: number | undefined, type: "population" | "area" | "
 export interface CellProps {
   country: Country;
   columnPosition: "left-end" | "middle" | "right-end";
+  deleteCountryFunction: (id: string) => void;
   isLastRow: boolean;
   isShaded: boolean;
 }

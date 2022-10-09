@@ -12,7 +12,7 @@ import CountriesDesktopTable from "./components/CountriesDesktopTable";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
-  const { selectCountryByCode, selectedCountries } = useSelectCountries();
+  const { selectCountryByCode, selectedCountries, removeCountryByCode } = useSelectCountries();
   const { columnCheckboxes } = useColumns(viewMode);
   const headerSize = useWatchSizeInRem("site-header", 10);
 
@@ -49,6 +49,7 @@ function App() {
             selectedCountries={selectedCountries}
             sortFunction={() => {}}
             currentSort={{ column: "Name", direction: "ASC" }}
+            deleteFunction={removeCountryByCode}
           />
         </div>
       </div>

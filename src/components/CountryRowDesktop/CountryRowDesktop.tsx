@@ -1,7 +1,13 @@
 import { Country } from "../../types";
 import columns from "../../config/columns";
 
-export default function CountryRowDesktop({ country, activeColumns, isLastRow, isShaded }: Props) {
+export default function CountryRowDesktop({
+  country,
+  activeColumns,
+  isLastRow,
+  isShaded,
+  deleteFunction,
+}: Props) {
   const columnsToRender = columns.filter((column) => activeColumns.includes(column.label));
   const lastColumnIndex = columnsToRender.length - 1;
 
@@ -18,6 +24,7 @@ export default function CountryRowDesktop({ country, activeColumns, isLastRow, i
             isLastRow={isLastRow}
             isShaded={isShaded}
             columnPosition={columnPosition}
+            deleteCountryFunction={deleteFunction}
           />
         );
       })}
@@ -30,4 +37,5 @@ interface Props {
   activeColumns: string[];
   isLastRow: boolean;
   isShaded: boolean;
+  deleteFunction: (id: string) => void;
 }

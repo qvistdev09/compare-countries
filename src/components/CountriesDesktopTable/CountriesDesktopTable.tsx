@@ -8,6 +8,7 @@ export default function CountriesDesktopTable({
   sortFunction,
   currentSort,
   selectedCountries,
+  deleteFunction,
 }: Props) {
   const gridTemplateColumns = columns
     .filter((column) => activeColumns.includes(column.label))
@@ -28,6 +29,7 @@ export default function CountriesDesktopTable({
           activeColumns={activeColumns}
           isLastRow={index === selectedCountries.length - 1}
           isShaded={index % 2 === 0}
+          deleteFunction={deleteFunction}
         />
       ))}
     </div>
@@ -39,4 +41,5 @@ interface Props {
   sortFunction: (column: string, direction: "ASC" | "DESC") => void;
   currentSort: { column: string; direction: "ASC" | "DESC" };
   selectedCountries: Country[];
+  deleteFunction: (id: string) => void;
 }
