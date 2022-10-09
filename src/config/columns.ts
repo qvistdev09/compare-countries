@@ -8,6 +8,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Name,
     header: Headers.Name,
     width: "1fr",
+    canBeToggled: false,
   },
   {
     label: "Flag",
@@ -15,6 +16,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Flag,
     header: Headers.Flag,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "Capital",
@@ -22,6 +24,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Capital,
     header: Headers.Capital,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "Population",
@@ -29,6 +32,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Population,
     header: Headers.Population,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "Area",
@@ -36,6 +40,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Area,
     header: Headers.Area,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "Demonym",
@@ -43,6 +48,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Demonym,
     header: Headers.Demonym,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "Gini",
@@ -52,6 +58,7 @@ const columns: ColumnConfig[] = [
     component: Cells.Gini,
     header: Headers.Gini,
     width: "1fr",
+    canBeToggled: true,
   },
   {
     label: "DeleteButton",
@@ -59,6 +66,7 @@ const columns: ColumnConfig[] = [
     component: Cells.DeleteButton,
     header: Headers.DeleteButton,
     width: "auto",
+    canBeToggled: false,
   },
 ];
 
@@ -69,6 +77,7 @@ export interface ColumnConfig {
   component: (props: Cells.CellProps) => JSX.Element;
   header: (props: Headers.HeaderProps) => JSX.Element;
   width: string;
+  canBeToggled: boolean;
 }
 
 export default columns;

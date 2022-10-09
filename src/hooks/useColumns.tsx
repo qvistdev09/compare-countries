@@ -29,12 +29,15 @@ export default function useColumns(currentViewMode: "GRAPH" | "LIST") {
   }
 
   return {
-    columnCheckboxes: columns.map((column) => ({
-      label: column.label,
-      checked: columnIsChecked(column.label),
-      enabled: columnIsEnabled(column.label),
-      onClick: () => toggleColumn(column.label),
-      tooltip: column.tooltip,
-    })),
+    columnCheckboxes: columns
+      .filter((column) => column.canBeToggled)
+      .map((column) => ({
+        label: column.label,
+        checked: columnIsChecked(column.label),
+        enabled: columnIsEnabled(column.label),
+        onClick: () => toggleColumn(column.label),
+        tooltip: column.tooltip,
+      })),
+    checkedColumns,
   };
 }
