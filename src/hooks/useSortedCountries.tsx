@@ -13,9 +13,9 @@ export default function useSortedCountries(
     const valueA = (countryA as any)[currentProperty.toLowerCase()];
     const valueB = (countryB as any)[currentProperty.toLowerCase()];
     if (currentDirection === "ASC") {
-      return valueA < valueB ? 1 : -1;
+      return valueA < valueB ? -1 : 1;
     }
-    return valueA < valueB ? -1 : 1;
+    return valueA < valueB ? 1 : -1;
   });
 
   return {

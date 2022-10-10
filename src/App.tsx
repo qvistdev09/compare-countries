@@ -9,10 +9,16 @@ import useColumns from "./hooks/useColumns";
 import useSelectCountries from "./hooks/useSelectCountries";
 import useWatchSizeInRem from "./hooks/useWatchSize";
 import CountriesDesktopTable from "./components/CountriesDesktopTable";
+import useSortedCountries from "./hooks/useSortedCountries";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
   const { selectCountryByCode, selectedCountries, removeCountryByCode } = useSelectCountries();
+  const { sortedCountries, setSort, currentSort } = useSortedCountries(
+    "Name",
+    "ASC",
+    selectedCountries
+  );
   const { columnCheckboxes, checkedColumns } = useColumns(viewMode);
   const headerSize = useWatchSizeInRem("site-header", 10);
 
@@ -44,9 +50,9 @@ function App() {
         >
           <CountriesDesktopTable
             activeColumns={checkedColumns}
-            selectedCountries={selectedCountries}
-            sortFunction={() => {}}
-            currentSort={{ column: "Name", direction: "ASC" }}
+            selectedCountries={sortedCountries}
+            sortFunction={setSort}
+            currentSort={currentSort}
             deleteFunction={removeCountryByCode}
           />
         </div>

@@ -96,15 +96,17 @@ function SortButtons({ sortFunction, currentSort, label }: SortProps) {
   return (
     <>
       <i
-        onClick={() => sortFunction(label, "DESC")}
+        onClick={() => sortFunction(label, "ASC")}
         className={
-          "fas fa-chevron-up sort-icon" + (currentSort.column === label ? " active-sort" : "")
+          "fas fa-chevron-up sort-icon" +
+          (currentSort.column === label && currentSort.direction === "ASC" ? " active-sort" : "")
         }
       />
       <i
-        onClick={() => sortFunction(label, "ASC")}
+        onClick={() => sortFunction(label, "DESC")}
         className={
-          "fas fa-chevron-down sort-icon" + (currentSort.column === label ? " active-sort" : "")
+          "fas fa-chevron-down sort-icon" +
+          (currentSort.column === label && currentSort.direction === "DESC" ? " active-sort" : "")
         }
       />
     </>
