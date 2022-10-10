@@ -9,6 +9,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Name,
     width: "1fr",
     canBeToggled: false,
+    sortable: true,
   },
   {
     label: "Flag",
@@ -17,6 +18,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Flag,
     width: "1fr",
     canBeToggled: true,
+    sortable: false,
   },
   {
     label: "Capital",
@@ -25,6 +27,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Capital,
     width: "1fr",
     canBeToggled: true,
+    sortable: true,
   },
   {
     label: "Population",
@@ -33,6 +36,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Population,
     width: "1fr",
     canBeToggled: true,
+    sortable: true,
   },
   {
     label: "Area",
@@ -41,6 +45,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Area,
     width: "1fr",
     canBeToggled: true,
+    sortable: true,
   },
   {
     label: "Demonym",
@@ -49,6 +54,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Demonym,
     width: "1fr",
     canBeToggled: true,
+    sortable: true,
   },
   {
     label: "Gini",
@@ -59,6 +65,7 @@ const columns: ColumnConfig[] = [
     header: Headers.Gini,
     width: "1fr",
     canBeToggled: true,
+    sortable: true,
   },
   {
     label: "DeleteButton",
@@ -67,6 +74,7 @@ const columns: ColumnConfig[] = [
     header: Headers.DeleteButton,
     width: "auto",
     canBeToggled: false,
+    sortable: false,
   },
 ];
 
@@ -78,6 +86,7 @@ export interface ColumnConfig {
   header: (props: Headers.HeaderProps) => JSX.Element;
   width: string;
   canBeToggled: boolean;
+  sortable: boolean;
 }
 
 export default columns;
