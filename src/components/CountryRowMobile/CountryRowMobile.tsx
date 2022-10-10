@@ -19,7 +19,7 @@ export default function CountryRowMobile({ country, deleteAction }: Props) {
         </button>
       </div>
       {columns
-        .filter((column) => column.modes.includes("LIST"))
+        .filter((column) => column.renderInMobileList)
         .map((column, index, array) => (
           <Row
             key={column.label}
@@ -49,7 +49,6 @@ function Row({
       <div className={"MobileCountry-cell MobileCountry-left" + (isLast ? "-last" : "")}>
         <p className="MobileCountry-header">{header}</p>
       </div>
-      ,
       <div className={"MobileCountry-cell MobileCountry-right" + (isLast ? "-last" : "")}>
         <p>{typeof value === "string" ? value : formatValue(value, format as Format)}</p>
       </div>

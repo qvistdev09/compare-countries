@@ -10,6 +10,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: false,
     sortable: true,
+    renderInMobileList: true,
   },
   {
     label: "Flag",
@@ -19,6 +20,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: false,
+    renderInMobileList: false,
   },
   {
     label: "Capital",
@@ -28,6 +30,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: true,
+    renderInMobileList: true,
   },
   {
     label: "Population",
@@ -38,6 +41,7 @@ const columns: ColumnConfig[] = [
     canBeToggled: true,
     sortable: true,
     format: "population",
+    renderInMobileList: true,
   },
   {
     label: "Area",
@@ -48,6 +52,7 @@ const columns: ColumnConfig[] = [
     canBeToggled: true,
     sortable: true,
     format: "area",
+    renderInMobileList: true,
   },
   {
     label: "Demonym",
@@ -57,6 +62,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: true,
+    renderInMobileList: true,
   },
   {
     label: "Gini",
@@ -69,6 +75,7 @@ const columns: ColumnConfig[] = [
     canBeToggled: true,
     sortable: true,
     format: "gini",
+    renderInMobileList: true,
   },
   {
     label: "DeleteButton",
@@ -78,6 +85,7 @@ const columns: ColumnConfig[] = [
     width: "auto",
     canBeToggled: false,
     sortable: false,
+    renderInMobileList: false,
   },
 ];
 
@@ -93,6 +101,7 @@ export interface ColumnConfig {
   canBeToggled: boolean;
   sortable: boolean;
   format?: Format;
+  renderInMobileList: boolean;
 }
 
 export default columns;

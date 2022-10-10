@@ -18,21 +18,27 @@ export default function CountriesMobileHeader({ currentSort, sortFunction }: Pro
           </p>
           <div className="flex-row align-center">
             <i
-              onClick={() => sortFunction(currentSort.column, "ASC")}
+              onClick={() => {
+                sortFunction(currentSort.column, "ASC");
+                setShowDropdown(false);
+              }}
               key="sort-ascending-false"
               className={
                 "fas fa-chevron-up sort-icon" +
                 (currentSort.direction === "ASC" ? " active-sort" : "")
               }
-            ></i>
+            />
             <i
-              onClick={() => sortFunction(currentSort.column, "DESC")}
+              onClick={() => {
+                sortFunction(currentSort.column, "DESC");
+                setShowDropdown(false);
+              }}
               key="sort-ascending-true"
               className={
                 "fas fa-chevron-down sort-icon" +
                 (currentSort.direction === "DESC" ? " active-sort" : "")
               }
-            ></i>
+            />
           </div>
           <div
             className={"MobileDataHeader-sort-choices-container" + (showDropdown ? "" : " hide")}
@@ -43,7 +49,10 @@ export default function CountriesMobileHeader({ currentSort, sortFunction }: Pro
                 <p
                   key={column.label}
                   className="MobileDataHeader-sort-mode-choice"
-                  onClick={() => sortFunction(column.label, currentSort.direction)}
+                  onClick={() => {
+                    sortFunction(column.label, currentSort.direction);
+                    setShowDropdown(false);
+                  }}
                 >
                   {column.label}
                 </p>

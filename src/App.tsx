@@ -8,7 +8,7 @@ import CheckboxPanel from "./components/CheckboxPanel";
 import useColumns from "./hooks/useColumns";
 import useSelectCountries from "./hooks/useSelectCountries";
 import useWatchSizeInRem from "./hooks/useWatchSize";
-import CountriesDesktopTable from "./components/CountriesDesktopTable";
+import CountriesTable from "./components/CountriesTable";
 import useSortedCountries from "./hooks/useSortedCountries";
 import useMediaQuery from "./hooks/useMediaQuery";
 
@@ -31,7 +31,6 @@ function App() {
   return (
     <div id="site-container">
       {/* TO DO: Error modal*/}
-      {isMobile && <p>mobile</p>}
       <header id="site-header" className="p-small screen-small-p">
         <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
           <AppTitle />
@@ -51,12 +50,13 @@ function App() {
           id="grid-wrapper"
           className="p-left-small p-top-small p-right-small screen-small-p-left screen-small-p-top screen-small-p-right flex-column align-stretch grow"
         >
-          <CountriesDesktopTable
+          <CountriesTable
             activeColumns={checkedColumns}
             selectedCountries={sortedCountries}
             sortFunction={setSort}
             currentSort={currentSort}
             deleteFunction={removeCountryByCode}
+            isMobile={isMobile}
           />
         </div>
       </div>
