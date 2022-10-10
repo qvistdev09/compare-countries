@@ -10,6 +10,7 @@ import useSelectCountries from "./hooks/useSelectCountries";
 import useWatchSizeInRem from "./hooks/useWatchSize";
 import CountriesDesktopTable from "./components/CountriesDesktopTable";
 import useSortedCountries from "./hooks/useSortedCountries";
+import useMediaQuery from "./hooks/useMediaQuery";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
@@ -21,6 +22,7 @@ function App() {
   );
   const { columnCheckboxes, checkedColumns } = useColumns(viewMode);
   const headerSize = useWatchSizeInRem("site-header", 10);
+  const isMobile = useMediaQuery("(max-width: 599px)");
 
   function toggleViewMode() {
     setViewMode(viewMode === "GRAPH" ? "LIST" : "GRAPH");
@@ -29,6 +31,7 @@ function App() {
   return (
     <div id="site-container">
       {/* TO DO: Error modal*/}
+      {isMobile && <p>mobile</p>}
       <header id="site-header" className="p-small screen-small-p">
         <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
           <AppTitle />
