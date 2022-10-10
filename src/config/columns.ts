@@ -37,6 +37,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: true,
+    format: "population",
   },
   {
     label: "Area",
@@ -46,6 +47,7 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: true,
+    format: "area",
   },
   {
     label: "Demonym",
@@ -66,10 +68,11 @@ const columns: ColumnConfig[] = [
     width: "1fr",
     canBeToggled: true,
     sortable: true,
+    format: "gini",
   },
   {
     label: "DeleteButton",
-    modes: ["LIST", "GRAPH"],
+    modes: [],
     component: Cells.DeleteButton,
     header: Headers.DeleteButton,
     width: "auto",
@@ -77,6 +80,8 @@ const columns: ColumnConfig[] = [
     sortable: false,
   },
 ];
+
+export type Format = "population" | "area" | "gini";
 
 export interface ColumnConfig {
   label: string;
@@ -87,6 +92,7 @@ export interface ColumnConfig {
   width: string;
   canBeToggled: boolean;
   sortable: boolean;
+  format?: Format;
 }
 
 export default columns;

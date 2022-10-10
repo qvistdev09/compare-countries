@@ -1,4 +1,5 @@
 import { Country } from "../../types";
+import { formatValue } from "../../utils";
 
 export function Name({ country, columnPosition, isLastRow, isShaded }: CellProps) {
   const className = getClassName(isLastRow, isShaded, columnPosition);
@@ -31,7 +32,7 @@ export function Population({ country, columnPosition, isLastRow, isShaded }: Cel
   const className = getClassName(isLastRow, isShaded, columnPosition);
   return (
     <div className={className}>
-      <p>{formatNumber(country.population, "population")}</p>
+      <p>{formatValue(country.population, "population")}</p>
     </div>
   );
 }
@@ -40,7 +41,7 @@ export function Area({ country, columnPosition, isLastRow, isShaded }: CellProps
   const className = getClassName(isLastRow, isShaded, columnPosition);
   return (
     <div className={className}>
-      <p>{formatNumber(country.area, "area")}</p>
+      <p>{formatValue(country.area, "area")}</p>
     </div>
   );
 }
@@ -58,7 +59,7 @@ export function Gini({ country, columnPosition, isLastRow, isShaded }: CellProps
   const className = getClassName(isLastRow, isShaded, columnPosition);
   return (
     <div className={className}>
-      <p>{formatNumber(country.gini, "gini")}</p>
+      <p>{formatValue(country.gini, "gini")}</p>
     </div>
   );
 }
@@ -87,35 +88,6 @@ function getClassName(isLastRow: boolean, isShaded: boolean, columnPosition: str
   }
   const shadeStatus = isShaded ? "shaded-cell" : "non-shaded-cell";
   return `${shadeStatus} ${position} grid-cell`;
-}
-
-function formatNumber(value: number | undefined, type: "population" | "area" | "gini") {
-  if (typeof value !== "number") {
-    return "n/a";
-  }
-  switch (type) {
-    case "population":
-      if (value > 1000000) {
-        const toMillion = value / 1000000;
-        return Math.round(toMillion * 10) / 10 + " mil";
-      } else if (value > 10000) {
-        const toThousand = value / 1000;
-        return Math.round(toThousand * 10) / 10 + " k";
-      } else {
-        return value;
-      }
-    case "area":
-      return [
-        value.toLocaleString() + " km",
-        <span key="raised-span" className="raised">
-          2
-        </span>,
-      ];
-    case "gini":
-      return value + "%";
-    default:
-      return value;
-  }
 }
 
 export interface CellProps {
