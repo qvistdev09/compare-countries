@@ -43,6 +43,7 @@ const columns: ColumnConfig[] = [
     format: "population",
     renderInMobileList: true,
     graphColor: "#9beeff",
+    barRenderMode: "RELATIVE",
   },
   {
     label: "Area",
@@ -54,7 +55,8 @@ const columns: ColumnConfig[] = [
     sortable: true,
     format: "area",
     renderInMobileList: true,
-    graphColor: '#ffd98d',
+    graphColor: "#ffd98d",
+    barRenderMode: "RELATIVE",
   },
   {
     label: "Demonym",
@@ -78,7 +80,8 @@ const columns: ColumnConfig[] = [
     sortable: true,
     format: "gini",
     renderInMobileList: true,
-    graphColor: '#9cf89b',
+    graphColor: "#9cf89b",
+    barRenderMode: "ABSOLUTE",
   },
   {
     label: "DeleteButton",
@@ -106,6 +109,7 @@ export interface ColumnConfig {
   format?: Format;
   renderInMobileList: boolean;
   graphColor?: string;
+  barRenderMode?: "RELATIVE" | "ABSOLUTE";
 }
 
 export default columns;
