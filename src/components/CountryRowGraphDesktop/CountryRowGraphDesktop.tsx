@@ -61,7 +61,7 @@ function createBars(country: Country, activeColumns: ColumnConfig[], selectedCou
           <p className="bar-chart-label">
             {formatValue(
               (country as any)[column.label.toLowerCase()],
-              country.name.toLowerCase() as any
+              column.label.toLowerCase() as any
             )}
           </p>
         </div>
@@ -76,7 +76,7 @@ function createBars(country: Country, activeColumns: ColumnConfig[], selectedCou
         <p className="bar-chart-label">
           {formatValue(
             (country as any)[column.label.toLowerCase()],
-            country.name.toLowerCase() as any
+            column.label.toLowerCase() as any
           )}
         </p>
       </div>

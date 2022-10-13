@@ -11,6 +11,7 @@ import useWatchSizeInRem from "./hooks/useWatchSize";
 import CountriesTable from "./components/CountriesTable";
 import useSortedCountries from "./hooks/useSortedCountries";
 import useMediaQuery from "./hooks/useMediaQuery";
+import CountriesGraph from "./components/CountriesGraph";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
@@ -58,6 +59,15 @@ function App() {
               currentSort={currentSort}
               deleteFunction={removeCountryByCode}
               isMobile={isMobile}
+            />
+          )}
+          {viewMode === "GRAPH" && (
+            <CountriesGraph
+              activeColumns={checkedColumns}
+              selectedCountries={sortedCountries}
+              currentSort={currentSort}
+              deleteAction={removeCountryByCode}
+              sortAction={setSort}
             />
           )}
         </div>
