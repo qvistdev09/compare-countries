@@ -50,14 +50,16 @@ function App() {
           id="grid-wrapper"
           className="p-left-small p-top-small p-right-small screen-small-p-left screen-small-p-top screen-small-p-right flex-column align-stretch grow"
         >
-          <CountriesTable
-            activeColumns={checkedColumns}
-            selectedCountries={sortedCountries}
-            sortFunction={setSort}
-            currentSort={currentSort}
-            deleteFunction={removeCountryByCode}
-            isMobile={isMobile}
-          />
+          {viewMode === "LIST" && (
+            <CountriesTable
+              activeColumns={checkedColumns}
+              selectedCountries={sortedCountries}
+              sortFunction={setSort}
+              currentSort={currentSort}
+              deleteFunction={removeCountryByCode}
+              isMobile={isMobile}
+            />
+          )}
         </div>
       </div>
     </div>
