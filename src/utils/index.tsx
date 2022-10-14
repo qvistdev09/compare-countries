@@ -47,6 +47,7 @@ export function createGraphBars(
 
       return (
         <div
+          key={column.label}
           className="example-bar"
           style={{ width: width + "%", backgroundColor: column.graphColor }}
         >
@@ -63,6 +64,7 @@ export function createGraphBars(
     const width = value === undefined ? 0 : Math.round(Number.parseFloat(value));
     return (
       <div
+        key={column.label}
         className="example-bar"
         style={{ width: width + "%", backgroundColor: column.graphColor }}
       >

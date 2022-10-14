@@ -45,6 +45,7 @@ export default function CountriesGraph({
       {isMobile &&
         selectedCountries.map((country) => (
           <CountryRowGraphMobile
+            key={country.alpha2Code}
             country={country}
             deleteAction={deleteAction}
             activeColumns={activeColumns}

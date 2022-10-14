@@ -25,7 +25,7 @@ export default function CountriesTable({
       {isMobile && <CountriesMobileHeader sortFunction={sortFunction} currentSort={currentSort} />}
       {isMobile &&
         selectedCountries.map((country) => (
-          <CountryRowMobile country={country} deleteAction={deleteFunction} />
+          <CountryRowMobile key={country.alpha2Code} country={country} deleteAction={deleteFunction} />
         ))}
       {!isMobile && (
         <CountryRowHeadersDesktop
