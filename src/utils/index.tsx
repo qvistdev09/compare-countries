@@ -30,16 +30,20 @@ export function formatValue(value: number | undefined, type: "population" | "are
   }
 }
 
-export function createGraphBars(country: Country, activeColumns: ColumnConfig[], selectedCountries: Country[]) {
+export function createGraphBars(
+  country: Country,
+  activeColumns: ColumnConfig[],
+  selectedCountries: Country[]
+) {
   return activeColumns.map((column) => {
     if (column.barRenderMode === "RELATIVE") {
+      const value = (country as any)[column.label.toLowerCase()];
       const highest = selectedCountries
         .map((object) => Number.parseFloat((object as any)[column.label.toLowerCase()]))
         .reduce((prev, curr) => (curr > prev ? curr : prev));
 
-      const width = Math.round(
-        (Number.parseFloat((country as any)[column.label.toLowerCase()]) / highest) * 100
-      );
+      const width =
+        value === undefined ? 0 : Math.round((Number.parseFloat(value) / highest) * 100);
 
       return (
         <div
@@ -55,7 +59,8 @@ export function createGraphBars(country: Country, activeColumns: ColumnConfig[],
         </div>
       );
     }
-    const width = Math.round(Number.parseFloat((country as any)[column.label.toLowerCase()]));
+    const value = (country as any)[column.label.toLowerCase()];
+    const width = value === undefined ? 0 : Math.round(Number.parseFloat(value));
     return (
       <div
         className="example-bar"
