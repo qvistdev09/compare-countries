@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getCountryByCode } from '../api';
 import { Country } from '../types';
 import countriesMap from '../consts/countriesMap.json';
@@ -25,22 +25,26 @@ export default function useSelectCountries() {
     setSelectedCountries(selectedCountries.filter((country) => country.alpha2Code !== code));
   }
 
+  const initialized = useRef(false);
   useEffect(() => {
-    Promise.all(
-      getRandomCountries(10)
-        .map((name) => (countriesMap as any)[name])
-        .map((code) => getCountryByCode(code)),
-    )
-      .then((countries) => {
-        countries.forEach((country) => {
-          cache.set(country.alpha2Code, country);
+    if (!initialized.current) {
+      initialized.current = true;
+      Promise.all(
+        getRandomCountries(10)
+          .map((name) => (countriesMap as any)[name])
+          .map((code) => getCountryByCode(code)),
+      )
+        .then((countries) => {
+          countries.forEach((country) => {
+            cache.set(country.alpha2Code, country);
+          });
+          setSelectedCountries([...selectedCountries, ...countries]);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        setSelectedCountries([...selectedCountries, ...countries]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    }
+  }, [selectedCountries]);
 
   return {
     selectedCountries,
