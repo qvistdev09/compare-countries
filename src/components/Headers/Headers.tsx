@@ -53,20 +53,22 @@ function Sortable({ label, position, sortFunction, currentSort }: GenericHeaderP
 function SortButtons({ sortFunction, currentSort, label }: SortProps) {
   return (
     <>
-      <i
-        onClick={() => sortFunction(label, 'ASC')}
-        className={
-          'fas fa-chevron-up sort-icon' +
-          (currentSort.column === label && currentSort.direction === 'ASC' ? ' active-sort' : '')
-        }
-      />
-      <i
-        onClick={() => sortFunction(label, 'DESC')}
-        className={
-          'fas fa-chevron-down sort-icon' +
-          (currentSort.column === label && currentSort.direction === 'DESC' ? ' active-sort' : '')
-        }
-      />
+      <button onClick={() => sortFunction(label, 'ASC')}>
+        <i
+          className={
+            'fas fa-chevron-up sort-icon' +
+            (currentSort.column === label && currentSort.direction === 'ASC' ? ' active-sort' : '')
+          }
+        />
+      </button>
+      <button onClick={() => sortFunction(label, 'DESC')}>
+        <i
+          className={
+            'fas fa-chevron-down sort-icon' +
+            (currentSort.column === label && currentSort.direction === 'DESC' ? ' active-sort' : '')
+          }
+        />
+      </button>
     </>
   );
 }

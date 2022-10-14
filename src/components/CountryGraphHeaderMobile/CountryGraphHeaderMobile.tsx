@@ -12,31 +12,33 @@ export default function CountryGraphHeaderMobile({ sortAction, currentSort, togg
               'MobileGraphModeHeader-grid-row align-center' + (index === array.length - 1 ? '' : ' m-bottom-small')
             }
           >
-            <div
+            <button
               className="MobileGraphModeHeader-square m-right-small"
               style={{ backgroundColor: column.graphColor }}
               onClick={() => toggleColumn(column.label)}
             >
               {activeColumns.includes(column.label) && <i className="fas fa-check"></i>}
-            </div>
+            </button>
             <p className="MobileGraphModeHeader-sort-label">{column.label}</p>
             <div className="flex-row align-center">
-              <i
-                onClick={() => sortAction(column.label, 'ASC')}
-                key="sort-ascending-false"
-                className={
-                  'fas fa-chevron-up sort-icon' +
-                  (currentSort.column === column.label && currentSort.direction === 'ASC' ? ' active-sort' : '')
-                }
-              />
-              <i
-                onClick={() => sortAction(column.label, 'DESC')}
-                key="sort-ascending-true"
-                className={
-                  'fas fa-chevron-down sort-icon' +
-                  (currentSort.column === column.label && currentSort.direction === 'DESC' ? ' active-sort' : '')
-                }
-              />
+              <button onClick={() => sortAction(column.label, 'ASC')}>
+                <i
+                  key="sort-ascending-false"
+                  className={
+                    'fas fa-chevron-up sort-icon' +
+                    (currentSort.column === column.label && currentSort.direction === 'ASC' ? ' active-sort' : '')
+                  }
+                />
+              </button>
+              <button onClick={() => sortAction(column.label, 'DESC')}>
+                <i
+                  key="sort-ascending-true"
+                  className={
+                    'fas fa-chevron-down sort-icon' +
+                    (currentSort.column === column.label && currentSort.direction === 'DESC' ? ' active-sort' : '')
+                  }
+                />
+              </button>
             </div>
           </div>
         ))}

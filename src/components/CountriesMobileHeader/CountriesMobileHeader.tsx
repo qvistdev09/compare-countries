@@ -10,41 +10,47 @@ export default function CountriesMobileHeader({ currentSort, sortFunction }: Pro
       </div>
       <div key="mobile-header-right" className="MobileDataHeader-cell MobileDataHeader-right">
         <div className="MobileDataHeader-sort-container flex-row align-center justify-between">
-          <p className="MobileDataHeader-sort-mode grow" onClick={() => setShowDropdown(!showDropdown)}>
-            {currentSort.column}
-          </p>
+          <button className="grow" onClick={() => setShowDropdown(!showDropdown)}>
+            <p className="MobileDataHeader-sort-mode">{currentSort.column}</p>
+          </button>
           <div className="flex-row align-center">
-            <i
+            <button
               onClick={() => {
                 sortFunction(currentSort.column, 'ASC');
                 setShowDropdown(false);
               }}
-              key="sort-ascending-false"
-              className={'fas fa-chevron-up sort-icon' + (currentSort.direction === 'ASC' ? ' active-sort' : '')}
-            />
-            <i
+            >
+              <i
+                key="sort-ascending-false"
+                className={'fas fa-chevron-up sort-icon' + (currentSort.direction === 'ASC' ? ' active-sort' : '')}
+              />
+            </button>
+            <button
               onClick={() => {
                 sortFunction(currentSort.column, 'DESC');
                 setShowDropdown(false);
               }}
-              key="sort-ascending-true"
-              className={'fas fa-chevron-down sort-icon' + (currentSort.direction === 'DESC' ? ' active-sort' : '')}
-            />
+            >
+              <i
+                key="sort-ascending-true"
+                className={'fas fa-chevron-down sort-icon' + (currentSort.direction === 'DESC' ? ' active-sort' : '')}
+              />
+            </button>
           </div>
           <div className={'MobileDataHeader-sort-choices-container' + (showDropdown ? '' : ' hide')}>
             {columns
               .filter((column) => column.sortable)
               .map((column) => (
-                <p
-                  key={column.label}
+                <button
                   className="MobileDataHeader-sort-mode-choice"
+                  key={column.label}
                   onClick={() => {
                     sortFunction(column.label, currentSort.direction);
                     setShowDropdown(false);
                   }}
                 >
-                  {column.label}
-                </p>
+                  <p>{column.label}</p>
+                </button>
               ))}
           </div>
         </div>

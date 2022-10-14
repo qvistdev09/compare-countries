@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getCountryByCode } from '../api';
 import { Country } from '../types';
 import countriesMap from '../consts/countriesMap.json';
@@ -9,7 +9,7 @@ export default function useSelectCountries() {
   const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
 
   async function selectCountryByCode(code: string) {
-    if (!!selectedCountries.find((country) => country.alpha2Code === code)) {
+    if (!selectedCountries.find((country) => country.alpha2Code === code)) {
       return;
     }
     const cached = cache.get(code);

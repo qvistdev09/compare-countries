@@ -65,7 +65,7 @@ export default function SearchField({ onCountryAdd, selectedCountriesCodes, conn
       <div id="suggestions-container" className={suggestions.length === 0 ? 'hidden' : 'flex-column'}>
         {suggestions.length > 0 &&
           suggestions.slice(0, 4).map((suggestion) => (
-            <div
+            <button
               className="suggestion-div flex-row justify-start align-center"
               key={suggestion}
               onClick={() => {
@@ -75,7 +75,7 @@ export default function SearchField({ onCountryAdd, selectedCountriesCodes, conn
             >
               <i className="fas fa-chevron-right suggestion-icon"></i>
               <p>{boldReplace(value, suggestion)}</p>
-            </div>
+            </button>
           ))}
       </div>
     </div>
