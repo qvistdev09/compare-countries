@@ -1,3 +1,7 @@
+## History
+* Originally written in 2020 using React 16 (via create-react-app) and class based components
+* Refactored in 2022, using functional components, typescript, hooks, React 18 and Vite
+
 ## What's this?
 
 This is a graphical interface I created for viewing information from the [REST Countries API](https://restcountries.eu/).
