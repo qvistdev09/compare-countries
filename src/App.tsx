@@ -12,6 +12,7 @@ import CountriesTable from "./components/CountriesTable";
 import useSortedCountries from "./hooks/useSortedCountries";
 import useMediaQuery from "./hooks/useMediaQuery";
 import CountriesGraph from "./components/CountriesGraph";
+import Footer from "./components/Footer";
 
 function App() {
   const [viewMode, setViewMode] = useState<"LIST" | "GRAPH">("LIST");
@@ -72,6 +73,8 @@ function App() {
               toggleColumn={toggleColumn}
             />
           )}
+          <div className="grow" />
+          <Footer />
         </div>
       </div>
     </div>
