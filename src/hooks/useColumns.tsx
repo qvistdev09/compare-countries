@@ -39,5 +39,11 @@ export default function useColumns(currentViewMode: "GRAPH" | "LIST") {
         tooltip: column.tooltip,
       })),
     checkedColumns,
+    toggleColumn: (label: string) =>
+      setCheckedColumns(
+        checkedColumns.includes(label)
+          ? checkedColumns.filter((prevLabel) => prevLabel !== label)
+          : [...checkedColumns, label]
+      ),
   };
 }

@@ -1,6 +1,8 @@
 import { Country } from "../../types";
 import CountryGraphHeader from "../CountryGraphHeader";
+import CountryGraphHeaderMobile from "../CountryGraphHeaderMobile";
 import CountryRowGraphDesktop from "../CountryRowGraphDesktop";
+import CountryRowGraphMobile from "../CountryRowGraphMobile";
 
 export default function CountriesGraph({
   sortAction,
@@ -8,24 +10,47 @@ export default function CountriesGraph({
   activeColumns,
   selectedCountries,
   deleteAction,
+  isMobile,
+  toggleColumn,
 }: Props) {
   return (
-    <div id="graph-grid">
-      <CountryGraphHeader
-        sortAction={sortAction}
-        currentSort={currentSort}
-        activeColumns={activeColumns}
-      />
-      {selectedCountries.map((country, index, array) => (
-        <CountryRowGraphDesktop
-          evenRow={index % 2 === 0}
-          isLastRow={index === array.length - 1}
-          deleteAction={deleteAction}
-          country={country}
-          selectedCountries={selectedCountries}
+    <div id={isMobile ? "graph-grid-mobile" : "graph-grid"}>
+      {!isMobile && (
+        <CountryGraphHeader
+          sortAction={sortAction}
+          currentSort={currentSort}
           activeColumns={activeColumns}
         />
-      ))}
+      )}
+      {!isMobile &&
+        selectedCountries.map((country, index, array) => (
+          <CountryRowGraphDesktop
+            key={country.alpha2Code}
+            evenRow={index % 2 === 0}
+            isLastRow={index === array.length - 1}
+            deleteAction={deleteAction}
+            country={country}
+            selectedCountries={selectedCountries}
+            activeColumns={activeColumns}
+          />
+        ))}
+      {isMobile && (
+        <CountryGraphHeaderMobile
+          sortAction={sortAction}
+          currentSort={currentSort}
+          toggleColumn={toggleColumn}
+          activeColumns={activeColumns}
+        />
+      )}
+      {isMobile &&
+        selectedCountries.map((country) => (
+          <CountryRowGraphMobile
+            country={country}
+            deleteAction={deleteAction}
+            activeColumns={activeColumns}
+            selectedCountries={selectedCountries}
+          />
+        ))}
     </div>
   );
 }
@@ -36,4 +61,6 @@ interface Props {
   activeColumns: string[];
   selectedCountries: Country[];
   deleteAction: (code: string) => void;
+  isMobile: boolean;
+  toggleColumn: (label: string) => void;
 }

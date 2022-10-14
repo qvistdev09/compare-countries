@@ -21,7 +21,7 @@ function App() {
     "ASC",
     selectedCountries
   );
-  const { columnCheckboxes, checkedColumns } = useColumns(viewMode);
+  const { columnCheckboxes, checkedColumns, toggleColumn } = useColumns(viewMode);
   const headerSize = useWatchSizeInRem("site-header", 10);
   const isMobile = useMediaQuery("(max-width: 599px)");
 
@@ -68,6 +68,8 @@ function App() {
               currentSort={currentSort}
               deleteAction={removeCountryByCode}
               sortAction={setSort}
+              isMobile={isMobile}
+              toggleColumn={toggleColumn}
             />
           )}
         </div>
