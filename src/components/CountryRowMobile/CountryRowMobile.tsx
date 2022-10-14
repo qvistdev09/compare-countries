@@ -1,16 +1,12 @@
-import { Country } from "../../types";
-import columns, { Format } from "../../config/columns";
-import { formatValue } from "../../utils";
+import { Country } from '../../types';
+import columns, { Format } from '../../config/columns';
+import { formatValue } from '../../utils';
 
 export default function CountryRowMobile({ country, deleteAction }: Props) {
   return (
     <>
       <div className="MobileCountry-cell MobileCountry-header-left">
-        <img
-          src={country.flag}
-          alt={"The flag of " + country.name}
-          className="MobileCountry-flag"
-        />
+        <img src={country.flag} alt={'The flag of ' + country.name} className="MobileCountry-flag" />
       </div>
       <div className="MobileCountry-cell MobileCountry-header-right">
         <p>{country.name}</p>
@@ -33,24 +29,14 @@ export default function CountryRowMobile({ country, deleteAction }: Props) {
   );
 }
 
-function Row({
-  header,
-  value,
-  isLast,
-  format,
-}: {
-  header: string;
-  value: any;
-  isLast: boolean;
-  format?: Format;
-}) {
+function Row({ header, value, isLast, format }: { header: string; value: any; isLast: boolean; format?: Format }) {
   return (
     <>
-      <div className={"MobileCountry-cell MobileCountry-left" + (isLast ? "-last" : "")}>
+      <div className={'MobileCountry-cell MobileCountry-left' + (isLast ? '-last' : '')}>
         <p className="MobileCountry-header">{header}</p>
       </div>
-      <div className={"MobileCountry-cell MobileCountry-right" + (isLast ? "-last" : "")}>
-        <p>{typeof value === "string" ? value : formatValue(value, format as Format)}</p>
+      <div className={'MobileCountry-cell MobileCountry-right' + (isLast ? '-last' : '')}>
+        <p>{typeof value === 'string' ? value : formatValue(value, format as Format)}</p>
       </div>
     </>
   );

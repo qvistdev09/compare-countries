@@ -1,3 +1,3 @@
-import CountryRowGraphMobile from "./CountryRowGraphMobile";
+import CountryRowGraphMobile from './CountryRowGraphMobile';
 
 export default CountryRowGraphMobile;

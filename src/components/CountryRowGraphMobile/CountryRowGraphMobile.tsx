@@ -1,24 +1,15 @@
-import { Country } from "../../types";
-import { createGraphBars } from "../../utils";
-import columns from "../../config/columns";
+import { Country } from '../../types';
+import { createGraphBars } from '../../utils';
+import columns from '../../config/columns';
 
-export default function CountryRowGraphMobile({
-  country,
-  deleteAction,
-  activeColumns,
-  selectedCountries,
-}: Props) {
+export default function CountryRowGraphMobile({ country, deleteAction, activeColumns, selectedCountries }: Props) {
   const activeGraphColumns = columns.filter(
-    (column) => column.modes.includes("GRAPH") && activeColumns.includes(column.label)
+    (column) => column.modes.includes('GRAPH') && activeColumns.includes(column.label),
   );
   return (
     <>
       <div className="MobileGraphModeCountry-cell MobileGraphModeCountry-upper-left">
-        <img
-          src={country.flag}
-          alt={"The flag of " + country.name}
-          className="MobileCountry-flag"
-        />
+        <img src={country.flag} alt={'The flag of ' + country.name} className="MobileCountry-flag" />
       </div>
       <div className="MobileGraphModeCountry-name-cell MobileGraphModeCountry-upper-right">
         <p>{country.name}</p>

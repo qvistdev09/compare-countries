@@ -1,3 +1,3 @@
-import CountriesDesktopTable from "./CountriesTable";
+import CountriesDesktopTable from './CountriesTable';
 
 export default CountriesDesktopTable;

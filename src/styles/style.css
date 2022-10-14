@@ -1,5 +1,5 @@
 * {
-  font-family: "Sora", sans-serif;
+  font-family: 'Sora', sans-serif;
   transition: opacity 0.2s, color 0.2s, background-color 0.2s;
 }
 
@@ -27,7 +27,7 @@ i.h1-icon {
 }
 
 h1 {
-  font-family: "Fredoka One", cursive;
+  font-family: 'Fredoka One', cursive;
   font-weight: 400;
   font-size: 1.1rem;
   letter-spacing: 0.09rem;
@@ -295,14 +295,14 @@ img {
 }
 
 .table-header {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   font-weight: 400;
 }
 
 .table-header-graph {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   color: rgba(0, 0, 0, 0.534);
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -555,7 +555,7 @@ button:focus {
 }
 
 .MobileCountry-header {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   font-weight: 400;
@@ -588,7 +588,7 @@ button:focus {
 }
 
 .MobileDataHeader-sort-mode {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   font-weight: 400;
@@ -622,7 +622,7 @@ button:focus {
 }
 
 .MobileDataHeader-sort-mode-choice {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   font-weight: 400;
@@ -684,7 +684,7 @@ button:focus {
 }
 
 .MobileGraphModeHeader-sort-label {
-  font-family: "Varela Round";
+  font-family: 'Varela Round';
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   font-weight: 400;

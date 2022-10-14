@@ -1,5 +1,5 @@
-import { useState } from "react";
-import columns from "../../config/columns";
+import { useState } from 'react';
+import columns from '../../config/columns';
 
 export default function CountriesMobileHeader({ currentSort, sortFunction }: Props) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -10,39 +10,28 @@ export default function CountriesMobileHeader({ currentSort, sortFunction }: Pro
       </div>
       <div key="mobile-header-right" className="MobileDataHeader-cell MobileDataHeader-right">
         <div className="MobileDataHeader-sort-container flex-row align-center justify-between">
-          <p
-            className="MobileDataHeader-sort-mode grow"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
+          <p className="MobileDataHeader-sort-mode grow" onClick={() => setShowDropdown(!showDropdown)}>
             {currentSort.column}
           </p>
           <div className="flex-row align-center">
             <i
               onClick={() => {
-                sortFunction(currentSort.column, "ASC");
+                sortFunction(currentSort.column, 'ASC');
                 setShowDropdown(false);
               }}
               key="sort-ascending-false"
-              className={
-                "fas fa-chevron-up sort-icon" +
-                (currentSort.direction === "ASC" ? " active-sort" : "")
-              }
+              className={'fas fa-chevron-up sort-icon' + (currentSort.direction === 'ASC' ? ' active-sort' : '')}
             />
             <i
               onClick={() => {
-                sortFunction(currentSort.column, "DESC");
+                sortFunction(currentSort.column, 'DESC');
                 setShowDropdown(false);
               }}
               key="sort-ascending-true"
-              className={
-                "fas fa-chevron-down sort-icon" +
-                (currentSort.direction === "DESC" ? " active-sort" : "")
-              }
+              className={'fas fa-chevron-down sort-icon' + (currentSort.direction === 'DESC' ? ' active-sort' : '')}
             />
           </div>
-          <div
-            className={"MobileDataHeader-sort-choices-container" + (showDropdown ? "" : " hide")}
-          >
+          <div className={'MobileDataHeader-sort-choices-container' + (showDropdown ? '' : ' hide')}>
             {columns
               .filter((column) => column.sortable)
               .map((column) => (
@@ -65,9 +54,9 @@ export default function CountriesMobileHeader({ currentSort, sortFunction }: Pro
 }
 
 interface Props {
-  sortFunction: (label: string, direction: "ASC" | "DESC") => void;
+  sortFunction: (label: string, direction: 'ASC' | 'DESC') => void;
   currentSort: {
     column: string;
-    direction: "ASC" | "DESC";
+    direction: 'ASC' | 'DESC';
   };
 }

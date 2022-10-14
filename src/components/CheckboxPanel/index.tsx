@@ -1,3 +1,3 @@
-import CheckboxPanel from "./CheckboxPanel";
+import CheckboxPanel from './CheckboxPanel';
 
 export default CheckboxPanel;

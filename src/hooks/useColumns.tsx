@@ -1,10 +1,8 @@
-import { useState } from "react";
-import columns from "../config/columns";
+import { useState } from 'react';
+import columns from '../config/columns';
 
-export default function useColumns(currentViewMode: "GRAPH" | "LIST") {
-  const [checkedColumns, setCheckedColumns] = useState<string[]>(
-    columns.map((column) => column.label)
-  );
+export default function useColumns(currentViewMode: 'GRAPH' | 'LIST') {
+  const [checkedColumns, setCheckedColumns] = useState<string[]>(columns.map((column) => column.label));
 
   function getColumnConfig(label: string) {
     return columns.find((column) => column.label === label);
@@ -43,7 +41,7 @@ export default function useColumns(currentViewMode: "GRAPH" | "LIST") {
       setCheckedColumns(
         checkedColumns.includes(label)
           ? checkedColumns.filter((prevLabel) => prevLabel !== label)
-          : [...checkedColumns, label]
+          : [...checkedColumns, label],
       ),
   };
 }

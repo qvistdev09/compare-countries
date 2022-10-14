@@ -1,3 +1,3 @@
-import CountriesMobileHeader from "./CountriesMobileHeader";
+import CountriesMobileHeader from './CountriesMobileHeader';
 
 export default CountriesMobileHeader;

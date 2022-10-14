@@ -1,3 +1,3 @@
-import CountryRowGraphDesktop from "./CountryRowGraphDesktop";
+import CountryRowGraphDesktop from './CountryRowGraphDesktop';
 
 export default CountryRowGraphDesktop;

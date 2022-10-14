@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { getCountryByCode } from "../api";
-import { Country } from "../types";
-import countriesMap from "../consts/countriesMap.json";
+import { useEffect, useRef, useState } from 'react';
+import { getCountryByCode } from '../api';
+import { Country } from '../types';
+import countriesMap from '../consts/countriesMap.json';
 
 const cache = new Map<string, Country>();
 
@@ -29,7 +29,7 @@ export default function useSelectCountries() {
     Promise.all(
       getRandomCountries(10)
         .map((name) => (countriesMap as any)[name])
-        .map((code) => getCountryByCode(code))
+        .map((code) => getCountryByCode(code)),
     )
       .then((countries) => {
         countries.forEach((country) => {

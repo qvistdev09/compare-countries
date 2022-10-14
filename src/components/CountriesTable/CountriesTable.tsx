@@ -1,9 +1,9 @@
-import columns from "../../config/columns";
-import { Country } from "../../types";
-import CountriesMobileHeader from "../CountriesMobileHeader";
-import CountryRowDesktop from "../CountryRowDesktop";
-import CountryRowHeadersDesktop from "../CountryRowHeadersDesktop";
-import CountryRowMobile from "../CountryRowMobile";
+import columns from '../../config/columns';
+import { Country } from '../../types';
+import CountriesMobileHeader from '../CountriesMobileHeader';
+import CountryRowDesktop from '../CountryRowDesktop';
+import CountryRowHeadersDesktop from '../CountryRowHeadersDesktop';
+import CountryRowMobile from '../CountryRowMobile';
 
 export default function CountriesTable({
   activeColumns,
@@ -14,11 +14,11 @@ export default function CountriesTable({
   isMobile,
 }: Props) {
   const gridTemplateColumns = isMobile
-    ? "auto 1fr"
+    ? 'auto 1fr'
     : columns
         .filter((column) => activeColumns.includes(column.label))
         .map((column) => column.width)
-        .join(" ");
+        .join(' ');
 
   return (
     <div id="data-grid" style={{ gridTemplateColumns }}>
@@ -28,11 +28,7 @@ export default function CountriesTable({
           <CountryRowMobile key={country.alpha2Code} country={country} deleteAction={deleteFunction} />
         ))}
       {!isMobile && (
-        <CountryRowHeadersDesktop
-          activeColumns={activeColumns}
-          sortFunction={sortFunction}
-          currentSort={currentSort}
-        />
+        <CountryRowHeadersDesktop activeColumns={activeColumns} sortFunction={sortFunction} currentSort={currentSort} />
       )}
       {!isMobile &&
         selectedCountries.map((country, index) => (
@@ -51,8 +47,8 @@ export default function CountriesTable({
 
 interface Props {
   activeColumns: string[];
-  sortFunction: (column: string, direction: "ASC" | "DESC") => void;
-  currentSort: { column: string; direction: "ASC" | "DESC" };
+  sortFunction: (column: string, direction: 'ASC' | 'DESC') => void;
+  currentSort: { column: string; direction: 'ASC' | 'DESC' };
   selectedCountries: Country[];
   deleteFunction: (id: string) => void;
   isMobile: boolean;

@@ -1,3 +1,3 @@
-import CountriesGraph from "./CountriesGraph";
+import CountriesGraph from './CountriesGraph';
 
 export default CountriesGraph;

@@ -1,3 +1,3 @@
-import * as Cells from "./Cells";
+import * as Cells from './Cells';
 
 export default Cells;

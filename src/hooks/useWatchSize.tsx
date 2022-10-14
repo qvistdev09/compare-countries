@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useWatchSizeInRem(elementId: string, defaultSize: number) {
   const [size, setSize] = useState(defaultSize);
@@ -10,8 +10,8 @@ export default function useWatchSizeInRem(elementId: string, defaultSize: number
       setSize(htmlElement ? htmlElement.offsetHeight / rem : defaultSize);
     }
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [elementId, defaultSize]);
 
   return size;

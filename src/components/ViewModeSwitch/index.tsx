@@ -1,3 +1,3 @@
-import ViewModeSwitch from "./ViewModeSwitch";
+import ViewModeSwitch from './ViewModeSwitch';
 
 export default ViewModeSwitch;

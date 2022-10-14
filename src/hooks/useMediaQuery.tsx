@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -11,9 +11,9 @@ export default function useMediaQuery(query: string) {
     function callback(e: MediaQueryListEvent) {
       setMatches(e.matches);
     }
-    mediaQuery.addEventListener("change", callback);
+    mediaQuery.addEventListener('change', callback);
     return () => {
-      mediaQuery.removeEventListener("change", callback);
+      mediaQuery.removeEventListener('change', callback);
     };
   }, []);
 

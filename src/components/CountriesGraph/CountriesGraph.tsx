@@ -1,8 +1,8 @@
-import { Country } from "../../types";
-import CountryGraphHeader from "../CountryGraphHeader";
-import CountryGraphHeaderMobile from "../CountryGraphHeaderMobile";
-import CountryRowGraphDesktop from "../CountryRowGraphDesktop";
-import CountryRowGraphMobile from "../CountryRowGraphMobile";
+import { Country } from '../../types';
+import CountryGraphHeader from '../CountryGraphHeader';
+import CountryGraphHeaderMobile from '../CountryGraphHeaderMobile';
+import CountryRowGraphDesktop from '../CountryRowGraphDesktop';
+import CountryRowGraphMobile from '../CountryRowGraphMobile';
 
 export default function CountriesGraph({
   sortAction,
@@ -14,13 +14,9 @@ export default function CountriesGraph({
   toggleColumn,
 }: Props) {
   return (
-    <div id={isMobile ? "graph-grid-mobile" : "graph-grid"}>
+    <div id={isMobile ? 'graph-grid-mobile' : 'graph-grid'}>
       {!isMobile && (
-        <CountryGraphHeader
-          sortAction={sortAction}
-          currentSort={currentSort}
-          activeColumns={activeColumns}
-        />
+        <CountryGraphHeader sortAction={sortAction} currentSort={currentSort} activeColumns={activeColumns} />
       )}
       {!isMobile &&
         selectedCountries.map((country, index, array) => (
@@ -57,8 +53,8 @@ export default function CountriesGraph({
 }
 
 interface Props {
-  sortAction: (column: string, direction: "ASC" | "DESC") => void;
-  currentSort: { column: string; direction: "ASC" | "DESC" };
+  sortAction: (column: string, direction: 'ASC' | 'DESC') => void;
+  currentSort: { column: string; direction: 'ASC' | 'DESC' };
   activeColumns: string[];
   selectedCountries: Country[];
   deleteAction: (code: string) => void;

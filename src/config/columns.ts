@@ -1,105 +1,105 @@
-import Cells from "../components/Cells";
-import Headers from "../components/Headers";
+import Cells from '../components/Cells';
+import Headers from '../components/Headers';
 
 const columns: ColumnConfig[] = [
   {
-    label: "Name",
-    modes: ["LIST"],
+    label: 'Name',
+    modes: ['LIST'],
     component: Cells.Name,
     header: Headers.Name,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: false,
     sortable: true,
     renderInMobileList: true,
   },
   {
-    label: "Flag",
-    modes: ["LIST"],
+    label: 'Flag',
+    modes: ['LIST'],
     component: Cells.Flag,
     header: Headers.Flag,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: false,
     renderInMobileList: false,
   },
   {
-    label: "Capital",
-    modes: ["LIST"],
+    label: 'Capital',
+    modes: ['LIST'],
     component: Cells.Capital,
     header: Headers.Capital,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: true,
     renderInMobileList: true,
   },
   {
-    label: "Population",
-    modes: ["LIST", "GRAPH"],
+    label: 'Population',
+    modes: ['LIST', 'GRAPH'],
     component: Cells.Population,
     header: Headers.Population,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: true,
-    format: "population",
+    format: 'population',
     renderInMobileList: true,
-    graphColor: "#9beeff",
-    barRenderMode: "RELATIVE",
+    graphColor: '#9beeff',
+    barRenderMode: 'RELATIVE',
   },
   {
-    label: "Area",
-    modes: ["LIST", "GRAPH"],
+    label: 'Area',
+    modes: ['LIST', 'GRAPH'],
     component: Cells.Area,
     header: Headers.Area,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: true,
-    format: "area",
+    format: 'area',
     renderInMobileList: true,
-    graphColor: "#ffd98d",
-    barRenderMode: "RELATIVE",
+    graphColor: '#ffd98d',
+    barRenderMode: 'RELATIVE',
   },
   {
-    label: "Demonym",
-    modes: ["LIST"],
+    label: 'Demonym',
+    modes: ['LIST'],
     component: Cells.Demonym,
     header: Headers.Demonym,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: true,
     renderInMobileList: true,
   },
   {
-    label: "Gini",
-    modes: ["LIST", "GRAPH"],
+    label: 'Gini',
+    modes: ['LIST', 'GRAPH'],
     tooltip:
-      "A measure of inequality of income or wealth, where 100% represents complete inequality and 0% complete equality.",
+      'A measure of inequality of income or wealth, where 100% represents complete inequality and 0% complete equality.',
     component: Cells.Gini,
     header: Headers.Gini,
-    width: "1fr",
+    width: '1fr',
     canBeToggled: true,
     sortable: true,
-    format: "gini",
+    format: 'gini',
     renderInMobileList: true,
-    graphColor: "#9cf89b",
-    barRenderMode: "ABSOLUTE",
+    graphColor: '#9cf89b',
+    barRenderMode: 'ABSOLUTE',
   },
   {
-    label: "DeleteButton",
+    label: 'DeleteButton',
     modes: [],
     component: Cells.DeleteButton,
     header: Headers.DeleteButton,
-    width: "auto",
+    width: 'auto',
     canBeToggled: false,
     sortable: false,
     renderInMobileList: false,
   },
 ];
 
-export type Format = "population" | "area" | "gini";
+export type Format = 'population' | 'area' | 'gini';
 
 export interface ColumnConfig {
   label: string;
-  modes: Array<"LIST" | "GRAPH">;
+  modes: Array<'LIST' | 'GRAPH'>;
   tooltip?: string;
   component: (props: Cells.CellProps) => JSX.Element;
   header: (props: Headers.HeaderProps) => JSX.Element;
@@ -109,7 +109,7 @@ export interface ColumnConfig {
   format?: Format;
   renderInMobileList: boolean;
   graphColor?: string;
-  barRenderMode?: "RELATIVE" | "ABSOLUTE";
+  barRenderMode?: 'RELATIVE' | 'ABSOLUTE';
 }
 
 export default columns;

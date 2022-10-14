@@ -1,3 +1,3 @@
-import CountryRowHeadersDesktop from "./CountryRowHeadersDesktop";
+import CountryRowHeadersDesktop from './CountryRowHeadersDesktop';
 
 export default CountryRowHeadersDesktop;

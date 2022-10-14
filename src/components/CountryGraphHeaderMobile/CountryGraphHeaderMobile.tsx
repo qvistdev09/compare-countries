@@ -1,21 +1,15 @@
-import columns from "../../config/columns";
+import columns from '../../config/columns';
 
-export default function CountryGraphHeaderMobile({
-  sortAction,
-  currentSort,
-  toggleColumn,
-  activeColumns,
-}: Props) {
+export default function CountryGraphHeaderMobile({ sortAction, currentSort, toggleColumn, activeColumns }: Props) {
   return (
     <div className="MobileGraphModeHeader-header">
       {columns
-        .filter((column) => column.modes.includes("GRAPH"))
+        .filter((column) => column.modes.includes('GRAPH'))
         .map((column, index, array) => (
           <div
             key={column.label}
             className={
-              "MobileGraphModeHeader-grid-row align-center" +
-              (index === array.length - 1 ? "" : " m-bottom-small")
+              'MobileGraphModeHeader-grid-row align-center' + (index === array.length - 1 ? '' : ' m-bottom-small')
             }
           >
             <div
@@ -28,23 +22,19 @@ export default function CountryGraphHeaderMobile({
             <p className="MobileGraphModeHeader-sort-label">{column.label}</p>
             <div className="flex-row align-center">
               <i
-                onClick={() => sortAction(column.label, "ASC")}
+                onClick={() => sortAction(column.label, 'ASC')}
                 key="sort-ascending-false"
                 className={
-                  "fas fa-chevron-up sort-icon" +
-                  (currentSort.column === column.label && currentSort.direction === "ASC"
-                    ? " active-sort"
-                    : "")
+                  'fas fa-chevron-up sort-icon' +
+                  (currentSort.column === column.label && currentSort.direction === 'ASC' ? ' active-sort' : '')
                 }
               />
               <i
-                onClick={() => sortAction(column.label, "DESC")}
+                onClick={() => sortAction(column.label, 'DESC')}
                 key="sort-ascending-true"
                 className={
-                  "fas fa-chevron-down sort-icon" +
-                  (currentSort.column === column.label && currentSort.direction === "DESC"
-                    ? " active-sort"
-                    : "")
+                  'fas fa-chevron-down sort-icon' +
+                  (currentSort.column === column.label && currentSort.direction === 'DESC' ? ' active-sort' : '')
                 }
               />
             </div>
@@ -55,8 +45,8 @@ export default function CountryGraphHeaderMobile({
 }
 
 interface Props {
-  sortAction: (column: string, direction: "ASC" | "DESC") => void;
-  currentSort: { column: string; direction: "ASC" | "DESC" };
+  sortAction: (column: string, direction: 'ASC' | 'DESC') => void;
+  currentSort: { column: string; direction: 'ASC' | 'DESC' };
   toggleColumn: (label: string) => void;
   activeColumns: string[];
 }

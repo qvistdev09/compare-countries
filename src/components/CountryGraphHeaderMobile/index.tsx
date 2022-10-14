@@ -1,3 +1,3 @@
-import CountryGraphHeaderMobile from "./CountryGraphHeaderMobile";
+import CountryGraphHeaderMobile from './CountryGraphHeaderMobile';
 
 export default CountryGraphHeaderMobile;

@@ -1,3 +1,3 @@
-import CountryRowMobile from "./CountryRowMobile";
+import CountryRowMobile from './CountryRowMobile';
 
 export default CountryRowMobile;

@@ -1,10 +1,6 @@
-import columns from "../../config/columns";
+import columns from '../../config/columns';
 
-export default function CountryRowHeadersDesktop({
-  sortFunction,
-  currentSort,
-  activeColumns,
-}: Props) {
+export default function CountryRowHeadersDesktop({ sortFunction, currentSort, activeColumns }: Props) {
   const headersToRender = columns.filter((column) => activeColumns.includes(column.label));
   const lastColumnIndex = headersToRender.length - 1;
 
@@ -12,8 +8,7 @@ export default function CountryRowHeadersDesktop({
     <>
       {headersToRender.map((header, index) => {
         const Component = header.header;
-        const columnPosition =
-          index === 0 ? "left-end" : index === lastColumnIndex ? "right-end" : "middle";
+        const columnPosition = index === 0 ? 'left-end' : index === lastColumnIndex ? 'right-end' : 'middle';
         return (
           <Component
             key={header.label}
@@ -28,7 +23,7 @@ export default function CountryRowHeadersDesktop({
 }
 
 interface Props {
-  sortFunction: (label: string, direction: "ASC" | "DESC") => void;
-  currentSort: { column: string; direction: "ASC" | "DESC" };
+  sortFunction: (label: string, direction: 'ASC' | 'DESC') => void;
+  currentSort: { column: string; direction: 'ASC' | 'DESC' };
   activeColumns: string[];
 }
