@@ -15,5 +15,5 @@ https://qvistdev09.github.io/compare-countries/
 
 ## Screenshots
 
-![Screenshot of Compare Countries web app](https://raw.githubusercontent.com/qvistdev09/compare-countries/master/public/screenshot1.PNG)
-![Screenshot of Compare Countries web app](https://raw.githubusercontent.com/qvistdev09/compare-countries/master/public/screenshot2.PNG)
+![Screenshot of Compare Countries web app](https://raw.githubusercontent.com/qvistdev09/compare-countries/master/screenshots/screenshot1.PNG)
+![Screenshot of Compare Countries web app](https://raw.githubusercontent.com/qvistdev09/compare-countries/master/screenshots/screenshot2.PNG)
