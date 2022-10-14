@@ -9,7 +9,7 @@ export default function useSelectCountries() {
   const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
 
   async function selectCountryByCode(code: string) {
-    if (!selectedCountries.find((country) => country.alpha2Code === code)) {
+    if (selectedCountries.find((country) => country.alpha2Code === code)) {
       return;
     }
     const cached = cache.get(code);
