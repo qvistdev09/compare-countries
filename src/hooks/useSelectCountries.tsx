@@ -5,7 +5,7 @@ import countriesMap from '../consts/countriesMap.json';
 
 const cache = new Map<string, Country>();
 
-export default function useSelectCountries() {
+export default function useSelectCountries(onErrorCallback: () => void) {
   const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
 
   async function selectCountryByCode(code: string) {
@@ -16,9 +16,14 @@ export default function useSelectCountries() {
     if (cached) {
       return setSelectedCountries([...selectedCountries, cached]);
     }
-    const fetched = await getCountryByCode(code);
-    cache.set(fetched.alpha2Code, fetched);
-    setSelectedCountries([...selectedCountries, fetched]);
+    try {
+      const fetched = await getCountryByCode(code);
+      cache.set(fetched.alpha2Code, fetched);
+      setSelectedCountries([...selectedCountries, fetched]);
+    } catch (err) {
+      console.log(err);
+      onErrorCallback();
+    }
   }
 
   function removeCountryByCode(code: string) {
@@ -42,6 +47,7 @@ export default function useSelectCountries() {
         })
         .catch((err) => {
           console.log(err);
+          onErrorCallback();
         });
     }
   }, [selectedCountries]);

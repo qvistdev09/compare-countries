@@ -13,10 +13,12 @@ import useSortedCountries from './hooks/useSortedCountries';
 import useMediaQuery from './hooks/useMediaQuery';
 import CountriesGraph from './components/CountriesGraph';
 import Footer from './components/Footer';
+import ErrorModal from './components/ErrorModal';
 
 function App() {
+  const [hasErrored, setHasErrored] = useState(false);
   const [viewMode, setViewMode] = useState<'LIST' | 'GRAPH'>('LIST');
-  const { selectCountryByCode, selectedCountries, removeCountryByCode } = useSelectCountries();
+  const { selectCountryByCode, selectedCountries, removeCountryByCode } = useSelectCountries(() => setHasErrored(true));
   const { sortedCountries, setSort, currentSort } = useSortedCountries('Name', 'ASC', selectedCountries);
   const { columnCheckboxes, checkedColumns, toggleColumn } = useColumns(viewMode);
   const headerSize = useWatchSizeInRem('site-header', 10);
@@ -28,7 +30,7 @@ function App() {
 
   return (
     <div id="site-container">
-      {/* TO DO: Error modal*/}
+      {hasErrored && <ErrorModal onCloseAction={() => setHasErrored(false)} />}
       <header id="site-header" className="p-small screen-small-p">
         <div className="flex-column screen-small-flex-row screen-small-justify-between screen-small-align-center screen-small-m-bottom">
           <AppTitle />
