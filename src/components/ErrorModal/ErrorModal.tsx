@@ -9,7 +9,7 @@ export default function ErrorModal({ onCloseAction }: Props) {
         <div className="p">
           <p className="error-description m-bottom">
             It appears the REST Countries API is offline right now - you can still compare the cached countries, but new
-            ones can't be added. Please try again later!
+            ones can&apos;t be added. Please try again later!
           </p>
           <button className="maxed error-btn" onClick={onCloseAction}>
             Close

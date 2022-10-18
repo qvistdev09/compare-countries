@@ -50,7 +50,7 @@ export default function useSelectCountries(onErrorCallback: () => void) {
           onErrorCallback();
         });
     }
-  }, [selectedCountries]);
+  }, [selectedCountries, onErrorCallback]);
 
   return {
     selectedCountries,
